@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.ABM_Cliente = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // ABM_Cliente
             // 
-            this.button1.Location = new System.Drawing.Point(110, 66);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.ABM_Cliente.Location = new System.Drawing.Point(110, 66);
+            this.ABM_Cliente.Name = "ABM_Cliente";
+            this.ABM_Cliente.Size = new System.Drawing.Size(75, 23);
+            this.ABM_Cliente.TabIndex = 0;
+            this.ABM_Cliente.Text = "ABM Cliente";
+            this.ABM_Cliente.UseVisualStyleBackColor = true;
+            this.ABM_Cliente.Click += new System.EventHandler(this.ABM_Cliente_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ABM_Cliente);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -55,7 +55,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ABM_Cliente;
     }
 }
 

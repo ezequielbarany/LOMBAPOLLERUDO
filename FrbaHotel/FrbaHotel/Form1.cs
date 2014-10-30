@@ -16,7 +16,7 @@ namespace FrbaHotel
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ABM_Cliente_Click(object sender, EventArgs e)
         {
             FrbaHotel.ABM_de_Cliente.Form1 form1 = new FrbaHotel.ABM_de_Cliente.Form1();
             form1.Show();

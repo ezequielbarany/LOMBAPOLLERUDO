@@ -32,10 +32,16 @@ namespace FrbaCore
         }
 
         //Methods
-        public Cliente dameClientesSelect(){
-            Cliente c1 = _dataContext.Cliente.FirstOrDefault();
+        public List<Cliente> dameClientesSelect(){
+            List<Cliente> c1 = _dataContext.Cliente.ToList();
             return c1;
 
+        }
+
+        public List<Cliente> buscarClientes(string nombre,string apellido,string tipoIdentificacion,string numeroIdentificacion,string email)
+        {
+            //Aca iria el sp
+            return _dataContext.Cliente.Where(x => x.nombre.Equals(nombre)).ToList();
         }
 
 

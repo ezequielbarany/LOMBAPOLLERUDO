@@ -1,0 +1,11 @@
+D:\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\bin\Release\FrbaHotel.exe
+D:\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\bin\Release\FrbaHotel.pdb
+D:\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\bin\Release\FrbaCore.dll
+D:\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\bin\Release\FrbaCore.pdb
+D:\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\ResolveAssemblyReference.cache
+D:\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.ABM_de_Cliente.Form1.resources
+D:\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.Form1.resources
+D:\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.Properties.Resources.resources
+D:\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.csproj.GenerateResource.Cache
+D:\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.exe
+D:\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.pdb
