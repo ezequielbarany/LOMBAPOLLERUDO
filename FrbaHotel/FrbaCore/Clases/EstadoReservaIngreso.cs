@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FrbaCore
 {
-    class EstadoReservaIngreso : EstadoReserva
+    public partial class EstadoReservaIngreso : EstadoReserva
     {
     }
 }

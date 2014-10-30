@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FrbaCore
 {
-    class Reserva
+    public partial class Reserva
     {
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FrbaCore
 {
-    class MedioDePagoTarjeta : MedioDePago
+    public partial class MedioDePagoTarjeta : MedioDePago
     {
     }
 }

@@ -17,8 +17,18 @@ namespace FrbaCore
         //Contructors
         public Cliente()
         {
+            //string conection = ConfigurationManager.ConnectionStrings["FRBAHOTEL_DATABASE"].ConnectionString;
             string conection = "Data Source=localhost\\SQLSERVER2008;Initial Catalog=GD2C2014;User ID=gd;Password=gd2014";
             _dataContext = new FrbaDataContextDataContext(conection);
+        }
+
+        public Cliente(decimal _numeroIdentificacion,int _tipoIdentificacion)
+        {
+            //string conection = ConfigurationManager.ConnectionStrings["FRBAHOTEL_DATABASE"].ConnectionString;
+            string conection = "Data Source=localhost\\SQLSERVER2008;Initial Catalog=GD2C2014;User ID=gd;Password=gd2014";
+            _dataContext = new FrbaDataContextDataContext(conection);
+            //Seteo cliente
+            //SP busca cliente
         }
 
         //Methods

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FrbaCore
 {
-    class Funcionalidad
+    public partial class Funcionalidad
     {
     }
 }

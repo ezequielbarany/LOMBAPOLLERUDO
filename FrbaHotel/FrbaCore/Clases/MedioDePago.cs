@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FrbaCore
 {
-    abstract class MedioDePago
+    public abstract partial class MedioDePago
     {
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FrbaCore
 {
-    class Factura
+    public partial class Factura
     {
     }
 }

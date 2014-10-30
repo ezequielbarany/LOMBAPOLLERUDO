@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FrbaCore
 {
-    class HabitacionSimple : Habitacion
+    public partial class HabitacionSimple : Habitacion
     {
     }
 }

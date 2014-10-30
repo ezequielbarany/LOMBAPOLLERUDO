@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FrbaCore
 {
-    class Rol
+    public partial class Rol
     {
     }
 }

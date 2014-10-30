@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FrbaCore
 {
-    class Usuario
+    public partial class Usuario
     {
     }
 }

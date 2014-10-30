@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FrbaCore
 {
-    class Consumibles
+    public partial class Consumibles
     {
     }
 }
