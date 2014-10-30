@@ -452,6 +452,65 @@ COMMIT
 -- CARGA DE DATOS FROM MASTER --
 --------------------------------
 
+
+------------------------------------------------------------------------------------------------
+-- TABLA CLIENTES --
+------------------------------------------------------------------------------------------------
+INSERT INTO [GD2C2014].[dbo].[Cliente]
+select numeroIdentificacion,
+		tipoIdentificacion,
+		nombre,
+		apellido,
+		fechaNacimiento,
+		mail,
+		direccion,
+		altura,
+		piso,
+		depto,
+		nacionalidad,
+		telefono,
+		localidad,
+		habilitado 
+		from 
+		(
+SELECT	ROW_NUMBER()OVER(PARTITION BY mail ORDER BY fechaNacimiento ASC) as 'nroFilaMail',
+		numeroIdentificacion,
+		tipoIdentificacion,
+		nombre,
+		apellido,
+		fechaNacimiento,
+		mail,
+		direccion,
+		altura,
+		piso,
+		depto,
+		nacionalidad,
+		telefono,
+		localidad,
+		habilitado 
+from
+(SELECT		ROW_NUMBER()
+			OVER(PARTITION BY [Cliente_Pasaporte_Nro] ORDER BY [Cliente_Fecha_Nac] ASC) as 'nroFilaDocu', 
+				[Cliente_Pasaporte_Nro] AS numeroIdentificacion,
+				[Cliente_Mail] as mail,
+				1 AS tipoIdentificacion,
+				[Cliente_Nombre] as nombre,
+				[Cliente_Apellido] as apellido,
+				[Cliente_Fecha_Nac] as fechaNacimiento,
+				[Cliente_Dom_Calle] as direccion,
+				[Cliente_Nro_Calle] as altura,
+				[Cliente_Piso] as piso,
+				[Cliente_Depto] as depto,
+				[Cliente_Nacionalidad] as nacionalidad,
+				'' as telefono,
+				'' as localidad,
+				1 as habilitado
+FROM [GD2C2014].[gd_esquema].[Maestra]				
+) conNroFilaDocu
+where nroFilaDocu = 1
+)conNroFIlaMail
+where nroFilaMail = 1
+------------------------------------------------------------------------------------------------
 -- TABLA CONSUMIBLES --
 ------------------------------------------------------------------------------------------------
 INSERT INTO [GD2C2014].[dbo].[Consumible]
@@ -460,7 +519,6 @@ FROM [GD2C2014].[gd_esquema].[Maestra]
 WHERE [Consumible_Codigo] IS NOT NULL
 ORDER BY 1
 ------------------------------------------------------------------------------------------------
-
 -- TABLA TIPOIDENTIFICACION --
 ------------------------------------------------------------------------------------------------
 INSERT INTO [GD2C2014].[dbo].[TipoIdentificacion]  
