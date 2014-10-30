@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FrbaCore.Acceso_a_Datos
+namespace FrbaCore
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -20,16 +20,82 @@ namespace FrbaCore.Acceso_a_Datos
 	using System.Linq.Expressions;
 	using System.ComponentModel;
 	using System;
-	
-	
+
+    [global::System.Data.Linq.Mapping.DatabaseAttribute(Name = "FRBAHOTEL")]
 	public partial class FrbaDataContextDataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
-		
-    #region Extensibility Method Definitions
-    partial void OnCreated();
-    #endregion
+
+        #region Definiciones de métodos de extensibilidad
+        partial void OnCreated();
+        partial void InsertCliente(Cliente instance);
+        partial void UpdateCliente(Cliente instance);
+        partial void DeleteCliente(Cliente instance);
+        partial void InsertConsumible(Consumible instance);
+        partial void UpdateConsumible(Consumible instance);
+        partial void DeleteConsumible(Consumible instance);
+        partial void InsertEstadoReserva(EstadoReserva instance);
+        partial void UpdateEstadoReserva(EstadoReserva instance);
+        partial void DeleteEstadoReserva(EstadoReserva instance);
+        partial void InsertFactura(Factura instance);
+        partial void UpdateFactura(Factura instance);
+        partial void DeleteFactura(Factura instance);
+        partial void InsertFuncionalidad(Funcionalidad instance);
+        partial void UpdateFuncionalidad(Funcionalidad instance);
+        partial void DeleteFuncionalidad(Funcionalidad instance);
+        partial void InsertHabitacion(Habitacion instance);
+        partial void UpdateHabitacion(Habitacion instance);
+        partial void DeleteHabitacion(Habitacion instance);
+        partial void InsertHistorialHotel(HistorialHotel instance);
+        partial void UpdateHistorialHotel(HistorialHotel instance);
+        partial void DeleteHistorialHotel(HistorialHotel instance);
+        partial void InsertHotel(Hotel instance);
+        partial void UpdateHotel(Hotel instance);
+        partial void DeleteHotel(Hotel instance);
+        partial void InsertMedioDePago(MedioDePago instance);
+        partial void UpdateMedioDePago(MedioDePago instance);
+        partial void DeleteMedioDePago(MedioDePago instance);
+        partial void InsertRegimen(Regimen instance);
+        partial void UpdateRegimen(Regimen instance);
+        partial void DeleteRegimen(Regimen instance);
+        partial void InsertRegimenxHotel(RegimenxHotel instance);
+        partial void UpdateRegimenxHotel(RegimenxHotel instance);
+        partial void DeleteRegimenxHotel(RegimenxHotel instance);
+        partial void InsertReserva(Reserva instance);
+        partial void UpdateReserva(Reserva instance);
+        partial void DeleteReserva(Reserva instance);
+        partial void InsertReservaxCliente(ReservaxCliente instance);
+        partial void UpdateReservaxCliente(ReservaxCliente instance);
+        partial void DeleteReservaxCliente(ReservaxCliente instance);
+        partial void InsertReservaxConsumible(ReservaxConsumible instance);
+        partial void UpdateReservaxConsumible(ReservaxConsumible instance);
+        partial void DeleteReservaxConsumible(ReservaxConsumible instance);
+        partial void InsertReservaxHabitacion(ReservaxHabitacion instance);
+        partial void UpdateReservaxHabitacion(ReservaxHabitacion instance);
+        partial void DeleteReservaxHabitacion(ReservaxHabitacion instance);
+        partial void InsertRol(Rol instance);
+        partial void UpdateRol(Rol instance);
+        partial void DeleteRol(Rol instance);
+        partial void InsertRolxFuncionalidad(RolxFuncionalidad instance);
+        partial void UpdateRolxFuncionalidad(RolxFuncionalidad instance);
+        partial void DeleteRolxFuncionalidad(RolxFuncionalidad instance);
+        partial void InsertRolxUsuario(RolxUsuario instance);
+        partial void UpdateRolxUsuario(RolxUsuario instance);
+        partial void DeleteRolxUsuario(RolxUsuario instance);
+        partial void InsertTipoDeHabitacion(TipoDeHabitacion instance);
+        partial void UpdateTipoDeHabitacion(TipoDeHabitacion instance);
+        partial void DeleteTipoDeHabitacion(TipoDeHabitacion instance);
+        partial void InsertTipoIdentificacion(TipoIdentificacion instance);
+        partial void UpdateTipoIdentificacion(TipoIdentificacion instance);
+        partial void DeleteTipoIdentificacion(TipoIdentificacion instance);
+        partial void InsertUsuario(Usuario instance);
+        partial void UpdateUsuario(Usuario instance);
+        partial void DeleteUsuario(Usuario instance);
+        partial void InsertUsuarioxHotel(UsuarioxHotel instance);
+        partial void UpdateUsuarioxHotel(UsuarioxHotel instance);
+        partial void DeleteUsuarioxHotel(UsuarioxHotel instance);
+        #endregion
 		
 		public FrbaDataContextDataContext(string connection) : 
 				base(connection, mappingSource)
@@ -54,6 +120,3452 @@ namespace FrbaCore.Acceso_a_Datos
 		{
 			OnCreated();
 		}
-	}
+
+        public System.Data.Linq.Table<Cliente> Cliente
+        {
+            get
+            {
+                return this.GetTable<Cliente>();
+            }
+        }
+
+        public System.Data.Linq.Table<Consumible> Consumible
+        {
+            get
+            {
+                return this.GetTable<Consumible>();
+            }
+        }
+
+        public System.Data.Linq.Table<EstadoReserva> EstadoReserva
+        {
+            get
+            {
+                return this.GetTable<EstadoReserva>();
+            }
+        }
+
+        public System.Data.Linq.Table<Factura> Factura
+        {
+            get
+            {
+                return this.GetTable<Factura>();
+            }
+        }
+
+        public System.Data.Linq.Table<Funcionalidad> Funcionalidad
+        {
+            get
+            {
+                return this.GetTable<Funcionalidad>();
+            }
+        }
+
+        public System.Data.Linq.Table<Habitacion> Habitacion
+        {
+            get
+            {
+                return this.GetTable<Habitacion>();
+            }
+        }
+
+        public System.Data.Linq.Table<HistorialHotel> HistorialHotel
+        {
+            get
+            {
+                return this.GetTable<HistorialHotel>();
+            }
+        }
+
+        public System.Data.Linq.Table<Hotel> Hotel
+        {
+            get
+            {
+                return this.GetTable<Hotel>();
+            }
+        }
+
+        public System.Data.Linq.Table<MedioDePago> MedioDePago
+        {
+            get
+            {
+                return this.GetTable<MedioDePago>();
+            }
+        }
+
+        public System.Data.Linq.Table<Regimen> Regimen
+        {
+            get
+            {
+                return this.GetTable<Regimen>();
+            }
+        }
+
+        public System.Data.Linq.Table<RegimenxHotel> RegimenxHotel
+        {
+            get
+            {
+                return this.GetTable<RegimenxHotel>();
+            }
+        }
+
+        public System.Data.Linq.Table<Reserva> Reserva
+        {
+            get
+            {
+                return this.GetTable<Reserva>();
+            }
+        }
+
+        public System.Data.Linq.Table<ReservaxCliente> ReservaxCliente
+        {
+            get
+            {
+                return this.GetTable<ReservaxCliente>();
+            }
+        }
+
+        public System.Data.Linq.Table<ReservaxConsumible> ReservaxConsumible
+        {
+            get
+            {
+                return this.GetTable<ReservaxConsumible>();
+            }
+        }
+
+        public System.Data.Linq.Table<ReservaxHabitacion> ReservaxHabitacion
+        {
+            get
+            {
+                return this.GetTable<ReservaxHabitacion>();
+            }
+        }
+
+        public System.Data.Linq.Table<Rol> Rol
+        {
+            get
+            {
+                return this.GetTable<Rol>();
+            }
+        }
+
+        public System.Data.Linq.Table<RolxFuncionalidad> RolxFuncionalidad
+        {
+            get
+            {
+                return this.GetTable<RolxFuncionalidad>();
+            }
+        }
+
+        public System.Data.Linq.Table<RolxUsuario> RolxUsuario
+        {
+            get
+            {
+                return this.GetTable<RolxUsuario>();
+            }
+        }
+
+        public System.Data.Linq.Table<TipoDeHabitacion> TipoDeHabitacion
+        {
+            get
+            {
+                return this.GetTable<TipoDeHabitacion>();
+            }
+        }
+
+        public System.Data.Linq.Table<TipoIdentificacion> TipoIdentificacion
+        {
+            get
+            {
+                return this.GetTable<TipoIdentificacion>();
+            }
+        }
+
+        public System.Data.Linq.Table<Usuario> Usuario
+        {
+            get
+            {
+                return this.GetTable<Usuario>();
+            }
+        }
+
+        public System.Data.Linq.Table<UsuarioxHotel> UsuarioxHotel
+        {
+            get
+            {
+                return this.GetTable<UsuarioxHotel>();
+            }
+        }
+    }
+
+    [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.Cliente")]
+    public partial class Cliente : INotifyPropertyChanging, INotifyPropertyChanged
+    {
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+
+        private decimal _numeroIdentificacion;
+
+        private int _tipoIdentificacion;
+
+        private string _nombre;
+
+        private string _apellido;
+
+        private System.Nullable<System.DateTime> _fechaNacimiento;
+
+        private string _mail;
+
+        private string _direccion;
+
+        private System.Nullable<decimal> _altura;
+
+        private System.Nullable<decimal> _piso;
+
+        private string _depto;
+
+        private string _nacionalidad;
+
+        private string _telefono;
+
+        private string _localidad;
+
+        private System.Nullable<bool> _habilitado;
+
+        #region Definiciones de métodos de extensibilidad
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+        partial void OnnumeroIdentificacionChanging(decimal value);
+        partial void OnnumeroIdentificacionChanged();
+        partial void OntipoIdentificacionChanging(int value);
+        partial void OntipoIdentificacionChanged();
+        partial void OnnombreChanging(string value);
+        partial void OnnombreChanged();
+        partial void OnapellidoChanging(string value);
+        partial void OnapellidoChanged();
+        partial void OnfechaNacimientoChanging(System.Nullable<System.DateTime> value);
+        partial void OnfechaNacimientoChanged();
+        partial void OnmailChanging(string value);
+        partial void OnmailChanged();
+        partial void OndireccionChanging(string value);
+        partial void OndireccionChanged();
+        partial void OnalturaChanging(System.Nullable<decimal> value);
+        partial void OnalturaChanged();
+        partial void OnpisoChanging(System.Nullable<decimal> value);
+        partial void OnpisoChanged();
+        partial void OndeptoChanging(string value);
+        partial void OndeptoChanged();
+        partial void OnnacionalidadChanging(string value);
+        partial void OnnacionalidadChanged();
+        partial void OntelefonoChanging(string value);
+        partial void OntelefonoChanged();
+        partial void OnlocalidadChanging(string value);
+        partial void OnlocalidadChanged();
+        partial void OnhabilitadoChanging(System.Nullable<bool> value);
+        partial void OnhabilitadoChanged();
+        #endregion
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_numeroIdentificacion", DbType = "Decimal(18,0) NOT NULL", IsPrimaryKey = true)]
+        public decimal numeroIdentificacion
+        {
+            get
+            {
+                return this._numeroIdentificacion;
+            }
+            set
+            {
+                if ((this._numeroIdentificacion != value))
+                {
+                    this.OnnumeroIdentificacionChanging(value);
+                    this.SendPropertyChanging();
+                    this._numeroIdentificacion = value;
+                    this.SendPropertyChanged("numeroIdentificacion");
+                    this.OnnumeroIdentificacionChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_tipoIdentificacion", DbType = "Int NOT NULL", IsPrimaryKey = true)]
+        public int tipoIdentificacion
+        {
+            get
+            {
+                return this._tipoIdentificacion;
+            }
+            set
+            {
+                if ((this._tipoIdentificacion != value))
+                {
+                    this.OntipoIdentificacionChanging(value);
+                    this.SendPropertyChanging();
+                    this._tipoIdentificacion = value;
+                    this.SendPropertyChanged("tipoIdentificacion");
+                    this.OntipoIdentificacionChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_nombre", DbType = "NVarChar(255)")]
+        public string nombre
+        {
+            get
+            {
+                return this._nombre;
+            }
+            set
+            {
+                if ((this._nombre != value))
+                {
+                    this.OnnombreChanging(value);
+                    this.SendPropertyChanging();
+                    this._nombre = value;
+                    this.SendPropertyChanged("nombre");
+                    this.OnnombreChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_apellido", DbType = "NVarChar(255)")]
+        public string apellido
+        {
+            get
+            {
+                return this._apellido;
+            }
+            set
+            {
+                if ((this._apellido != value))
+                {
+                    this.OnapellidoChanging(value);
+                    this.SendPropertyChanging();
+                    this._apellido = value;
+                    this.SendPropertyChanged("apellido");
+                    this.OnapellidoChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_fechaNacimiento", DbType = "DateTime")]
+        public System.Nullable<System.DateTime> fechaNacimiento
+        {
+            get
+            {
+                return this._fechaNacimiento;
+            }
+            set
+            {
+                if ((this._fechaNacimiento != value))
+                {
+                    this.OnfechaNacimientoChanging(value);
+                    this.SendPropertyChanging();
+                    this._fechaNacimiento = value;
+                    this.SendPropertyChanged("fechaNacimiento");
+                    this.OnfechaNacimientoChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_mail", DbType = "NVarChar(255)")]
+        public string mail
+        {
+            get
+            {
+                return this._mail;
+            }
+            set
+            {
+                if ((this._mail != value))
+                {
+                    this.OnmailChanging(value);
+                    this.SendPropertyChanging();
+                    this._mail = value;
+                    this.SendPropertyChanged("mail");
+                    this.OnmailChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_direccion", DbType = "NVarChar(255)")]
+        public string direccion
+        {
+            get
+            {
+                return this._direccion;
+            }
+            set
+            {
+                if ((this._direccion != value))
+                {
+                    this.OndireccionChanging(value);
+                    this.SendPropertyChanging();
+                    this._direccion = value;
+                    this.SendPropertyChanged("direccion");
+                    this.OndireccionChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_altura", DbType = "Decimal(18,0)")]
+        public System.Nullable<decimal> altura
+        {
+            get
+            {
+                return this._altura;
+            }
+            set
+            {
+                if ((this._altura != value))
+                {
+                    this.OnalturaChanging(value);
+                    this.SendPropertyChanging();
+                    this._altura = value;
+                    this.SendPropertyChanged("altura");
+                    this.OnalturaChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_piso", DbType = "Decimal(18,0)")]
+        public System.Nullable<decimal> piso
+        {
+            get
+            {
+                return this._piso;
+            }
+            set
+            {
+                if ((this._piso != value))
+                {
+                    this.OnpisoChanging(value);
+                    this.SendPropertyChanging();
+                    this._piso = value;
+                    this.SendPropertyChanged("piso");
+                    this.OnpisoChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_depto", DbType = "NVarChar(50)")]
+        public string depto
+        {
+            get
+            {
+                return this._depto;
+            }
+            set
+            {
+                if ((this._depto != value))
+                {
+                    this.OndeptoChanging(value);
+                    this.SendPropertyChanging();
+                    this._depto = value;
+                    this.SendPropertyChanged("depto");
+                    this.OndeptoChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_nacionalidad", DbType = "NVarChar(255)")]
+        public string nacionalidad
+        {
+            get
+            {
+                return this._nacionalidad;
+            }
+            set
+            {
+                if ((this._nacionalidad != value))
+                {
+                    this.OnnacionalidadChanging(value);
+                    this.SendPropertyChanging();
+                    this._nacionalidad = value;
+                    this.SendPropertyChanged("nacionalidad");
+                    this.OnnacionalidadChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_telefono", DbType = "NVarChar(50)")]
+        public string telefono
+        {
+            get
+            {
+                return this._telefono;
+            }
+            set
+            {
+                if ((this._telefono != value))
+                {
+                    this.OntelefonoChanging(value);
+                    this.SendPropertyChanging();
+                    this._telefono = value;
+                    this.SendPropertyChanged("telefono");
+                    this.OntelefonoChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_localidad", DbType = "NVarChar(255)")]
+        public string localidad
+        {
+            get
+            {
+                return this._localidad;
+            }
+            set
+            {
+                if ((this._localidad != value))
+                {
+                    this.OnlocalidadChanging(value);
+                    this.SendPropertyChanging();
+                    this._localidad = value;
+                    this.SendPropertyChanged("localidad");
+                    this.OnlocalidadChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_habilitado", DbType = "Bit")]
+        public System.Nullable<bool> habilitado
+        {
+            get
+            {
+                return this._habilitado;
+            }
+            set
+            {
+                if ((this._habilitado != value))
+                {
+                    this.OnhabilitadoChanging(value);
+                    this.SendPropertyChanging();
+                    this._habilitado = value;
+                    this.SendPropertyChanged("habilitado");
+                    this.OnhabilitadoChanged();
+                }
+            }
+        }
+
+        public event PropertyChangingEventHandler PropertyChanging;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void SendPropertyChanging()
+        {
+            if ((this.PropertyChanging != null))
+            {
+                this.PropertyChanging(this, emptyChangingEventArgs);
+            }
+        }
+
+        protected virtual void SendPropertyChanged(String propertyName)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+
+    [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.Consumible")]
+    public partial class Consumible : INotifyPropertyChanging, INotifyPropertyChanged
+    {
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+
+        private decimal _codigo;
+
+        private string _descripcion;
+
+        private decimal _precio;
+
+        #region Definiciones de métodos de extensibilidad
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+        partial void OncodigoChanging(decimal value);
+        partial void OncodigoChanged();
+        partial void OndescripcionChanging(string value);
+        partial void OndescripcionChanged();
+        partial void OnprecioChanging(decimal value);
+        partial void OnprecioChanged();
+        #endregion
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_codigo", DbType = "Decimal(18,0) NOT NULL", IsPrimaryKey = true)]
+        public decimal codigo
+        {
+            get
+            {
+                return this._codigo;
+            }
+            set
+            {
+                if ((this._codigo != value))
+                {
+                    this.OncodigoChanging(value);
+                    this.SendPropertyChanging();
+                    this._codigo = value;
+                    this.SendPropertyChanged("codigo");
+                    this.OncodigoChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_descripcion", DbType = "NVarChar(255) NOT NULL", CanBeNull = false)]
+        public string descripcion
+        {
+            get
+            {
+                return this._descripcion;
+            }
+            set
+            {
+                if ((this._descripcion != value))
+                {
+                    this.OndescripcionChanging(value);
+                    this.SendPropertyChanging();
+                    this._descripcion = value;
+                    this.SendPropertyChanged("descripcion");
+                    this.OndescripcionChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_precio", DbType = "Decimal(18,2) NOT NULL")]
+        public decimal precio
+        {
+            get
+            {
+                return this._precio;
+            }
+            set
+            {
+                if ((this._precio != value))
+                {
+                    this.OnprecioChanging(value);
+                    this.SendPropertyChanging();
+                    this._precio = value;
+                    this.SendPropertyChanged("precio");
+                    this.OnprecioChanged();
+                }
+            }
+        }
+
+        public event PropertyChangingEventHandler PropertyChanging;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void SendPropertyChanging()
+        {
+            if ((this.PropertyChanging != null))
+            {
+                this.PropertyChanging(this, emptyChangingEventArgs);
+            }
+        }
+
+        protected virtual void SendPropertyChanged(String propertyName)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+
+    [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.EstadoReserva")]
+    public partial class EstadoReserva : INotifyPropertyChanging, INotifyPropertyChanged
+    {
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+
+        private int _idEstado;
+
+        private string _descripcion;
+
+        #region Definiciones de métodos de extensibilidad
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+        partial void OnidEstadoChanging(int value);
+        partial void OnidEstadoChanged();
+        partial void OndescripcionChanging(string value);
+        partial void OndescripcionChanged();
+        #endregion
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_idEstado", DbType = "Int NOT NULL", IsPrimaryKey = true)]
+        public int idEstado
+        {
+            get
+            {
+                return this._idEstado;
+            }
+            set
+            {
+                if ((this._idEstado != value))
+                {
+                    this.OnidEstadoChanging(value);
+                    this.SendPropertyChanging();
+                    this._idEstado = value;
+                    this.SendPropertyChanged("idEstado");
+                    this.OnidEstadoChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_descripcion", DbType = "NVarChar(255)")]
+        public string descripcion
+        {
+            get
+            {
+                return this._descripcion;
+            }
+            set
+            {
+                if ((this._descripcion != value))
+                {
+                    this.OndescripcionChanging(value);
+                    this.SendPropertyChanging();
+                    this._descripcion = value;
+                    this.SendPropertyChanged("descripcion");
+                    this.OndescripcionChanged();
+                }
+            }
+        }
+
+        public event PropertyChangingEventHandler PropertyChanging;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void SendPropertyChanging()
+        {
+            if ((this.PropertyChanging != null))
+            {
+                this.PropertyChanging(this, emptyChangingEventArgs);
+            }
+        }
+
+        protected virtual void SendPropertyChanged(String propertyName)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+
+    [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.Factura")]
+    public partial class Factura : INotifyPropertyChanging, INotifyPropertyChanged
+    {
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+
+        private decimal _numeroFactura;
+
+        private System.Nullable<System.DateTime> _fecha;
+
+        private System.Nullable<decimal> _total;
+
+        private System.Nullable<decimal> _codigoReserva;
+
+        private System.Nullable<int> _idMedioPago;
+
+        #region Definiciones de métodos de extensibilidad
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+        partial void OnnumeroFacturaChanging(decimal value);
+        partial void OnnumeroFacturaChanged();
+        partial void OnfechaChanging(System.Nullable<System.DateTime> value);
+        partial void OnfechaChanged();
+        partial void OntotalChanging(System.Nullable<decimal> value);
+        partial void OntotalChanged();
+        partial void OncodigoReservaChanging(System.Nullable<decimal> value);
+        partial void OncodigoReservaChanged();
+        partial void OnidMedioPagoChanging(System.Nullable<int> value);
+        partial void OnidMedioPagoChanged();
+        #endregion
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_numeroFactura", DbType = "Decimal(18,0) NOT NULL", IsPrimaryKey = true)]
+        public decimal numeroFactura
+        {
+            get
+            {
+                return this._numeroFactura;
+            }
+            set
+            {
+                if ((this._numeroFactura != value))
+                {
+                    this.OnnumeroFacturaChanging(value);
+                    this.SendPropertyChanging();
+                    this._numeroFactura = value;
+                    this.SendPropertyChanged("numeroFactura");
+                    this.OnnumeroFacturaChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_fecha", DbType = "DateTime")]
+        public System.Nullable<System.DateTime> fecha
+        {
+            get
+            {
+                return this._fecha;
+            }
+            set
+            {
+                if ((this._fecha != value))
+                {
+                    this.OnfechaChanging(value);
+                    this.SendPropertyChanging();
+                    this._fecha = value;
+                    this.SendPropertyChanged("fecha");
+                    this.OnfechaChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_total", DbType = "Decimal(18,2)")]
+        public System.Nullable<decimal> total
+        {
+            get
+            {
+                return this._total;
+            }
+            set
+            {
+                if ((this._total != value))
+                {
+                    this.OntotalChanging(value);
+                    this.SendPropertyChanging();
+                    this._total = value;
+                    this.SendPropertyChanged("total");
+                    this.OntotalChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_codigoReserva", DbType = "Decimal(18,0)")]
+        public System.Nullable<decimal> codigoReserva
+        {
+            get
+            {
+                return this._codigoReserva;
+            }
+            set
+            {
+                if ((this._codigoReserva != value))
+                {
+                    this.OncodigoReservaChanging(value);
+                    this.SendPropertyChanging();
+                    this._codigoReserva = value;
+                    this.SendPropertyChanged("codigoReserva");
+                    this.OncodigoReservaChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_idMedioPago", DbType = "Int")]
+        public System.Nullable<int> idMedioPago
+        {
+            get
+            {
+                return this._idMedioPago;
+            }
+            set
+            {
+                if ((this._idMedioPago != value))
+                {
+                    this.OnidMedioPagoChanging(value);
+                    this.SendPropertyChanging();
+                    this._idMedioPago = value;
+                    this.SendPropertyChanged("idMedioPago");
+                    this.OnidMedioPagoChanged();
+                }
+            }
+        }
+
+        public event PropertyChangingEventHandler PropertyChanging;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void SendPropertyChanging()
+        {
+            if ((this.PropertyChanging != null))
+            {
+                this.PropertyChanging(this, emptyChangingEventArgs);
+            }
+        }
+
+        protected virtual void SendPropertyChanged(String propertyName)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+
+    [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.Funcionalidad")]
+    public partial class Funcionalidad : INotifyPropertyChanging, INotifyPropertyChanged
+    {
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+
+        private int _idFuncionalidad;
+
+        private string _descripcion;
+
+        #region Definiciones de métodos de extensibilidad
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+        partial void OnidFuncionalidadChanging(int value);
+        partial void OnidFuncionalidadChanged();
+        partial void OndescripcionChanging(string value);
+        partial void OndescripcionChanged();
+        #endregion
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_idFuncionalidad", DbType = "Int NOT NULL", IsPrimaryKey = true)]
+        public int idFuncionalidad
+        {
+            get
+            {
+                return this._idFuncionalidad;
+            }
+            set
+            {
+                if ((this._idFuncionalidad != value))
+                {
+                    this.OnidFuncionalidadChanging(value);
+                    this.SendPropertyChanging();
+                    this._idFuncionalidad = value;
+                    this.SendPropertyChanged("idFuncionalidad");
+                    this.OnidFuncionalidadChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_descripcion", DbType = "NVarChar(255)")]
+        public string descripcion
+        {
+            get
+            {
+                return this._descripcion;
+            }
+            set
+            {
+                if ((this._descripcion != value))
+                {
+                    this.OndescripcionChanging(value);
+                    this.SendPropertyChanging();
+                    this._descripcion = value;
+                    this.SendPropertyChanged("descripcion");
+                    this.OndescripcionChanged();
+                }
+            }
+        }
+
+        public event PropertyChangingEventHandler PropertyChanging;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void SendPropertyChanging()
+        {
+            if ((this.PropertyChanging != null))
+            {
+                this.PropertyChanging(this, emptyChangingEventArgs);
+            }
+        }
+
+        protected virtual void SendPropertyChanged(String propertyName)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+
+    [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.Habitacion")]
+    public partial class Habitacion : INotifyPropertyChanging, INotifyPropertyChanged
+    {
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+
+        private int _idHotel;
+
+        private decimal _numeroHabitacion;
+
+        private System.Nullable<decimal> _piso;
+
+        private string _ubicacion;
+
+        private System.Nullable<decimal> _idTipoHabitacion;
+
+        private string _descripcion;
+
+        private string _comodidades;
+
+        private System.Nullable<bool> _habilitada;
+
+        #region Definiciones de métodos de extensibilidad
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+        partial void OnidHotelChanging(int value);
+        partial void OnidHotelChanged();
+        partial void OnnumeroHabitacionChanging(decimal value);
+        partial void OnnumeroHabitacionChanged();
+        partial void OnpisoChanging(System.Nullable<decimal> value);
+        partial void OnpisoChanged();
+        partial void OnubicacionChanging(string value);
+        partial void OnubicacionChanged();
+        partial void OnidTipoHabitacionChanging(System.Nullable<decimal> value);
+        partial void OnidTipoHabitacionChanged();
+        partial void OndescripcionChanging(string value);
+        partial void OndescripcionChanged();
+        partial void OncomodidadesChanging(string value);
+        partial void OncomodidadesChanged();
+        partial void OnhabilitadaChanging(System.Nullable<bool> value);
+        partial void OnhabilitadaChanged();
+        #endregion
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_idHotel", DbType = "Int NOT NULL", IsPrimaryKey = true)]
+        public int idHotel
+        {
+            get
+            {
+                return this._idHotel;
+            }
+            set
+            {
+                if ((this._idHotel != value))
+                {
+                    this.OnidHotelChanging(value);
+                    this.SendPropertyChanging();
+                    this._idHotel = value;
+                    this.SendPropertyChanged("idHotel");
+                    this.OnidHotelChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_numeroHabitacion", DbType = "Decimal(18,0) NOT NULL", IsPrimaryKey = true)]
+        public decimal numeroHabitacion
+        {
+            get
+            {
+                return this._numeroHabitacion;
+            }
+            set
+            {
+                if ((this._numeroHabitacion != value))
+                {
+                    this.OnnumeroHabitacionChanging(value);
+                    this.SendPropertyChanging();
+                    this._numeroHabitacion = value;
+                    this.SendPropertyChanged("numeroHabitacion");
+                    this.OnnumeroHabitacionChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_piso", DbType = "Decimal(18,0)")]
+        public System.Nullable<decimal> piso
+        {
+            get
+            {
+                return this._piso;
+            }
+            set
+            {
+                if ((this._piso != value))
+                {
+                    this.OnpisoChanging(value);
+                    this.SendPropertyChanging();
+                    this._piso = value;
+                    this.SendPropertyChanged("piso");
+                    this.OnpisoChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_ubicacion", DbType = "NVarChar(50)")]
+        public string ubicacion
+        {
+            get
+            {
+                return this._ubicacion;
+            }
+            set
+            {
+                if ((this._ubicacion != value))
+                {
+                    this.OnubicacionChanging(value);
+                    this.SendPropertyChanging();
+                    this._ubicacion = value;
+                    this.SendPropertyChanged("ubicacion");
+                    this.OnubicacionChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_idTipoHabitacion", DbType = "Decimal(18,0)")]
+        public System.Nullable<decimal> idTipoHabitacion
+        {
+            get
+            {
+                return this._idTipoHabitacion;
+            }
+            set
+            {
+                if ((this._idTipoHabitacion != value))
+                {
+                    this.OnidTipoHabitacionChanging(value);
+                    this.SendPropertyChanging();
+                    this._idTipoHabitacion = value;
+                    this.SendPropertyChanged("idTipoHabitacion");
+                    this.OnidTipoHabitacionChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_descripcion", DbType = "NVarChar(255)")]
+        public string descripcion
+        {
+            get
+            {
+                return this._descripcion;
+            }
+            set
+            {
+                if ((this._descripcion != value))
+                {
+                    this.OndescripcionChanging(value);
+                    this.SendPropertyChanging();
+                    this._descripcion = value;
+                    this.SendPropertyChanged("descripcion");
+                    this.OndescripcionChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_comodidades", DbType = "NVarChar(255)")]
+        public string comodidades
+        {
+            get
+            {
+                return this._comodidades;
+            }
+            set
+            {
+                if ((this._comodidades != value))
+                {
+                    this.OncomodidadesChanging(value);
+                    this.SendPropertyChanging();
+                    this._comodidades = value;
+                    this.SendPropertyChanged("comodidades");
+                    this.OncomodidadesChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_habilitada", DbType = "Bit")]
+        public System.Nullable<bool> habilitada
+        {
+            get
+            {
+                return this._habilitada;
+            }
+            set
+            {
+                if ((this._habilitada != value))
+                {
+                    this.OnhabilitadaChanging(value);
+                    this.SendPropertyChanging();
+                    this._habilitada = value;
+                    this.SendPropertyChanged("habilitada");
+                    this.OnhabilitadaChanged();
+                }
+            }
+        }
+
+        public event PropertyChangingEventHandler PropertyChanging;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void SendPropertyChanging()
+        {
+            if ((this.PropertyChanging != null))
+            {
+                this.PropertyChanging(this, emptyChangingEventArgs);
+            }
+        }
+
+        protected virtual void SendPropertyChanged(String propertyName)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+
+    [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.HistorialHotel")]
+    public partial class HistorialHotel : INotifyPropertyChanging, INotifyPropertyChanged
+    {
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+
+        private int _idHotel;
+
+        private System.DateTime _fechaInicio;
+
+        private System.DateTime _fechaFin;
+
+        private string _motivo;
+
+        #region Definiciones de métodos de extensibilidad
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+        partial void OnidHotelChanging(int value);
+        partial void OnidHotelChanged();
+        partial void OnfechaInicioChanging(System.DateTime value);
+        partial void OnfechaInicioChanged();
+        partial void OnfechaFinChanging(System.DateTime value);
+        partial void OnfechaFinChanged();
+        partial void OnmotivoChanging(string value);
+        partial void OnmotivoChanged();
+        #endregion
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_idHotel", DbType = "Int NOT NULL", IsPrimaryKey = true)]
+        public int idHotel
+        {
+            get
+            {
+                return this._idHotel;
+            }
+            set
+            {
+                if ((this._idHotel != value))
+                {
+                    this.OnidHotelChanging(value);
+                    this.SendPropertyChanging();
+                    this._idHotel = value;
+                    this.SendPropertyChanged("idHotel");
+                    this.OnidHotelChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_fechaInicio", DbType = "DateTime NOT NULL", IsPrimaryKey = true)]
+        public System.DateTime fechaInicio
+        {
+            get
+            {
+                return this._fechaInicio;
+            }
+            set
+            {
+                if ((this._fechaInicio != value))
+                {
+                    this.OnfechaInicioChanging(value);
+                    this.SendPropertyChanging();
+                    this._fechaInicio = value;
+                    this.SendPropertyChanged("fechaInicio");
+                    this.OnfechaInicioChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_fechaFin", DbType = "DateTime NOT NULL", IsPrimaryKey = true)]
+        public System.DateTime fechaFin
+        {
+            get
+            {
+                return this._fechaFin;
+            }
+            set
+            {
+                if ((this._fechaFin != value))
+                {
+                    this.OnfechaFinChanging(value);
+                    this.SendPropertyChanging();
+                    this._fechaFin = value;
+                    this.SendPropertyChanged("fechaFin");
+                    this.OnfechaFinChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_motivo", DbType = "NVarChar(255)")]
+        public string motivo
+        {
+            get
+            {
+                return this._motivo;
+            }
+            set
+            {
+                if ((this._motivo != value))
+                {
+                    this.OnmotivoChanging(value);
+                    this.SendPropertyChanging();
+                    this._motivo = value;
+                    this.SendPropertyChanged("motivo");
+                    this.OnmotivoChanged();
+                }
+            }
+        }
+
+        public event PropertyChangingEventHandler PropertyChanging;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void SendPropertyChanging()
+        {
+            if ((this.PropertyChanging != null))
+            {
+                this.PropertyChanging(this, emptyChangingEventArgs);
+            }
+        }
+
+        protected virtual void SendPropertyChanged(String propertyName)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+
+    [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.Hotel")]
+    public partial class Hotel : INotifyPropertyChanging, INotifyPropertyChanged
+    {
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+
+        private int _idHotel;
+
+        private string _nombre;
+
+        private string _mail;
+
+        private string _telefono;
+
+        private string _calle;
+
+        private System.Nullable<decimal> _nroCalle;
+
+        private System.Nullable<decimal> _cantidadEstrellas;
+
+        private string _ciudad;
+
+        private string _pais;
+
+        private System.Nullable<decimal> _recargaEstrella;
+
+        private System.Nullable<System.DateTime> _fechaCreacion;
+
+        #region Definiciones de métodos de extensibilidad
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+        partial void OnidHotelChanging(int value);
+        partial void OnidHotelChanged();
+        partial void OnnombreChanging(string value);
+        partial void OnnombreChanged();
+        partial void OnmailChanging(string value);
+        partial void OnmailChanged();
+        partial void OntelefonoChanging(string value);
+        partial void OntelefonoChanged();
+        partial void OncalleChanging(string value);
+        partial void OncalleChanged();
+        partial void OnnroCalleChanging(System.Nullable<decimal> value);
+        partial void OnnroCalleChanged();
+        partial void OncantidadEstrellasChanging(System.Nullable<decimal> value);
+        partial void OncantidadEstrellasChanged();
+        partial void OnciudadChanging(string value);
+        partial void OnciudadChanged();
+        partial void OnpaisChanging(string value);
+        partial void OnpaisChanged();
+        partial void OnrecargaEstrellaChanging(System.Nullable<decimal> value);
+        partial void OnrecargaEstrellaChanged();
+        partial void OnfechaCreacionChanging(System.Nullable<System.DateTime> value);
+        partial void OnfechaCreacionChanged();
+        #endregion
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_idHotel", DbType = "Int NOT NULL", IsPrimaryKey = true)]
+        public int idHotel
+        {
+            get
+            {
+                return this._idHotel;
+            }
+            set
+            {
+                if ((this._idHotel != value))
+                {
+                    this.OnidHotelChanging(value);
+                    this.SendPropertyChanging();
+                    this._idHotel = value;
+                    this.SendPropertyChanged("idHotel");
+                    this.OnidHotelChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_nombre", DbType = "NVarChar(255)")]
+        public string nombre
+        {
+            get
+            {
+                return this._nombre;
+            }
+            set
+            {
+                if ((this._nombre != value))
+                {
+                    this.OnnombreChanging(value);
+                    this.SendPropertyChanging();
+                    this._nombre = value;
+                    this.SendPropertyChanged("nombre");
+                    this.OnnombreChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_mail", DbType = "NVarChar(255)")]
+        public string mail
+        {
+            get
+            {
+                return this._mail;
+            }
+            set
+            {
+                if ((this._mail != value))
+                {
+                    this.OnmailChanging(value);
+                    this.SendPropertyChanging();
+                    this._mail = value;
+                    this.SendPropertyChanged("mail");
+                    this.OnmailChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_telefono", DbType = "NVarChar(255)")]
+        public string telefono
+        {
+            get
+            {
+                return this._telefono;
+            }
+            set
+            {
+                if ((this._telefono != value))
+                {
+                    this.OntelefonoChanging(value);
+                    this.SendPropertyChanging();
+                    this._telefono = value;
+                    this.SendPropertyChanged("telefono");
+                    this.OntelefonoChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_calle", DbType = "NVarChar(255)")]
+        public string calle
+        {
+            get
+            {
+                return this._calle;
+            }
+            set
+            {
+                if ((this._calle != value))
+                {
+                    this.OncalleChanging(value);
+                    this.SendPropertyChanging();
+                    this._calle = value;
+                    this.SendPropertyChanged("calle");
+                    this.OncalleChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_nroCalle", DbType = "Decimal(18,0)")]
+        public System.Nullable<decimal> nroCalle
+        {
+            get
+            {
+                return this._nroCalle;
+            }
+            set
+            {
+                if ((this._nroCalle != value))
+                {
+                    this.OnnroCalleChanging(value);
+                    this.SendPropertyChanging();
+                    this._nroCalle = value;
+                    this.SendPropertyChanged("nroCalle");
+                    this.OnnroCalleChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_cantidadEstrellas", DbType = "Decimal(18,0)")]
+        public System.Nullable<decimal> cantidadEstrellas
+        {
+            get
+            {
+                return this._cantidadEstrellas;
+            }
+            set
+            {
+                if ((this._cantidadEstrellas != value))
+                {
+                    this.OncantidadEstrellasChanging(value);
+                    this.SendPropertyChanging();
+                    this._cantidadEstrellas = value;
+                    this.SendPropertyChanged("cantidadEstrellas");
+                    this.OncantidadEstrellasChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_ciudad", DbType = "NVarChar(255)")]
+        public string ciudad
+        {
+            get
+            {
+                return this._ciudad;
+            }
+            set
+            {
+                if ((this._ciudad != value))
+                {
+                    this.OnciudadChanging(value);
+                    this.SendPropertyChanging();
+                    this._ciudad = value;
+                    this.SendPropertyChanged("ciudad");
+                    this.OnciudadChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_pais", DbType = "NVarChar(255)")]
+        public string pais
+        {
+            get
+            {
+                return this._pais;
+            }
+            set
+            {
+                if ((this._pais != value))
+                {
+                    this.OnpaisChanging(value);
+                    this.SendPropertyChanging();
+                    this._pais = value;
+                    this.SendPropertyChanged("pais");
+                    this.OnpaisChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_recargaEstrella", DbType = "Decimal(18,0)")]
+        public System.Nullable<decimal> recargaEstrella
+        {
+            get
+            {
+                return this._recargaEstrella;
+            }
+            set
+            {
+                if ((this._recargaEstrella != value))
+                {
+                    this.OnrecargaEstrellaChanging(value);
+                    this.SendPropertyChanging();
+                    this._recargaEstrella = value;
+                    this.SendPropertyChanged("recargaEstrella");
+                    this.OnrecargaEstrellaChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_fechaCreacion", DbType = "DateTime")]
+        public System.Nullable<System.DateTime> fechaCreacion
+        {
+            get
+            {
+                return this._fechaCreacion;
+            }
+            set
+            {
+                if ((this._fechaCreacion != value))
+                {
+                    this.OnfechaCreacionChanging(value);
+                    this.SendPropertyChanging();
+                    this._fechaCreacion = value;
+                    this.SendPropertyChanged("fechaCreacion");
+                    this.OnfechaCreacionChanged();
+                }
+            }
+        }
+
+        public event PropertyChangingEventHandler PropertyChanging;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void SendPropertyChanging()
+        {
+            if ((this.PropertyChanging != null))
+            {
+                this.PropertyChanging(this, emptyChangingEventArgs);
+            }
+        }
+
+        protected virtual void SendPropertyChanged(String propertyName)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+
+    [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.MedioDePago")]
+    public partial class MedioDePago : INotifyPropertyChanging, INotifyPropertyChanged
+    {
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+
+        private int _idMedioPago;
+
+        private string _descripcion;
+
+        private string _numeroTarjeta;
+
+        #region Definiciones de métodos de extensibilidad
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+        partial void OnidMedioPagoChanging(int value);
+        partial void OnidMedioPagoChanged();
+        partial void OndescripcionChanging(string value);
+        partial void OndescripcionChanged();
+        partial void OnnumeroTarjetaChanging(string value);
+        partial void OnnumeroTarjetaChanged();
+        #endregion
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_idMedioPago", DbType = "Int NOT NULL", IsPrimaryKey = true)]
+        public int idMedioPago
+        {
+            get
+            {
+                return this._idMedioPago;
+            }
+            set
+            {
+                if ((this._idMedioPago != value))
+                {
+                    this.OnidMedioPagoChanging(value);
+                    this.SendPropertyChanging();
+                    this._idMedioPago = value;
+                    this.SendPropertyChanged("idMedioPago");
+                    this.OnidMedioPagoChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_descripcion", DbType = "NVarChar(255)")]
+        public string descripcion
+        {
+            get
+            {
+                return this._descripcion;
+            }
+            set
+            {
+                if ((this._descripcion != value))
+                {
+                    this.OndescripcionChanging(value);
+                    this.SendPropertyChanging();
+                    this._descripcion = value;
+                    this.SendPropertyChanged("descripcion");
+                    this.OndescripcionChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_numeroTarjeta", DbType = "NVarChar(255)")]
+        public string numeroTarjeta
+        {
+            get
+            {
+                return this._numeroTarjeta;
+            }
+            set
+            {
+                if ((this._numeroTarjeta != value))
+                {
+                    this.OnnumeroTarjetaChanging(value);
+                    this.SendPropertyChanging();
+                    this._numeroTarjeta = value;
+                    this.SendPropertyChanged("numeroTarjeta");
+                    this.OnnumeroTarjetaChanged();
+                }
+            }
+        }
+
+        public event PropertyChangingEventHandler PropertyChanging;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void SendPropertyChanging()
+        {
+            if ((this.PropertyChanging != null))
+            {
+                this.PropertyChanging(this, emptyChangingEventArgs);
+            }
+        }
+
+        protected virtual void SendPropertyChanged(String propertyName)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+
+    [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.Regimen")]
+    public partial class Regimen : INotifyPropertyChanging, INotifyPropertyChanged
+    {
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+
+        private int _codigo;
+
+        private string _descripcion;
+
+        private decimal _precio;
+
+        private bool _estado;
+
+        #region Definiciones de métodos de extensibilidad
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+        partial void OncodigoChanging(int value);
+        partial void OncodigoChanged();
+        partial void OndescripcionChanging(string value);
+        partial void OndescripcionChanged();
+        partial void OnprecioChanging(decimal value);
+        partial void OnprecioChanged();
+        partial void OnestadoChanging(bool value);
+        partial void OnestadoChanged();
+        #endregion
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_codigo", DbType = "Int NOT NULL", IsPrimaryKey = true)]
+        public int codigo
+        {
+            get
+            {
+                return this._codigo;
+            }
+            set
+            {
+                if ((this._codigo != value))
+                {
+                    this.OncodigoChanging(value);
+                    this.SendPropertyChanging();
+                    this._codigo = value;
+                    this.SendPropertyChanged("codigo");
+                    this.OncodigoChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_descripcion", DbType = "NVarChar(255) NOT NULL", CanBeNull = false)]
+        public string descripcion
+        {
+            get
+            {
+                return this._descripcion;
+            }
+            set
+            {
+                if ((this._descripcion != value))
+                {
+                    this.OndescripcionChanging(value);
+                    this.SendPropertyChanging();
+                    this._descripcion = value;
+                    this.SendPropertyChanged("descripcion");
+                    this.OndescripcionChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_precio", DbType = "Decimal(18,2) NOT NULL")]
+        public decimal precio
+        {
+            get
+            {
+                return this._precio;
+            }
+            set
+            {
+                if ((this._precio != value))
+                {
+                    this.OnprecioChanging(value);
+                    this.SendPropertyChanging();
+                    this._precio = value;
+                    this.SendPropertyChanged("precio");
+                    this.OnprecioChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_estado", DbType = "Bit NOT NULL")]
+        public bool estado
+        {
+            get
+            {
+                return this._estado;
+            }
+            set
+            {
+                if ((this._estado != value))
+                {
+                    this.OnestadoChanging(value);
+                    this.SendPropertyChanging();
+                    this._estado = value;
+                    this.SendPropertyChanged("estado");
+                    this.OnestadoChanged();
+                }
+            }
+        }
+
+        public event PropertyChangingEventHandler PropertyChanging;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void SendPropertyChanging()
+        {
+            if ((this.PropertyChanging != null))
+            {
+                this.PropertyChanging(this, emptyChangingEventArgs);
+            }
+        }
+
+        protected virtual void SendPropertyChanged(String propertyName)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+
+    [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.RegimenxHotel")]
+    public partial class RegimenxHotel : INotifyPropertyChanging, INotifyPropertyChanged
+    {
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+
+        private int _idHotel;
+
+        private int _codigoRegimen;
+
+        #region Definiciones de métodos de extensibilidad
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+        partial void OnidHotelChanging(int value);
+        partial void OnidHotelChanged();
+        partial void OncodigoRegimenChanging(int value);
+        partial void OncodigoRegimenChanged();
+        #endregion
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_idHotel", DbType = "Int NOT NULL", IsPrimaryKey = true)]
+        public int idHotel
+        {
+            get
+            {
+                return this._idHotel;
+            }
+            set
+            {
+                if ((this._idHotel != value))
+                {
+                    this.OnidHotelChanging(value);
+                    this.SendPropertyChanging();
+                    this._idHotel = value;
+                    this.SendPropertyChanged("idHotel");
+                    this.OnidHotelChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_codigoRegimen", DbType = "Int NOT NULL", IsPrimaryKey = true)]
+        public int codigoRegimen
+        {
+            get
+            {
+                return this._codigoRegimen;
+            }
+            set
+            {
+                if ((this._codigoRegimen != value))
+                {
+                    this.OncodigoRegimenChanging(value);
+                    this.SendPropertyChanging();
+                    this._codigoRegimen = value;
+                    this.SendPropertyChanged("codigoRegimen");
+                    this.OncodigoRegimenChanged();
+                }
+            }
+        }
+
+        public event PropertyChangingEventHandler PropertyChanging;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void SendPropertyChanging()
+        {
+            if ((this.PropertyChanging != null))
+            {
+                this.PropertyChanging(this, emptyChangingEventArgs);
+            }
+        }
+
+        protected virtual void SendPropertyChanged(String propertyName)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+
+    [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.Reserva")]
+    public partial class Reserva : INotifyPropertyChanging, INotifyPropertyChanged
+    {
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+
+        private decimal _codigoReserva;
+
+        private System.Nullable<System.DateTime> _fechaDesde;
+
+        private System.Nullable<decimal> _cantidadNoches;
+
+        private System.Nullable<System.DateTime> _fechaHasta;
+
+        private System.Nullable<System.DateTime> _fechaRealizacion;
+
+        private System.Nullable<int> _idEstadoReserva;
+
+        private System.Nullable<decimal> _numeroIdentificacion;
+
+        private System.Nullable<int> _tipoIdentificacion;
+
+        private System.Nullable<decimal> _precioParcial;
+
+        private System.Nullable<System.DateTime> _fechaInicioEstadia;
+
+        private System.Nullable<System.DateTime> _fechaFinEstadia;
+
+        private string _username;
+
+        private System.Nullable<int> _codigoRegimen;
+
+        #region Definiciones de métodos de extensibilidad
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+        partial void OncodigoReservaChanging(decimal value);
+        partial void OncodigoReservaChanged();
+        partial void OnfechaDesdeChanging(System.Nullable<System.DateTime> value);
+        partial void OnfechaDesdeChanged();
+        partial void OncantidadNochesChanging(System.Nullable<decimal> value);
+        partial void OncantidadNochesChanged();
+        partial void OnfechaHastaChanging(System.Nullable<System.DateTime> value);
+        partial void OnfechaHastaChanged();
+        partial void OnfechaRealizacionChanging(System.Nullable<System.DateTime> value);
+        partial void OnfechaRealizacionChanged();
+        partial void OnidEstadoReservaChanging(System.Nullable<int> value);
+        partial void OnidEstadoReservaChanged();
+        partial void OnnumeroIdentificacionChanging(System.Nullable<decimal> value);
+        partial void OnnumeroIdentificacionChanged();
+        partial void OntipoIdentificacionChanging(System.Nullable<int> value);
+        partial void OntipoIdentificacionChanged();
+        partial void OnprecioParcialChanging(System.Nullable<decimal> value);
+        partial void OnprecioParcialChanged();
+        partial void OnfechaInicioEstadiaChanging(System.Nullable<System.DateTime> value);
+        partial void OnfechaInicioEstadiaChanged();
+        partial void OnfechaFinEstadiaChanging(System.Nullable<System.DateTime> value);
+        partial void OnfechaFinEstadiaChanged();
+        partial void OnusernameChanging(string value);
+        partial void OnusernameChanged();
+        partial void OncodigoRegimenChanging(System.Nullable<int> value);
+        partial void OncodigoRegimenChanged();
+        #endregion
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_codigoReserva", DbType = "Decimal(18,0) NOT NULL", IsPrimaryKey = true)]
+        public decimal codigoReserva
+        {
+            get
+            {
+                return this._codigoReserva;
+            }
+            set
+            {
+                if ((this._codigoReserva != value))
+                {
+                    this.OncodigoReservaChanging(value);
+                    this.SendPropertyChanging();
+                    this._codigoReserva = value;
+                    this.SendPropertyChanged("codigoReserva");
+                    this.OncodigoReservaChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_fechaDesde", DbType = "DateTime")]
+        public System.Nullable<System.DateTime> fechaDesde
+        {
+            get
+            {
+                return this._fechaDesde;
+            }
+            set
+            {
+                if ((this._fechaDesde != value))
+                {
+                    this.OnfechaDesdeChanging(value);
+                    this.SendPropertyChanging();
+                    this._fechaDesde = value;
+                    this.SendPropertyChanged("fechaDesde");
+                    this.OnfechaDesdeChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_cantidadNoches", DbType = "Decimal(18,0)")]
+        public System.Nullable<decimal> cantidadNoches
+        {
+            get
+            {
+                return this._cantidadNoches;
+            }
+            set
+            {
+                if ((this._cantidadNoches != value))
+                {
+                    this.OncantidadNochesChanging(value);
+                    this.SendPropertyChanging();
+                    this._cantidadNoches = value;
+                    this.SendPropertyChanged("cantidadNoches");
+                    this.OncantidadNochesChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_fechaHasta", DbType = "DateTime")]
+        public System.Nullable<System.DateTime> fechaHasta
+        {
+            get
+            {
+                return this._fechaHasta;
+            }
+            set
+            {
+                if ((this._fechaHasta != value))
+                {
+                    this.OnfechaHastaChanging(value);
+                    this.SendPropertyChanging();
+                    this._fechaHasta = value;
+                    this.SendPropertyChanged("fechaHasta");
+                    this.OnfechaHastaChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_fechaRealizacion", DbType = "DateTime")]
+        public System.Nullable<System.DateTime> fechaRealizacion
+        {
+            get
+            {
+                return this._fechaRealizacion;
+            }
+            set
+            {
+                if ((this._fechaRealizacion != value))
+                {
+                    this.OnfechaRealizacionChanging(value);
+                    this.SendPropertyChanging();
+                    this._fechaRealizacion = value;
+                    this.SendPropertyChanged("fechaRealizacion");
+                    this.OnfechaRealizacionChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_idEstadoReserva", DbType = "Int")]
+        public System.Nullable<int> idEstadoReserva
+        {
+            get
+            {
+                return this._idEstadoReserva;
+            }
+            set
+            {
+                if ((this._idEstadoReserva != value))
+                {
+                    this.OnidEstadoReservaChanging(value);
+                    this.SendPropertyChanging();
+                    this._idEstadoReserva = value;
+                    this.SendPropertyChanged("idEstadoReserva");
+                    this.OnidEstadoReservaChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_numeroIdentificacion", DbType = "Decimal(18,0)")]
+        public System.Nullable<decimal> numeroIdentificacion
+        {
+            get
+            {
+                return this._numeroIdentificacion;
+            }
+            set
+            {
+                if ((this._numeroIdentificacion != value))
+                {
+                    this.OnnumeroIdentificacionChanging(value);
+                    this.SendPropertyChanging();
+                    this._numeroIdentificacion = value;
+                    this.SendPropertyChanged("numeroIdentificacion");
+                    this.OnnumeroIdentificacionChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_tipoIdentificacion", DbType = "Int")]
+        public System.Nullable<int> tipoIdentificacion
+        {
+            get
+            {
+                return this._tipoIdentificacion;
+            }
+            set
+            {
+                if ((this._tipoIdentificacion != value))
+                {
+                    this.OntipoIdentificacionChanging(value);
+                    this.SendPropertyChanging();
+                    this._tipoIdentificacion = value;
+                    this.SendPropertyChanged("tipoIdentificacion");
+                    this.OntipoIdentificacionChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_precioParcial", DbType = "Decimal(18,2)")]
+        public System.Nullable<decimal> precioParcial
+        {
+            get
+            {
+                return this._precioParcial;
+            }
+            set
+            {
+                if ((this._precioParcial != value))
+                {
+                    this.OnprecioParcialChanging(value);
+                    this.SendPropertyChanging();
+                    this._precioParcial = value;
+                    this.SendPropertyChanged("precioParcial");
+                    this.OnprecioParcialChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_fechaInicioEstadia", DbType = "DateTime")]
+        public System.Nullable<System.DateTime> fechaInicioEstadia
+        {
+            get
+            {
+                return this._fechaInicioEstadia;
+            }
+            set
+            {
+                if ((this._fechaInicioEstadia != value))
+                {
+                    this.OnfechaInicioEstadiaChanging(value);
+                    this.SendPropertyChanging();
+                    this._fechaInicioEstadia = value;
+                    this.SendPropertyChanged("fechaInicioEstadia");
+                    this.OnfechaInicioEstadiaChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_fechaFinEstadia", DbType = "DateTime")]
+        public System.Nullable<System.DateTime> fechaFinEstadia
+        {
+            get
+            {
+                return this._fechaFinEstadia;
+            }
+            set
+            {
+                if ((this._fechaFinEstadia != value))
+                {
+                    this.OnfechaFinEstadiaChanging(value);
+                    this.SendPropertyChanging();
+                    this._fechaFinEstadia = value;
+                    this.SendPropertyChanged("fechaFinEstadia");
+                    this.OnfechaFinEstadiaChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_username", DbType = "NVarChar(50)")]
+        public string username
+        {
+            get
+            {
+                return this._username;
+            }
+            set
+            {
+                if ((this._username != value))
+                {
+                    this.OnusernameChanging(value);
+                    this.SendPropertyChanging();
+                    this._username = value;
+                    this.SendPropertyChanged("username");
+                    this.OnusernameChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_codigoRegimen", DbType = "Int")]
+        public System.Nullable<int> codigoRegimen
+        {
+            get
+            {
+                return this._codigoRegimen;
+            }
+            set
+            {
+                if ((this._codigoRegimen != value))
+                {
+                    this.OncodigoRegimenChanging(value);
+                    this.SendPropertyChanging();
+                    this._codigoRegimen = value;
+                    this.SendPropertyChanged("codigoRegimen");
+                    this.OncodigoRegimenChanged();
+                }
+            }
+        }
+
+        public event PropertyChangingEventHandler PropertyChanging;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void SendPropertyChanging()
+        {
+            if ((this.PropertyChanging != null))
+            {
+                this.PropertyChanging(this, emptyChangingEventArgs);
+            }
+        }
+
+        protected virtual void SendPropertyChanged(String propertyName)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+
+    [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.ReservaxCliente")]
+    public partial class ReservaxCliente : INotifyPropertyChanging, INotifyPropertyChanged
+    {
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+
+        private decimal _codigoReserva;
+
+        private decimal _numeroIdentificacionCliente;
+
+        private int _tipoIdentificacionCliente;
+
+        #region Definiciones de métodos de extensibilidad
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+        partial void OncodigoReservaChanging(decimal value);
+        partial void OncodigoReservaChanged();
+        partial void OnnumeroIdentificacionClienteChanging(decimal value);
+        partial void OnnumeroIdentificacionClienteChanged();
+        partial void OntipoIdentificacionClienteChanging(int value);
+        partial void OntipoIdentificacionClienteChanged();
+        #endregion
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_codigoReserva", DbType = "Decimal(18,0) NOT NULL", IsPrimaryKey = true)]
+        public decimal codigoReserva
+        {
+            get
+            {
+                return this._codigoReserva;
+            }
+            set
+            {
+                if ((this._codigoReserva != value))
+                {
+                    this.OncodigoReservaChanging(value);
+                    this.SendPropertyChanging();
+                    this._codigoReserva = value;
+                    this.SendPropertyChanged("codigoReserva");
+                    this.OncodigoReservaChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_numeroIdentificacionCliente", DbType = "Decimal(18,0) NOT NULL", IsPrimaryKey = true)]
+        public decimal numeroIdentificacionCliente
+        {
+            get
+            {
+                return this._numeroIdentificacionCliente;
+            }
+            set
+            {
+                if ((this._numeroIdentificacionCliente != value))
+                {
+                    this.OnnumeroIdentificacionClienteChanging(value);
+                    this.SendPropertyChanging();
+                    this._numeroIdentificacionCliente = value;
+                    this.SendPropertyChanged("numeroIdentificacionCliente");
+                    this.OnnumeroIdentificacionClienteChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_tipoIdentificacionCliente", DbType = "Int NOT NULL", IsPrimaryKey = true)]
+        public int tipoIdentificacionCliente
+        {
+            get
+            {
+                return this._tipoIdentificacionCliente;
+            }
+            set
+            {
+                if ((this._tipoIdentificacionCliente != value))
+                {
+                    this.OntipoIdentificacionClienteChanging(value);
+                    this.SendPropertyChanging();
+                    this._tipoIdentificacionCliente = value;
+                    this.SendPropertyChanged("tipoIdentificacionCliente");
+                    this.OntipoIdentificacionClienteChanged();
+                }
+            }
+        }
+
+        public event PropertyChangingEventHandler PropertyChanging;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void SendPropertyChanging()
+        {
+            if ((this.PropertyChanging != null))
+            {
+                this.PropertyChanging(this, emptyChangingEventArgs);
+            }
+        }
+
+        protected virtual void SendPropertyChanged(String propertyName)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+
+    [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.ReservaxConsumible")]
+    public partial class ReservaxConsumible : INotifyPropertyChanging, INotifyPropertyChanged
+    {
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+
+        private decimal _codigoReserva;
+
+        private decimal _codigoConsumible;
+
+        #region Definiciones de métodos de extensibilidad
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+        partial void OncodigoReservaChanging(decimal value);
+        partial void OncodigoReservaChanged();
+        partial void OncodigoConsumibleChanging(decimal value);
+        partial void OncodigoConsumibleChanged();
+        #endregion
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_codigoReserva", DbType = "Decimal(18,0) NOT NULL", IsPrimaryKey = true)]
+        public decimal codigoReserva
+        {
+            get
+            {
+                return this._codigoReserva;
+            }
+            set
+            {
+                if ((this._codigoReserva != value))
+                {
+                    this.OncodigoReservaChanging(value);
+                    this.SendPropertyChanging();
+                    this._codigoReserva = value;
+                    this.SendPropertyChanged("codigoReserva");
+                    this.OncodigoReservaChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_codigoConsumible", DbType = "Decimal(18,0) NOT NULL", IsPrimaryKey = true)]
+        public decimal codigoConsumible
+        {
+            get
+            {
+                return this._codigoConsumible;
+            }
+            set
+            {
+                if ((this._codigoConsumible != value))
+                {
+                    this.OncodigoConsumibleChanging(value);
+                    this.SendPropertyChanging();
+                    this._codigoConsumible = value;
+                    this.SendPropertyChanged("codigoConsumible");
+                    this.OncodigoConsumibleChanged();
+                }
+            }
+        }
+
+        public event PropertyChangingEventHandler PropertyChanging;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void SendPropertyChanging()
+        {
+            if ((this.PropertyChanging != null))
+            {
+                this.PropertyChanging(this, emptyChangingEventArgs);
+            }
+        }
+
+        protected virtual void SendPropertyChanged(String propertyName)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+
+    [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.ReservaxHabitacion")]
+    public partial class ReservaxHabitacion : INotifyPropertyChanging, INotifyPropertyChanged
+    {
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+
+        private decimal _codigoReserva;
+
+        private int _idHotel;
+
+        private decimal _numeroHabitacion;
+
+        #region Definiciones de métodos de extensibilidad
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+        partial void OncodigoReservaChanging(decimal value);
+        partial void OncodigoReservaChanged();
+        partial void OnidHotelChanging(int value);
+        partial void OnidHotelChanged();
+        partial void OnnumeroHabitacionChanging(decimal value);
+        partial void OnnumeroHabitacionChanged();
+        #endregion
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_codigoReserva", DbType = "Decimal(18,0) NOT NULL", IsPrimaryKey = true)]
+        public decimal codigoReserva
+        {
+            get
+            {
+                return this._codigoReserva;
+            }
+            set
+            {
+                if ((this._codigoReserva != value))
+                {
+                    this.OncodigoReservaChanging(value);
+                    this.SendPropertyChanging();
+                    this._codigoReserva = value;
+                    this.SendPropertyChanged("codigoReserva");
+                    this.OncodigoReservaChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_idHotel", DbType = "Int NOT NULL", IsPrimaryKey = true)]
+        public int idHotel
+        {
+            get
+            {
+                return this._idHotel;
+            }
+            set
+            {
+                if ((this._idHotel != value))
+                {
+                    this.OnidHotelChanging(value);
+                    this.SendPropertyChanging();
+                    this._idHotel = value;
+                    this.SendPropertyChanged("idHotel");
+                    this.OnidHotelChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_numeroHabitacion", DbType = "Decimal(18,0) NOT NULL", IsPrimaryKey = true)]
+        public decimal numeroHabitacion
+        {
+            get
+            {
+                return this._numeroHabitacion;
+            }
+            set
+            {
+                if ((this._numeroHabitacion != value))
+                {
+                    this.OnnumeroHabitacionChanging(value);
+                    this.SendPropertyChanging();
+                    this._numeroHabitacion = value;
+                    this.SendPropertyChanged("numeroHabitacion");
+                    this.OnnumeroHabitacionChanged();
+                }
+            }
+        }
+
+        public event PropertyChangingEventHandler PropertyChanging;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void SendPropertyChanging()
+        {
+            if ((this.PropertyChanging != null))
+            {
+                this.PropertyChanging(this, emptyChangingEventArgs);
+            }
+        }
+
+        protected virtual void SendPropertyChanged(String propertyName)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+
+    [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.Rol")]
+    public partial class Rol : INotifyPropertyChanging, INotifyPropertyChanged
+    {
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+
+        private int _idRol;
+
+        private string _nombre;
+
+        private System.Nullable<bool> _estado;
+
+        #region Definiciones de métodos de extensibilidad
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+        partial void OnidRolChanging(int value);
+        partial void OnidRolChanged();
+        partial void OnnombreChanging(string value);
+        partial void OnnombreChanged();
+        partial void OnestadoChanging(System.Nullable<bool> value);
+        partial void OnestadoChanged();
+        #endregion
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_idRol", DbType = "Int NOT NULL", IsPrimaryKey = true)]
+        public int idRol
+        {
+            get
+            {
+                return this._idRol;
+            }
+            set
+            {
+                if ((this._idRol != value))
+                {
+                    this.OnidRolChanging(value);
+                    this.SendPropertyChanging();
+                    this._idRol = value;
+                    this.SendPropertyChanged("idRol");
+                    this.OnidRolChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_nombre", DbType = "NVarChar(255)")]
+        public string nombre
+        {
+            get
+            {
+                return this._nombre;
+            }
+            set
+            {
+                if ((this._nombre != value))
+                {
+                    this.OnnombreChanging(value);
+                    this.SendPropertyChanging();
+                    this._nombre = value;
+                    this.SendPropertyChanged("nombre");
+                    this.OnnombreChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_estado", DbType = "Bit")]
+        public System.Nullable<bool> estado
+        {
+            get
+            {
+                return this._estado;
+            }
+            set
+            {
+                if ((this._estado != value))
+                {
+                    this.OnestadoChanging(value);
+                    this.SendPropertyChanging();
+                    this._estado = value;
+                    this.SendPropertyChanged("estado");
+                    this.OnestadoChanged();
+                }
+            }
+        }
+
+        public event PropertyChangingEventHandler PropertyChanging;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void SendPropertyChanging()
+        {
+            if ((this.PropertyChanging != null))
+            {
+                this.PropertyChanging(this, emptyChangingEventArgs);
+            }
+        }
+
+        protected virtual void SendPropertyChanged(String propertyName)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+
+    [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.RolxFuncionalidad")]
+    public partial class RolxFuncionalidad : INotifyPropertyChanging, INotifyPropertyChanged
+    {
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+
+        private int _idRol;
+
+        private int _idFuncionalidad;
+
+        #region Definiciones de métodos de extensibilidad
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+        partial void OnidRolChanging(int value);
+        partial void OnidRolChanged();
+        partial void OnidFuncionalidadChanging(int value);
+        partial void OnidFuncionalidadChanged();
+        #endregion
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_idRol", DbType = "Int NOT NULL", IsPrimaryKey = true)]
+        public int idRol
+        {
+            get
+            {
+                return this._idRol;
+            }
+            set
+            {
+                if ((this._idRol != value))
+                {
+                    this.OnidRolChanging(value);
+                    this.SendPropertyChanging();
+                    this._idRol = value;
+                    this.SendPropertyChanged("idRol");
+                    this.OnidRolChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_idFuncionalidad", DbType = "Int NOT NULL", IsPrimaryKey = true)]
+        public int idFuncionalidad
+        {
+            get
+            {
+                return this._idFuncionalidad;
+            }
+            set
+            {
+                if ((this._idFuncionalidad != value))
+                {
+                    this.OnidFuncionalidadChanging(value);
+                    this.SendPropertyChanging();
+                    this._idFuncionalidad = value;
+                    this.SendPropertyChanged("idFuncionalidad");
+                    this.OnidFuncionalidadChanged();
+                }
+            }
+        }
+
+        public event PropertyChangingEventHandler PropertyChanging;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void SendPropertyChanging()
+        {
+            if ((this.PropertyChanging != null))
+            {
+                this.PropertyChanging(this, emptyChangingEventArgs);
+            }
+        }
+
+        protected virtual void SendPropertyChanged(String propertyName)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+
+    [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.RolxUsuario")]
+    public partial class RolxUsuario : INotifyPropertyChanging, INotifyPropertyChanged
+    {
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+
+        private int _idRol;
+
+        private string _username;
+
+        #region Definiciones de métodos de extensibilidad
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+        partial void OnidRolChanging(int value);
+        partial void OnidRolChanged();
+        partial void OnusernameChanging(string value);
+        partial void OnusernameChanged();
+        #endregion
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_idRol", DbType = "Int NOT NULL", IsPrimaryKey = true)]
+        public int idRol
+        {
+            get
+            {
+                return this._idRol;
+            }
+            set
+            {
+                if ((this._idRol != value))
+                {
+                    this.OnidRolChanging(value);
+                    this.SendPropertyChanging();
+                    this._idRol = value;
+                    this.SendPropertyChanged("idRol");
+                    this.OnidRolChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_username", DbType = "NVarChar(50) NOT NULL", CanBeNull = false, IsPrimaryKey = true)]
+        public string username
+        {
+            get
+            {
+                return this._username;
+            }
+            set
+            {
+                if ((this._username != value))
+                {
+                    this.OnusernameChanging(value);
+                    this.SendPropertyChanging();
+                    this._username = value;
+                    this.SendPropertyChanged("username");
+                    this.OnusernameChanged();
+                }
+            }
+        }
+
+        public event PropertyChangingEventHandler PropertyChanging;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void SendPropertyChanging()
+        {
+            if ((this.PropertyChanging != null))
+            {
+                this.PropertyChanging(this, emptyChangingEventArgs);
+            }
+        }
+
+        protected virtual void SendPropertyChanged(String propertyName)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+
+    [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.TipoDeHabitacion")]
+    public partial class TipoDeHabitacion : INotifyPropertyChanging, INotifyPropertyChanged
+    {
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+
+        private decimal _idTipoHabitacion;
+
+        private string _descripcion;
+
+        private System.Nullable<decimal> _tipoPorcentual;
+
+        private System.Nullable<int> _capacidad;
+
+        #region Definiciones de métodos de extensibilidad
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+        partial void OnidTipoHabitacionChanging(decimal value);
+        partial void OnidTipoHabitacionChanged();
+        partial void OndescripcionChanging(string value);
+        partial void OndescripcionChanged();
+        partial void OntipoPorcentualChanging(System.Nullable<decimal> value);
+        partial void OntipoPorcentualChanged();
+        partial void OncapacidadChanging(System.Nullable<int> value);
+        partial void OncapacidadChanged();
+        #endregion
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_idTipoHabitacion", DbType = "Decimal(18,0) NOT NULL", IsPrimaryKey = true)]
+        public decimal idTipoHabitacion
+        {
+            get
+            {
+                return this._idTipoHabitacion;
+            }
+            set
+            {
+                if ((this._idTipoHabitacion != value))
+                {
+                    this.OnidTipoHabitacionChanging(value);
+                    this.SendPropertyChanging();
+                    this._idTipoHabitacion = value;
+                    this.SendPropertyChanged("idTipoHabitacion");
+                    this.OnidTipoHabitacionChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_descripcion", DbType = "NVarChar(255)")]
+        public string descripcion
+        {
+            get
+            {
+                return this._descripcion;
+            }
+            set
+            {
+                if ((this._descripcion != value))
+                {
+                    this.OndescripcionChanging(value);
+                    this.SendPropertyChanging();
+                    this._descripcion = value;
+                    this.SendPropertyChanged("descripcion");
+                    this.OndescripcionChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_tipoPorcentual", DbType = "Decimal(18,2)")]
+        public System.Nullable<decimal> tipoPorcentual
+        {
+            get
+            {
+                return this._tipoPorcentual;
+            }
+            set
+            {
+                if ((this._tipoPorcentual != value))
+                {
+                    this.OntipoPorcentualChanging(value);
+                    this.SendPropertyChanging();
+                    this._tipoPorcentual = value;
+                    this.SendPropertyChanged("tipoPorcentual");
+                    this.OntipoPorcentualChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_capacidad", DbType = "Int")]
+        public System.Nullable<int> capacidad
+        {
+            get
+            {
+                return this._capacidad;
+            }
+            set
+            {
+                if ((this._capacidad != value))
+                {
+                    this.OncapacidadChanging(value);
+                    this.SendPropertyChanging();
+                    this._capacidad = value;
+                    this.SendPropertyChanged("capacidad");
+                    this.OncapacidadChanged();
+                }
+            }
+        }
+
+        public event PropertyChangingEventHandler PropertyChanging;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void SendPropertyChanging()
+        {
+            if ((this.PropertyChanging != null))
+            {
+                this.PropertyChanging(this, emptyChangingEventArgs);
+            }
+        }
+
+        protected virtual void SendPropertyChanged(String propertyName)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+
+    [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.TipoIdentificacion")]
+    public partial class TipoIdentificacion : INotifyPropertyChanging, INotifyPropertyChanged
+    {
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+
+        private int _tipoIdentificacion1;
+
+        private string _descripcionCorta;
+
+        private string _descripcionLarga;
+
+        #region Definiciones de métodos de extensibilidad
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+        partial void OntipoIdentificacion1Changing(int value);
+        partial void OntipoIdentificacion1Changed();
+        partial void OndescripcionCortaChanging(string value);
+        partial void OndescripcionCortaChanged();
+        partial void OndescripcionLargaChanging(string value);
+        partial void OndescripcionLargaChanged();
+        #endregion
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Name = "tipoIdentificacion", Storage = "_tipoIdentificacion1", DbType = "Int NOT NULL", IsPrimaryKey = true)]
+        public int tipoIdentificacion1
+        {
+            get
+            {
+                return this._tipoIdentificacion1;
+            }
+            set
+            {
+                if ((this._tipoIdentificacion1 != value))
+                {
+                    this.OntipoIdentificacion1Changing(value);
+                    this.SendPropertyChanging();
+                    this._tipoIdentificacion1 = value;
+                    this.SendPropertyChanged("tipoIdentificacion1");
+                    this.OntipoIdentificacion1Changed();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_descripcionCorta", DbType = "NVarChar(5)")]
+        public string descripcionCorta
+        {
+            get
+            {
+                return this._descripcionCorta;
+            }
+            set
+            {
+                if ((this._descripcionCorta != value))
+                {
+                    this.OndescripcionCortaChanging(value);
+                    this.SendPropertyChanging();
+                    this._descripcionCorta = value;
+                    this.SendPropertyChanged("descripcionCorta");
+                    this.OndescripcionCortaChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_descripcionLarga", DbType = "NVarChar(50)")]
+        public string descripcionLarga
+        {
+            get
+            {
+                return this._descripcionLarga;
+            }
+            set
+            {
+                if ((this._descripcionLarga != value))
+                {
+                    this.OndescripcionLargaChanging(value);
+                    this.SendPropertyChanging();
+                    this._descripcionLarga = value;
+                    this.SendPropertyChanged("descripcionLarga");
+                    this.OndescripcionLargaChanged();
+                }
+            }
+        }
+
+        public event PropertyChangingEventHandler PropertyChanging;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void SendPropertyChanging()
+        {
+            if ((this.PropertyChanging != null))
+            {
+                this.PropertyChanging(this, emptyChangingEventArgs);
+            }
+        }
+
+        protected virtual void SendPropertyChanged(String propertyName)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+
+    [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.Usuario")]
+    public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
+    {
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+
+        private string _username;
+
+        private string _password;
+
+        private System.Nullable<int> _intentosFallidos;
+
+        private string _documento;
+
+        private string _tipoDocumento;
+
+        private string _nombre;
+
+        private string _apellido;
+
+        private string _mail;
+
+        private string _tel;
+
+        private string _direccion;
+
+        private System.Nullable<System.DateTime> _fechaNacimiento;
+
+        #region Definiciones de métodos de extensibilidad
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+        partial void OnusernameChanging(string value);
+        partial void OnusernameChanged();
+        partial void OnpasswordChanging(string value);
+        partial void OnpasswordChanged();
+        partial void OnintentosFallidosChanging(System.Nullable<int> value);
+        partial void OnintentosFallidosChanged();
+        partial void OndocumentoChanging(string value);
+        partial void OndocumentoChanged();
+        partial void OntipoDocumentoChanging(string value);
+        partial void OntipoDocumentoChanged();
+        partial void OnnombreChanging(string value);
+        partial void OnnombreChanged();
+        partial void OnapellidoChanging(string value);
+        partial void OnapellidoChanged();
+        partial void OnmailChanging(string value);
+        partial void OnmailChanged();
+        partial void OntelChanging(string value);
+        partial void OntelChanged();
+        partial void OndireccionChanging(string value);
+        partial void OndireccionChanged();
+        partial void OnfechaNacimientoChanging(System.Nullable<System.DateTime> value);
+        partial void OnfechaNacimientoChanged();
+        #endregion
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_username", DbType = "NVarChar(50) NOT NULL", CanBeNull = false, IsPrimaryKey = true)]
+        public string username
+        {
+            get
+            {
+                return this._username;
+            }
+            set
+            {
+                if ((this._username != value))
+                {
+                    this.OnusernameChanging(value);
+                    this.SendPropertyChanging();
+                    this._username = value;
+                    this.SendPropertyChanged("username");
+                    this.OnusernameChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_password", DbType = "NVarChar(MAX)")]
+        public string password
+        {
+            get
+            {
+                return this._password;
+            }
+            set
+            {
+                if ((this._password != value))
+                {
+                    this.OnpasswordChanging(value);
+                    this.SendPropertyChanging();
+                    this._password = value;
+                    this.SendPropertyChanged("password");
+                    this.OnpasswordChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_intentosFallidos", DbType = "Int")]
+        public System.Nullable<int> intentosFallidos
+        {
+            get
+            {
+                return this._intentosFallidos;
+            }
+            set
+            {
+                if ((this._intentosFallidos != value))
+                {
+                    this.OnintentosFallidosChanging(value);
+                    this.SendPropertyChanging();
+                    this._intentosFallidos = value;
+                    this.SendPropertyChanged("intentosFallidos");
+                    this.OnintentosFallidosChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_documento", DbType = "NVarChar(50)")]
+        public string documento
+        {
+            get
+            {
+                return this._documento;
+            }
+            set
+            {
+                if ((this._documento != value))
+                {
+                    this.OndocumentoChanging(value);
+                    this.SendPropertyChanging();
+                    this._documento = value;
+                    this.SendPropertyChanged("documento");
+                    this.OndocumentoChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_tipoDocumento", DbType = "NVarChar(50)")]
+        public string tipoDocumento
+        {
+            get
+            {
+                return this._tipoDocumento;
+            }
+            set
+            {
+                if ((this._tipoDocumento != value))
+                {
+                    this.OntipoDocumentoChanging(value);
+                    this.SendPropertyChanging();
+                    this._tipoDocumento = value;
+                    this.SendPropertyChanged("tipoDocumento");
+                    this.OntipoDocumentoChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_nombre", DbType = "NVarChar(50)")]
+        public string nombre
+        {
+            get
+            {
+                return this._nombre;
+            }
+            set
+            {
+                if ((this._nombre != value))
+                {
+                    this.OnnombreChanging(value);
+                    this.SendPropertyChanging();
+                    this._nombre = value;
+                    this.SendPropertyChanged("nombre");
+                    this.OnnombreChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_apellido", DbType = "NVarChar(50)")]
+        public string apellido
+        {
+            get
+            {
+                return this._apellido;
+            }
+            set
+            {
+                if ((this._apellido != value))
+                {
+                    this.OnapellidoChanging(value);
+                    this.SendPropertyChanging();
+                    this._apellido = value;
+                    this.SendPropertyChanged("apellido");
+                    this.OnapellidoChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_mail", DbType = "NVarChar(50)")]
+        public string mail
+        {
+            get
+            {
+                return this._mail;
+            }
+            set
+            {
+                if ((this._mail != value))
+                {
+                    this.OnmailChanging(value);
+                    this.SendPropertyChanging();
+                    this._mail = value;
+                    this.SendPropertyChanged("mail");
+                    this.OnmailChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_tel", DbType = "NVarChar(50)")]
+        public string tel
+        {
+            get
+            {
+                return this._tel;
+            }
+            set
+            {
+                if ((this._tel != value))
+                {
+                    this.OntelChanging(value);
+                    this.SendPropertyChanging();
+                    this._tel = value;
+                    this.SendPropertyChanged("tel");
+                    this.OntelChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_direccion", DbType = "NVarChar(50)")]
+        public string direccion
+        {
+            get
+            {
+                return this._direccion;
+            }
+            set
+            {
+                if ((this._direccion != value))
+                {
+                    this.OndireccionChanging(value);
+                    this.SendPropertyChanging();
+                    this._direccion = value;
+                    this.SendPropertyChanged("direccion");
+                    this.OndireccionChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_fechaNacimiento", DbType = "DateTime")]
+        public System.Nullable<System.DateTime> fechaNacimiento
+        {
+            get
+            {
+                return this._fechaNacimiento;
+            }
+            set
+            {
+                if ((this._fechaNacimiento != value))
+                {
+                    this.OnfechaNacimientoChanging(value);
+                    this.SendPropertyChanging();
+                    this._fechaNacimiento = value;
+                    this.SendPropertyChanged("fechaNacimiento");
+                    this.OnfechaNacimientoChanged();
+                }
+            }
+        }
+
+        public event PropertyChangingEventHandler PropertyChanging;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void SendPropertyChanging()
+        {
+            if ((this.PropertyChanging != null))
+            {
+                this.PropertyChanging(this, emptyChangingEventArgs);
+            }
+        }
+
+        protected virtual void SendPropertyChanged(String propertyName)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+
+    [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.UsuarioxHotel")]
+    public partial class UsuarioxHotel : INotifyPropertyChanging, INotifyPropertyChanged
+    {
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+
+        private string _username;
+
+        private int _idHotel;
+
+        #region Definiciones de métodos de extensibilidad
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+        partial void OnusernameChanging(string value);
+        partial void OnusernameChanged();
+        partial void OnidHotelChanging(int value);
+        partial void OnidHotelChanged();
+        #endregion
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_username", DbType = "NVarChar(50) NOT NULL", CanBeNull = false, IsPrimaryKey = true)]
+        public string username
+        {
+            get
+            {
+                return this._username;
+            }
+            set
+            {
+                if ((this._username != value))
+                {
+                    this.OnusernameChanging(value);
+                    this.SendPropertyChanging();
+                    this._username = value;
+                    this.SendPropertyChanged("username");
+                    this.OnusernameChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_idHotel", DbType = "Int NOT NULL", IsPrimaryKey = true)]
+        public int idHotel
+        {
+            get
+            {
+                return this._idHotel;
+            }
+            set
+            {
+                if ((this._idHotel != value))
+                {
+                    this.OnidHotelChanging(value);
+                    this.SendPropertyChanging();
+                    this._idHotel = value;
+                    this.SendPropertyChanged("idHotel");
+                    this.OnidHotelChanged();
+                }
+            }
+        }
+
+        public event PropertyChangingEventHandler PropertyChanging;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void SendPropertyChanging()
+        {
+            if ((this.PropertyChanging != null))
+            {
+                this.PropertyChanging(this, emptyChangingEventArgs);
+            }
+        }
+
+        protected virtual void SendPropertyChanged(String propertyName)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
 }
 #pragma warning restore 1591

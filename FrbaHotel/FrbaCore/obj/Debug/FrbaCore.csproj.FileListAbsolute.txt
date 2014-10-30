@@ -1,0 +1,5 @@
+D:\LOMBAPOLLERUDO\FrbaHotel\FrbaCore\bin\Debug\FrbaCore.dll
+D:\LOMBAPOLLERUDO\FrbaHotel\FrbaCore\bin\Debug\FrbaCore.pdb
+D:\LOMBAPOLLERUDO\FrbaHotel\FrbaCore\obj\Debug\ResolveAssemblyReference.cache
+D:\LOMBAPOLLERUDO\FrbaHotel\FrbaCore\obj\Debug\FrbaCore.dll
+D:\LOMBAPOLLERUDO\FrbaHotel\FrbaCore\obj\Debug\FrbaCore.pdb

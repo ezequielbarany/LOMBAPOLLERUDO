@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FrbaCore;
 
 namespace FrbaHotel.ABM_de_Cliente
 {
@@ -15,5 +16,17 @@ namespace FrbaHotel.ABM_de_Cliente
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Cliente cliente = new Cliente();
+
+            cliente.dameClientesSelect();
+
+
+            cliente.ToString();
+        }
+
+
     }
 }
