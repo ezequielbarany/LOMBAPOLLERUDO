@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace FrbaCore.Clases
+namespace FrbaCore
 {
-    public class Hotel
-    {
+    public partial class Hotel
+    {/*
         public int idHotel { get; set; }
         public string nombre { get; set; }
         public string mail { get; set; }
@@ -15,7 +15,7 @@ namespace FrbaCore.Clases
         public int cantidadEstrellas { get; set; }
         public string ciudad { get; set; }
         public string pais { get; set; }
-        public DateTime fechaCreacion { get; set; }
+        public DateTime fechaCreacion { get; set; }*/
         private List<HistorialHotel> lHistoriaHotel { get; set; }
         private List<Regimen> lRegimen { get; set; }
         private List<Habitacion> lHabitacion { get; set; }
@@ -48,9 +48,9 @@ namespace FrbaCore.Clases
         {
             //SP=> Hotel_B(idHotel, fechaDesde, fechaHasta, motivo) -> no retorna
             var regHistorial = new HistorialHotel();
-            regHistorial.idHotel = this.idHotel;
-            regHistorial.fechaDesde = fechaDesde;
-            regHistorial.fechaHasta = fechaHasta;
+            regHistorial.idHotel = this._idHotel;
+            regHistorial.fechaInicio= fechaDesde;
+            regHistorial.fechaFin = fechaHasta;
             regHistorial.motivo = motivo;
             regHistorial.alta();
             this.agregarRegistroAlHistorial(regHistorial);

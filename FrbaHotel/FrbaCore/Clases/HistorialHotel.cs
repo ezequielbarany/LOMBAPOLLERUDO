@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace FrbaCore.Clases
+namespace FrbaCore
 {
-    public class HistorialHotel
+    public partial class HistorialHotel
     {
+        /*
         public int idHotel { get; set; }
         public DateTime fechaDesde { get; set; }
         public DateTime fechaHasta { get; set; }
-        public string motivo { get; set; }
+        public string motivo { get; set; }*/
 
         public void alta()
         {
