@@ -470,7 +470,8 @@ select numeroIdentificacion,
 		nacionalidad,
 		telefono,
 		localidad,
-		habilitado 
+		habilitado,
+		tieneDuplicados
 		from 
 		(
 SELECT	ROW_NUMBER()OVER(PARTITION BY mail ORDER BY fechaNacimiento ASC) as 'nroFilaMail',
@@ -487,7 +488,8 @@ SELECT	ROW_NUMBER()OVER(PARTITION BY mail ORDER BY fechaNacimiento ASC) as 'nroF
 		nacionalidad,
 		telefono,
 		localidad,
-		habilitado 
+		habilitado,
+		tieneDuplicados
 from
 (SELECT		ROW_NUMBER()
 			OVER(PARTITION BY [Cliente_Pasaporte_Nro] ORDER BY [Cliente_Fecha_Nac] ASC) as 'nroFilaDocu', 
@@ -504,7 +506,8 @@ from
 				[Cliente_Nacionalidad] as nacionalidad,
 				'' as telefono,
 				'' as localidad,
-				1 as habilitado
+				1 as habilitado,
+				0 as tieneDuplicados
 FROM [GD2C2014].[gd_esquema].[Maestra]				
 ) conNroFilaDocu
 where nroFilaDocu = 1
