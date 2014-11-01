@@ -128,8 +128,9 @@
             // 
             this.gridClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridClientes.Location = new System.Drawing.Point(12, 134);
+            this.gridClientes.MultiSelect = false;
             this.gridClientes.Name = "gridClientes";
-            this.gridClientes.Size = new System.Drawing.Size(395, 243);
+            this.gridClientes.Size = new System.Drawing.Size(547, 255);
             this.gridClientes.TabIndex = 11;
             // 
             // button_buscar

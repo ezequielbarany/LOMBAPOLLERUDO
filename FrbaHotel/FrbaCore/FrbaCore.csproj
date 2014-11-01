@@ -56,6 +56,7 @@
     </Compile>
     <Compile Include="Clases\Cliente.cs" />
     <Compile Include="Clases\Consumibles.cs" />
+    <Compile Include="Clases\DataContextSingleton.cs" />
     <Compile Include="Clases\EstadoReserva.cs" />
     <Compile Include="Clases\EstadoReservaCanceladaCliente.cs" />
     <Compile Include="Clases\EstadoReservaCanceladaNoShow.cs" />
@@ -91,7 +92,6 @@
     <None Include="Acceso a Datos\FrbaDataContext.dbml.layout">
       <DependentUpon>FrbaDataContext.dbml</DependentUpon>
     </None>
-    <None Include="FrbaHotel.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
