@@ -14,15 +14,26 @@ namespace FrbaCore
         //Constructors
         public Rol()
         {
+            funcionalidades = new List<Funcionalidad>();
         }
         public Rol(int id)
         {
             //Me traigo un rol en particular
             Rol dataBaseRol = DataContextSingleton.Connection.Rol.Where(x => x.idRol == id).FirstOrDefault();
             this.estado = dataBaseRol.estado;
-            this.funcionalidades = dataBaseRol.funcionalidades;
             this.idRol = dataBaseRol.idRol;
             this.nombre = dataBaseRol.nombre;
+            this.funcionalidades = new List<Funcionalidad>();
+
+            //Funcionalidades
+            List<RolxFuncionalidad> rolPorFuncionalidades = new List<RolxFuncionalidad>();
+            rolPorFuncionalidades= DataContextSingleton.Connection.RolxFuncionalidad.Where(x => x.idRol == dataBaseRol.idRol).ToList();
+            foreach (var rolPorFuncionalidad in rolPorFuncionalidades)
+            {
+                Funcionalidad auxFuncionalidad=DataContextSingleton.Connection.Funcionalidad.Where(x => x.idFuncionalidad == rolPorFuncionalidad.idFuncionalidad).FirstOrDefault();
+                this.funcionalidades.Add(auxFuncionalidad);
+            }
+            
         }
 
         //Public methods
