@@ -1,4 +1,6 @@
-USE [GD2C2014]
+--USE [GD2C2014]
+GO
+SET NOCOUNT ON
 GO
 BEGIN TRANSACTION
 GO
@@ -115,10 +117,7 @@ CREATE TABLE [dbo].[Funcionalidad](
 )ON [PRIMARY]
 GO
 
-INSERT INTO [dbo].[Funcionalidad] Values ('ABM Cliente')
-INSERT INTO [dbo].[Funcionalidad] Values ('ABM Hotel')
-INSERT INTO [dbo].[Funcionalidad] Values ('Todo')
-GO
+
 ----------------------------------------------------------------------------------------------------------------
 -- HABITACION --
 CREATE TABLE [dbo].[Habitacion](
@@ -213,7 +212,7 @@ GO
 ----------------------------------------------------------------------------------------------------------------
 -- REGIMEN --
 CREATE TABLE [dbo].[Regimen](
-	[codigo] [int] NOT NULL,
+	[codigo] [int] identity(1,1) NOT NULL,
 	[descripcion] [nvarchar](255) NOT NULL,
 	[precio] [numeric](18, 2) NOT NULL,
 	[estado] [bit] NOT NULL,
@@ -407,9 +406,7 @@ CREATE TABLE [dbo].[TipoIdentificacion](
 ) ON [PRIMARY]
 GO
 
-INSERT INTO TipoIdentificacion values ('PAS','Pasaporte')
-INSERT INTO TipoIdentificacion values ('DNI','Documento Nacional de Identidad')
-GO
+
 
 
 ----------------------------------------------------------------------------------------------------------------
@@ -461,12 +458,23 @@ GO
 --------------------------------
 -- CARGA DE DATOS FROM MASTER --
 --------------------------------
-
+--   
+--  
+--          --
+                      --
+-- IMPORTANTE - NO ESTAN EN ORDEN - -  - - - -
+-- - -
+  -- 
+  ---  --- - - 
+  --  
+   -- - 
+    
+    --
 
 ------------------------------------------------------------------------------------------------
 -- TABLA CLIENTES --
 ------------------------------------------------------------------------------------------------
-INSERT INTO [GD2C2014].[dbo].[Cliente]
+INSERT INTO [dbo].[Cliente]
 select numeroIdentificacion,
 		tipoIdentificacion,
 		nombre,
@@ -505,7 +513,7 @@ from
 			OVER(PARTITION BY [Cliente_Pasaporte_Nro] ORDER BY [Cliente_Fecha_Nac] ASC) as 'nroFilaDocu', 
 				[Cliente_Pasaporte_Nro] AS numeroIdentificacion,
 				[Cliente_Mail] as mail,
-				1 AS tipoIdentificacion,
+				(SELECT tipoIdentificacion FROM TipoIdentificacion WHERE UPPER(descripcionLarga) LIKE '%PASAPORTE%') AS tipoIdentificacion,
 				[Cliente_Nombre] as nombre,
 				[Cliente_Apellido] as apellido,
 				[Cliente_Fecha_Nac] as fechaNacimiento,
@@ -526,7 +534,7 @@ where nroFilaMail = 1
 ----------------------------------------------------------------------
 UPDATEO LOS QUE TIENEN DUPLICADOS (POR NRO PASAPORTE IDENTIFICACION)
 ----------------------------------------------------------------------
-update [GD2C2014].[dbo].[Cliente]
+update [dbo].[Cliente]
 set tieneDuplicados = 1
 where numeroIdentificacion in 
 (select distinct numeroIdentificacion from (SELECT		ROW_NUMBER()
@@ -546,25 +554,141 @@ where numeroIdentificacion in
 				'' as localidad,
 				1 as habilitado,
 				0 as tieneDuplicados
-FROM [GD2C2014].[gd_esquema].[Maestra]				
+FROM [GD2C2014].gd_esquema.Maestra				
 ) conNroFilaDocu
 where nroFilaDocu > 6)
 
 ------------------------------------------------------------------------------------------------
 -- TABLA CONSUMIBLES --
 ------------------------------------------------------------------------------------------------
-INSERT INTO [GD2C2014].[dbo].[Consumible]
+INSERT INTO [dbo].[Consumible]
 SELECT DISTINCT [Consumible_Codigo],[Consumible_Descripcion],[Consumible_Precio] 
 FROM [GD2C2014].[gd_esquema].[Maestra]
 WHERE [Consumible_Codigo] IS NOT NULL
 ORDER BY 1
 ------------------------------------------------------------------------------------------------
+-- TABLA ESTADORESERVA --
+------------------------------------------------------------------------------------------------
+INSERT INTO [dbo].[EstadoReserva]
+SELECT 'Cancelado'
+UNION
+SELECT 'Confirmado'
+UNION
+SELECT 'Reservado'
+UNION
+SELECT 'No - Show'
+------------------------------------------------------------------------------------------------
+-- TABLA FUNCIONALIDAD --
+------------------------------------------------------------------------------------------------
+INSERT INTO [dbo].[Funcionalidad]
+SELECT 'ABM Cliente'
+UNION
+SELECT 'ABM Hotel'
+UNION
+SELECT 'Todo'
+------------------------------------------------------------------------------------------------
+-- TABLA HOTEL --
+------------------------------------------------------------------------------------------------
+INSERT INTO [dbo].[HOTEL]
+SELECT DISTINCT 
+		NULL						nombre
+		,NULL						mail
+		,NULL						telefono
+		,[Hotel_Calle]				calle
+		,[Hotel_Nro_Calle]			nroCalle
+		,[Hotel_CantEstrella]		cantidadEstrellas
+		,[Hotel_Ciudad]				ciudad
+		,NULL						pais
+		,[Hotel_Recarga_Estrella]	recargaEstrella
+		,GETDATE()					fechaCreacion
+FROM [GD2C2014].[gd_esquema].[Maestra]
+------------------------------------------------------------------------------------------------
+-- TABLA MEDIODEPAGO --
+------------------------------------------------------------------------------------------------
+INSERT INTO [dbo].[MEDIODEPAGO]
+SELECT 'NO DISPONIBLE','NO DISPONIBLE'
+------------------------------------------------------------------------------------------------
+-- TABLA REGIMEN --
+------------------------------------------------------------------------------------------------
+INSERT INTO [dbo].[REGIMEN]
+SELECT DISTINCT Regimen_Descripcion as descripcion,Regimen_Precio as precio ,1 as estado
+FROM [GD2C2014].[gd_esquema].[Maestra]
+------------------------------------------------------------------------------------------------
+-- TABLA REGIMENxhotel --
+------------------------------------------------------------------------------------------------
+INSERT INTO [dbo].[REGIMENXHOTEL]
+SELECT H.idHotel as idHotel, R.codigo as codigoRegimen --rXh.Regimen_Descripcion,rXh.Regimen_Precio,
+  FROM dbo.Hotel H, dbo.Regimen R ,(SELECT DISTINCT [Hotel_Ciudad]
+											,[Hotel_Calle]
+											,[Hotel_Nro_Calle]
+											,[Hotel_CantEstrella]
+											,[Hotel_Recarga_Estrella]
+											,[Regimen_Descripcion]
+											,[Regimen_Precio]
+									FROM [GD2C2014].[gd_esquema].[Maestra]
+									) rXh
+/* JOIN's */
+where	H.calle = rXh.Hotel_Calle
+		and H.nroCalle = rXh.Hotel_Nro_Calle
+		and H.ciudad = rXh.Hotel_Ciudad
+		and H.cantidadEstrellas = rXh.Hotel_CantEstrella
+		and R.descripcion = rXh.Regimen_Descripcion
+		and R.precio = rXh.Regimen_Precio
+order by 1,2
+------------------------------------------------------------------------------------------------
+-- TABLA ROL --
+------------------------------------------------------------------------------------------------
+INSERT INTO [dbo].[ROL]
+SELECT 'Admin','1'
+union
+SELECT 'Conserje','1'
+union
+SELECT 'Empleado','1'
+------------------------------------------------------------------------------------------------
+-- TABLA TIPODEHABITACION --
+------------------------------------------------------------------------------------------------
+INSERT INTO [dbo].[TIPODEHABITACION]
+SELECT DISTINCT Habitacion_Tipo_Codigo AS idTipoHabitacion
+				,Habitacion_Tipo_Descripcion as descricion
+				,Habitacion_Tipo_Porcentual as tipoPorcentual
+				,''
+FROM gd_esquema.Maestra ORDER BY 1
+------------------------------------------------------------------------------------------------
 -- TABLA TIPOIDENTIFICACION --
 ------------------------------------------------------------------------------------------------
-INSERT INTO [GD2C2014].[dbo].[TipoIdentificacion]  
-SELECT 1,'PAS','Pasaporte'
-union
-SELECT 2,'DNI','Documento Nacional de Identidad'
+INSERT INTO [dbo].[TipoIdentificacion]  
+SELECT 'PAS','Pasaporte'
+UNION
+SELECT 'DNI','Documento Nacional de Identidad'
+------------------------------------------------------------------------------------------------
+-- TABLA USUARIO --                                            HAY QUE HASHEAR LA PASSWORD
+------------------------------------------------------------------------------------------------
+INSERT INTO [dbo].[USUARIO]  
+SELECT 'admin','adm123',0,'36200300','DNI','Roberto','Gomez','rob@gmail.com','4804-2020','Av. Rivadavia 3045','1980-11-02 00:00:00.000'
+UNION
+SELECT 'aperez','1234',0,'36999300','DNI','Adalberto','Perez','rob@gmail.com','4804-2020','Av. Rivadavia 3045','1980-11-02 00:00:00.000'
+------------------------------------------------------------------------------------------------
+-- TABLA USUARIOXHOTEL --
+------------------------------------------------------------------------------------------------
+INSERT INTO [dbo].[USUARIOXHOTEL]  
+SELECT DISTINCT 'admin', idHotel from Hotel
+union 
+select 'aperez',2
+------------------------------------------------------------------------------------------------
+-- TABLA ROLxUSUARIO --
+------------------------------------------------------------------------------------------------
+INSERT INTO [dbo].[ROLxUSUARIO]  
+SELECT DISTINCT idRol,'admin' from Rol
+union 
+select 2,'aperez'
+
+
+
+
+
+
+
+
 
 
 
