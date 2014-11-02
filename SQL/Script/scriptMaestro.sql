@@ -63,7 +63,7 @@ CREATE TABLE [dbo].[Consumible](
 ----------------------------------------------------------------------------------------------------------------
 -- ESTADORESERVA --
 CREATE TABLE [dbo].[EstadoReserva](
-	[idEstado] [int] NOT NULL,
+	[idEstado] [int] identity(1,1) NOT NULL,
 	[descripcion] [nvarchar](255) NULL,
  CONSTRAINT [PK_EstadoReserva}] PRIMARY KEY CLUSTERED 
 (
@@ -118,11 +118,11 @@ GO
 INSERT INTO [dbo].[Funcionalidad] Values ('ABM Cliente')
 INSERT INTO [dbo].[Funcionalidad] Values ('ABM Hotel')
 INSERT INTO [dbo].[Funcionalidad] Values ('Todo')
-
+GO
 ----------------------------------------------------------------------------------------------------------------
 -- HABITACION --
 CREATE TABLE [dbo].[Habitacion](
-	[idHotel] [int] NOT NULL,
+	[idHotel] [int]  NOT NULL,
 	[numeroHabitacion] [numeric](18, 0) NOT NULL,
 	[piso] [numeric](18, 0) NULL,
 	[ubicacion] [nvarchar](50) NULL,
@@ -154,7 +154,7 @@ GO
 ----------------------------------------------------------------------------------------------------------------
 -- HISTORIALHOTEL --
 CREATE TABLE [dbo].[HistorialHotel](
-	[idHotel] [int] NOT NULL,
+	[idHotel] [int]  NOT NULL,
 	[fechaInicio] [datetime] NOT NULL,
 	[fechaFin] [datetime] NOT NULL,
 	[motivo] [nvarchar](255) NULL,
@@ -177,7 +177,7 @@ GO
 ----------------------------------------------------------------------------------------------------------------
 -- HOTEL --
 CREATE TABLE [dbo].[Hotel](
-	[idHotel] [int] NOT NULL,
+	[idHotel] [int] IDENTITY(1,1) NOT NULL,
 	[nombre] [nvarchar](255) NULL,
 	[mail] [nvarchar](255) NULL,
 	[telefono] [nvarchar](255) NULL,
@@ -198,7 +198,7 @@ GO
 ----------------------------------------------------------------------------------------------------------------
 -- MEDIODEPAGO --
 CREATE TABLE [dbo].[MedioDePago](
-	[idMedioPago] [int] NOT NULL,
+	[idMedioPago] [int] IDENTITY(1,1) NOT NULL,
 	[descripcion] [nvarchar](255) NULL,
 	[numeroTarjeta] [nvarchar](255) NULL,
  CONSTRAINT [PK_MedioDePago] PRIMARY KEY CLUSTERED 
@@ -397,7 +397,7 @@ GO
 ----------------------------------------------------------------------------------------------------------------
 -- TIPOIDENTIFICACION --
 CREATE TABLE [dbo].[TipoIdentificacion](
-	[tipoIdentificacion] [int] NOT NULL,
+	[tipoIdentificacion] [int] IDENTITY(1,1) NOT NULL,
 	[descripcionCorta] [nvarchar](5) NULL,
 	[descripcionLarga] [nvarchar](50) NULL,
  CONSTRAINT [PK_TipoIdentificacion] PRIMARY KEY CLUSTERED 
@@ -405,8 +405,12 @@ CREATE TABLE [dbo].[TipoIdentificacion](
 	[tipoIdentificacion] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
+
+INSERT INTO TipoIdentificacion values ('PAS','Pasaporte')
+INSERT INTO TipoIdentificacion values ('DNI','Documento Nacional de Identidad')
+GO
+
 
 ----------------------------------------------------------------------------------------------------------------
 -- USUARIO --
@@ -427,7 +431,6 @@ CREATE TABLE [dbo].[Usuario](
 	[username] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
 
 
@@ -449,7 +452,7 @@ GO
 
 
 COMMIT
-
+GO
 
 
 
