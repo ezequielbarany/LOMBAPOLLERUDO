@@ -102,15 +102,22 @@ GO
 ----------------------------------------------------------------------------------------------------------------
 -- FUNCIONALIDAD --
 CREATE TABLE [dbo].[Funcionalidad](
-	[idFuncionalidad] [int] NOT NULL,
+	[idFuncionalidad] [int] IDENTITY(1,1) NOT NULL,
 	[descripcion] [nvarchar](255) NULL,
  CONSTRAINT [PK_Funcionalidad] PRIMARY KEY CLUSTERED 
 (
 	[idFuncionalidad] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY],
+ CONSTRAINT [UQ__Funcionalidad__Descripcion] UNIQUE NONCLUSTERED 
+(
+	[descripcion] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
+)ON [PRIMARY]
 GO
 
+INSERT INTO [dbo].[Funcionalidad] Values ('ABM Cliente')
+INSERT INTO [dbo].[Funcionalidad] Values ('ABM Hotel')
+INSERT INTO [dbo].[Funcionalidad] Values ('Todo')
 
 ----------------------------------------------------------------------------------------------------------------
 -- HABITACION --
@@ -317,13 +324,13 @@ GO
 ----------------------------------------------------------------------------------------------------------------
 -- ROL --
 CREATE TABLE [dbo].[Rol](
-	[idRol] [int] NOT NULL,
+	[idRol] [int] IDENTITY(1,1) NOT NULL,
 	[nombre] [nvarchar](255) NULL,
 	[estado] [bit] NULL,
  CONSTRAINT [PK_Rol] PRIMARY KEY CLUSTERED 
 (
 	[idRol] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY],
 ) ON [PRIMARY]
 
 GO
