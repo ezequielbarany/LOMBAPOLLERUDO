@@ -570,13 +570,18 @@ ORDER BY 1
 -- TABLA ESTADORESERVA --
 ------------------------------------------------------------------------------------------------
 INSERT INTO [dbo].[EstadoReserva]
-SELECT 'Cancelado'
+SELECT 'Reserva correcta'
+INSERT INTO [dbo].[EstadoReserva]
+SELECT 'Reserva con Ingreso'
+INSERT INTO [dbo].[EstadoReserva]
+SELECT 'Reserva modifica'
 UNION
-SELECT 'Confirmado'
+SELECT 'Reserva cancelada por recepcion'
 UNION
-SELECT 'Reservado'
+SELECT 'Reserva cancelada por cliente'
 UNION
-SELECT 'No - Show'
+SELECT 'Reserva cancelada por No-Show'
+
 ------------------------------------------------------------------------------------------------
 -- TABLA FUNCIONALIDAD --
 ------------------------------------------------------------------------------------------------
@@ -634,7 +639,6 @@ where	H.calle = rXh.Hotel_Calle
 		and H.cantidadEstrellas = rXh.Hotel_CantEstrella
 		and R.descripcion = rXh.Regimen_Descripcion
 		and R.precio = rXh.Regimen_Precio
-order by 1,2
 ------------------------------------------------------------------------------------------------
 -- TABLA ROL --
 ------------------------------------------------------------------------------------------------
@@ -652,7 +656,7 @@ SELECT DISTINCT Habitacion_Tipo_Codigo AS idTipoHabitacion
 				,Habitacion_Tipo_Descripcion as descricion
 				,Habitacion_Tipo_Porcentual as tipoPorcentual
 				,''
-FROM gd_esquema.Maestra ORDER BY 1
+FROM [GD2C2014].[gd_esquema].[Maestra]
 ------------------------------------------------------------------------------------------------
 -- TABLA TIPOIDENTIFICACION --
 ------------------------------------------------------------------------------------------------
@@ -664,9 +668,13 @@ SELECT 'DNI','Documento Nacional de Identidad'
 -- TABLA USUARIO --                                            HAY QUE HASHEAR LA PASSWORD
 ------------------------------------------------------------------------------------------------
 INSERT INTO [dbo].[USUARIO]  
+SELECT 'scriptMigracion','script',0,'99999999','DNI','SQL','SERVER','scriptloco@gmail.com','0800-SCRIPT','Av. SQL 123','1950-01-04 00:00:00.000'
+union
 SELECT 'admin','adm123',0,'36200300','DNI','Roberto','Gomez','rob@gmail.com','4804-2020','Av. Rivadavia 3045','1980-11-02 00:00:00.000'
 UNION
-SELECT 'aperez','1234',0,'36999300','DNI','Adalberto','Perez','rob@gmail.com','4804-2020','Av. Rivadavia 3045','1980-11-02 00:00:00.000'
+SELECT 'aperez','1234',0,'36999300','DNI','Adalberto','Perez','rob@gmail.com','4804-2020','Av. Directorio 3242','1991-12-12 00:00:00.000'
+
+
 ------------------------------------------------------------------------------------------------
 -- TABLA USUARIOXHOTEL --
 ------------------------------------------------------------------------------------------------
@@ -681,10 +689,81 @@ INSERT INTO [dbo].[ROLxUSUARIO]
 SELECT DISTINCT idRol,'admin' from Rol
 union 
 select 2,'aperez'
-
-
-
-
+------------------------------------------------------------------------------------------------
+-- TABLA ROLxFUNCIONALIDAD --
+------------------------------------------------------------------------------------------------
+INSERT INTO [dbo].[ROLxFuncionalidad]  
+SELECT 1,3
+union 
+select 2,2
+union
+select 2,1
+------------------------------------------------------------------------------------------------
+-- TABLA HABITACION --
+------------------------------------------------------------------------------------------------
+INSERT INTO [dbo].[habitacion]  
+SELECT	 H.idHotel as idHotel
+		,habXhot.Habitacion_Numero as numeroHabitacion
+		,habXhot.Habitacion_Piso as piso
+		,habXhot.Habitacion_Frente as ubicacion
+		,habXhot.Habitacion_Tipo_Codigo as idTipoHabitacion
+		,NULL as descripcion
+		,NULL as comodidades
+		,1 as habilitada
+  FROM dbo.Hotel H ,(SELECT DISTINCT 
+			[Hotel_Ciudad],[Hotel_Calle],[Hotel_Nro_Calle],[Hotel_CantEstrella],[Hotel_Recarga_Estrella]
+			,[Habitacion_Numero],[Habitacion_Piso],[Habitacion_Frente]
+			,[Habitacion_Tipo_Codigo]
+					FROM [GD2C2014].[gd_esquema].[Maestra]
+					) habXhot
+/* JOIN's */
+where	H.calle = habXhot.Hotel_Calle
+		and H.nroCalle = habXhot.Hotel_Nro_Calle
+		and H.ciudad = habXhot.Hotel_Ciudad
+		and H.cantidadEstrellas = habXhot.Hotel_CantEstrella
+------------------------------------------------------------------------------------------------
+-- TABLA RESERVA --
+------------------------------------------------------------------------------------------------
+INSERT INTO [dbo].[RESERVA] 
+SELECT	codigoReserva,fechaDesde,cantidadNoches,fechaHasta,fechaRealizacion
+		,(Case
+			when fechaInicioEstadia IS NULL  then 1
+			else 2
+			end)																	as idEstadoReserva
+		,numeroIdentificacion,tipoIdentificacion,precioParcial,fechaInicioEstadia,fechaFinEstadia,username,codigoRegimen
+FROM
+(
+SELECT  *
+		,(select top 1 [Estadia_Fecha_Inicio]	
+			FROM [GD2C2014].[gd_esquema].[Maestra]
+			where Reserva_Codigo = codigoReserva 
+			and Estadia_Fecha_Inicio is not null)									as fechaInicioEstadia
+		 ,DATEADD(DAY
+					,(select top 1 [Estadia_Cant_Noches]	
+						FROM [GD2C2014].[gd_esquema].[Maestra]
+						where Reserva_Codigo = codigoReserva 
+						and Estadia_Cant_Noches is not null)
+					,(select top 1 [Estadia_Fecha_Inicio]	
+						FROM [GD2C2014].[gd_esquema].[Maestra]
+						where Reserva_Codigo = codigoReserva 
+						and Estadia_Fecha_Inicio is not null))						as fechaFinEstadia
+from 
+(
+SELECT distinct
+		[Reserva_Codigo]															as codigoReserva
+		,[Reserva_Fecha_Inicio]														as fechaDesde
+		,[Reserva_Cant_Noches]														as cantidadNoches
+		,DATEADD(DAY,isnull([Reserva_Cant_Noches],0),[Reserva_Fecha_Inicio])		as fechaHasta
+		,NULL																		as fechaRealizacion
+		,[Cliente_Pasaporte_Nro]													as numeroIdentificacion
+		,1																			as tipoIdentificacion
+		,CAST(0.00 AS NUMERIC(18,2))												as precioParcial
+        ,'scriptMigracion'															as username
+		,(Select codigo from Regimen 
+			where descripcion=[Regimen_Descripcion] and precio=[Regimen_Precio])	as codigoRegimen
+FROM [GD2C2014].[gd_esquema].[Maestra]
+) a
+) b
 
 
 
