@@ -20,6 +20,7 @@ namespace FrbaCore
 	using System.Linq.Expressions;
 	using System.ComponentModel;
 	using System;
+    using System.Data.SqlClient;
 
     [global::System.Data.Linq.Mapping.DatabaseAttribute(Name = "FRBAHOTEL")]
 	public partial class FrbaDataContextDataContext : System.Data.Linq.DataContext
@@ -296,6 +297,7 @@ namespace FrbaCore
                 return this.GetTable<UsuarioxHotel>();
             }
         }
+
     }
 
     [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.Cliente")]

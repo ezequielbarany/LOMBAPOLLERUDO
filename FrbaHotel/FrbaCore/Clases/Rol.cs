@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace FrbaCore
 {
@@ -50,25 +52,32 @@ namespace FrbaCore
 
         public bool grabarRol(Rol rol)
         {
-            Rol rolAGrabar=DataContextSingleton.Connection.Rol.Where(x => x.idRol == rol.idRol).FirstOrDefault();
-            if (rolAGrabar == null)
-            {
-                //Nuevo rol
+            //Cargo las funcionalidades en la datatble
+            DataTable dataTableFuncionalidades=new DataTable();
 
-                //ACA VA EL STORE
+            DataColumn idFuncionalidad = new DataColumn("idFuncionalidad", typeof(int));
+            dataTableFuncionalidades.Columns.Add(idFuncionalidad);
 
-                DataContextSingleton.Connection.Rol.InsertOnSubmit(rol);
+            dataTableFuncionalidades.Clear();
+            foreach(var funcionalidad in rol.funcionalidades){
+                DataRow row = dataTableFuncionalidades.NewRow();
+                dataTableFuncionalidades.Rows.Add(new object[] { funcionalidad.idFuncionalidad });
+                dataTableFuncionalidades.Rows.Add(row);
             }
-            else
-            {
-                //ACA VA EL STORE
+            
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["FRBAHOTEL_DATABASE"].ConnectionString);
+            SqlCommand cmd = new SqlCommand("dbo.AltaModificacionRol",conn);
+            cmd.CommandType = CommandType.StoredProcedure;
 
-                //Modificar rol
-                rolAGrabar.nombre = rol.nombre;
-                rolAGrabar.estado = rol.estado;
-                rolAGrabar.funcionalidades = rol.funcionalidades;
-            }
-            DataContextSingleton.Connection.SubmitChanges();
+            SqlParameter dataTableRolXFuncionalidadParameter = new SqlParameter("@idFuncionalidadList", dataTableFuncionalidades);
+            dataTableRolXFuncionalidadParameter.SqlDbType = SqlDbType.Structured;
+            
+            cmd.Parameters.Add("@idRol",SqlDbType.Int).Value=rol.idRol;
+            cmd.Parameters.Add("@nombre",SqlDbType.NVarChar).Value=rol.nombre;
+            cmd.Parameters.Add("@estado", SqlDbType.Bit).Value=rol.estado;
+            cmd.Parameters.Add(dataTableRolXFuncionalidadParameter);
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
 
             return true;
         }
