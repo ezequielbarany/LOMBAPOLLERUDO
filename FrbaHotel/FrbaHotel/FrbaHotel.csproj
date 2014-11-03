@@ -79,11 +79,17 @@
     <Compile Include="ABM de Rol\Listado.Designer.cs">
       <DependentUpon>Listado.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM de Usuario\Form1.cs">
+    <Compile Include="ABM de Usuario\frmABMUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM de Usuario\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ABM de Usuario\frmABMUsuario.Designer.cs">
+      <DependentUpon>frmABMUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM de Usuario\frmAltaModificacionUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Usuario\frmAltaModificacionUsuario.Designer.cs">
+      <DependentUpon>frmAltaModificacionUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Cancelar Reserva\Form1.cs">
       <SubType>Form</SubType>
@@ -125,6 +131,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ABM de Rol\Listado.resx">
       <DependentUpon>Listado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Usuario\frmABMUsuario.resx">
+      <DependentUpon>frmABMUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Usuario\frmAltaModificacionUsuario.resx">
+      <DependentUpon>frmAltaModificacionUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

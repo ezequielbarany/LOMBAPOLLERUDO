@@ -12,3 +12,6 @@ D:\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.Form1.resources
 D:\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\bin\Debug\FrbaHotel.exe.config
 D:\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Rol.AltaModificacion.resources
 D:\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Rol.Listado.resources
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\bin\Debug\FrbaHotel.exe.config
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.exe
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.pdb
