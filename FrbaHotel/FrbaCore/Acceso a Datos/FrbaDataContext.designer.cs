@@ -11,23 +11,23 @@
 
 namespace FrbaCore
 {
-	using System.Data.Linq;
-	using System.Data.Linq.Mapping;
-	using System.Data;
-	using System.Collections.Generic;
-	using System.Reflection;
-	using System.Linq;
-	using System.Linq.Expressions;
-	using System.ComponentModel;
-	using System;
+    using System.Data.Linq;
+    using System.Data.Linq.Mapping;
+    using System.Data;
+    using System.Collections.Generic;
+    using System.Reflection;
+    using System.Linq;
+    using System.Linq.Expressions;
+    using System.ComponentModel;
+    using System;
     using System.Data.SqlClient;
     using System.Configuration;
 
     [global::System.Data.Linq.Mapping.DatabaseAttribute(Name = "FRBAHOTEL")]
-	public partial class FrbaDataContextDataContext : System.Data.Linq.DataContext
-	{
-		
-		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
+    public partial class FrbaDataContextDataContext : System.Data.Linq.DataContext
+    {
+
+        private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
 
         #region Definiciones de métodos de extensibilidad
         partial void OnCreated();
@@ -98,30 +98,30 @@ namespace FrbaCore
         partial void UpdateUsuarioxHotel(UsuarioxHotel instance);
         partial void DeleteUsuarioxHotel(UsuarioxHotel instance);
         #endregion
-		
-		public FrbaDataContextDataContext(string connection) : 
-				base(connection, mappingSource)
-		{
-			OnCreated();
-		}
-		
-		public FrbaDataContextDataContext(System.Data.IDbConnection connection) : 
-				base(connection, mappingSource)
-		{
-			OnCreated();
-		}
-		
-		public FrbaDataContextDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
-				base(connection, mappingSource)
-		{
-			OnCreated();
-		}
-		
-		public FrbaDataContextDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
-				base(connection, mappingSource)
-		{
-			OnCreated();
-		}
+
+        public FrbaDataContextDataContext(string connection) :
+            base(connection, mappingSource)
+        {
+            OnCreated();
+        }
+
+        public FrbaDataContextDataContext(System.Data.IDbConnection connection) :
+            base(connection, mappingSource)
+        {
+            OnCreated();
+        }
+
+        public FrbaDataContextDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) :
+            base(connection, mappingSource)
+        {
+            OnCreated();
+        }
+
+        public FrbaDataContextDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) :
+            base(connection, mappingSource)
+        {
+            OnCreated();
+        }
 
         public System.Data.Linq.Table<Cliente> Cliente
         {
@@ -299,7 +299,7 @@ namespace FrbaCore
             }
         }
 
-        public void AltaModificacionRol(Rol rol,DataTable valoresFKFuncionalidad)
+        public void AltaModificacionRol(Rol rol, DataTable valoresFKFuncionalidad)
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["FRBAHOTEL_DATABASE"].ConnectionString);
             SqlCommand cmd = new SqlCommand("dbo.AltaModificacionRol", conn);
@@ -316,7 +316,7 @@ namespace FrbaCore
             SqlDataReader reader = cmd.ExecuteReader();
             conn.Close();
         }
-		     public void AltaModificacionUsuario(Usuario usuario, DataTable valoresFKRol, DataTable valoresFKHotel)
+        public void AltaModificacionUsuario(Usuario usuario, DataTable valoresFKRol, DataTable valoresFKHotel)
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["FRBAHOTEL_DATABASE"].ConnectionString);
             SqlCommand cmd = new SqlCommand("dbo.AltaModificacionUsuario", conn);
@@ -344,8 +344,8 @@ namespace FrbaCore
             conn.Open();
             SqlDataReader reader = cmd.ExecuteReader();
             conn.Close();
-        // }
-        // }
+        }
+
 
     }
 

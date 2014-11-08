@@ -15,3 +15,13 @@ D:\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.ABM_de_Rol.Listado.r
 D:\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.ABM_de_Usuario.frmABMUsuario.resources
 D:\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.ABM_de_Usuario.frmAltaModificacionUsuario.resources
 D:\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.ABM_de_Hotel.Listado.resources
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\ResolveAssemblyReference.cache
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.ABM_de_Cliente.Form1.resources
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.ABM_de_Hotel.Listado.resources
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.ABM_de_Rol.AltaModificacion.resources
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.ABM_de_Rol.Listado.resources
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.ABM_de_Usuario.frmABMUsuario.resources
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.ABM_de_Usuario.frmAltaModificacionUsuario.resources
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.Form1.resources
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.Properties.Resources.resources
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.csproj.GenerateResource.Cache
