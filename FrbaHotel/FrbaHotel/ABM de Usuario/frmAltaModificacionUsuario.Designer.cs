@@ -52,6 +52,8 @@
             this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.chkListHoteles = new System.Windows.Forms.CheckedListBox();
             this.chkListRoles = new System.Windows.Forms.CheckedListBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtUsername
@@ -252,11 +254,31 @@
             this.chkListRoles.Size = new System.Drawing.Size(156, 124);
             this.chkListRoles.TabIndex = 24;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(54, 250);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(43, 13);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "Hoteles";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(263, 250);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(34, 13);
+            this.label11.TabIndex = 26;
+            this.label11.Text = "Roles";
+            // 
             // frmAltaModificacionUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(448, 474);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.chkListRoles);
             this.Controls.Add(this.chkListHoteles);
             this.Controls.Add(this.dtpFechaNacimiento);
@@ -314,5 +336,7 @@
         private System.Windows.Forms.DateTimePicker dtpFechaNacimiento;
         private System.Windows.Forms.CheckedListBox chkListHoteles;
         private System.Windows.Forms.CheckedListBox chkListRoles;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
     }
 }

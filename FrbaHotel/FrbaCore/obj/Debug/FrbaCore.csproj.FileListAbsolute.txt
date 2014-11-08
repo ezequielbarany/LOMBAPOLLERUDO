@@ -3,3 +3,8 @@ D:\LOMBAPOLLERUDO\FrbaHotel\FrbaCore\bin\Debug\FrbaCore.pdb
 D:\LOMBAPOLLERUDO\FrbaHotel\FrbaCore\obj\Debug\ResolveAssemblyReference.cache
 D:\LOMBAPOLLERUDO\FrbaHotel\FrbaCore\obj\Debug\FrbaCore.dll
 D:\LOMBAPOLLERUDO\FrbaHotel\FrbaCore\obj\Debug\FrbaCore.pdb
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaCore\bin\Debug\FrbaCore.dll
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaCore\bin\Debug\FrbaCore.pdb
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaCore\obj\Debug\ResolveAssemblyReference.cache
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaCore\obj\Debug\FrbaCore.dll
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaCore\obj\Debug\FrbaCore.pdb

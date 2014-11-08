@@ -17,3 +17,17 @@ C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.exe
 C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.pdb
 D:\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Usuario.frmABMUsuario.resources
 D:\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Usuario.frmAltaModificacionUsuario.resources
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\bin\Debug\FrbaHotel.exe
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\bin\Debug\FrbaHotel.pdb
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\bin\Debug\FrbaCore.dll
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\bin\Debug\FrbaCore.pdb
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\ResolveAssemblyReference.cache
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Cliente.Form1.resources
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Hotel.Listado.resources
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Rol.AltaModificacion.resources
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Rol.Listado.resources
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Usuario.frmABMUsuario.resources
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Usuario.frmAltaModificacionUsuario.resources
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.Form1.resources
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.Properties.Resources.resources
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.csproj.GenerateResource.Cache

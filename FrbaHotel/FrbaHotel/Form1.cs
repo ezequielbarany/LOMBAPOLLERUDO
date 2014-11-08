@@ -27,5 +27,11 @@ namespace FrbaHotel
             FrbaHotel.ABM_de_Rol.Listado form1 = new FrbaHotel.ABM_de_Rol.Listado();
             form1.Show();
         }
+
+        private void btnABMUsuario_Click(object sender, EventArgs e)
+        {
+            FrbaHotel.ABM_de_Usuario.frmABMUsuario frmUsuario = new FrbaHotel.ABM_de_Usuario.frmABMUsuario();
+            frmUsuario.ShowDialog();
+        }
     }
 }
