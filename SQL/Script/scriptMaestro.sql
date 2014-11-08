@@ -657,6 +657,12 @@ FROM [GD2C2014].gd_esquema.Maestra
 WHERE [Cliente_Pasaporte_Nro] IN (SELECT numeroIdentificacion FROM #TEMPORAL)
 AND [Cliente_Mail] IN (SELECT mail FROM #TEMPORAL)
 
+UPDATE [dbo].[Cliente]
+SET tieneDuplicados = 1
+WHERE numeroIdentificacion IN (SELECT numeroIdentificacion FROM #TEMPORAL)
+AND mail IN (SELECT mail FROM #TEMPORAL)
+
+
 DROP TABLE #TEMPORAL
 
 ------------------------------------------------------------------------------------------------
