@@ -25,7 +25,7 @@ namespace FrbaHotel.ABM_de_Usuario
 
         private void btnBaja_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void gridUsuarios_Click(object sender, EventArgs e)
@@ -33,8 +33,8 @@ namespace FrbaHotel.ABM_de_Usuario
             if (gridUsuarios.SelectedRows.Count == 1)
             {
                 int idSeleccionado = (int)gridUsuarios.SelectedCells[0].Value;
-                
-            }    
+
+            }
         }
     }
 }

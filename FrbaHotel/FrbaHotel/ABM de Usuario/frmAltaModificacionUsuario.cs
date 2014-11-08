@@ -18,6 +18,14 @@ namespace FrbaHotel.ABM_de_Usuario
             InitializeComponent();
         }
 
+        private void frmAltaModificacionUsuario_Load(object sender, EventArgs e)
+        {
+            Rol rol = new Rol();
+            ((ListBox)chkListRoles).ValueMember = "Id";
+            ((ListBox)chkListRoles).DisplayMember = "Descipcion";
+            ((ListBox)chkListRoles).DataSource = rol.listarRoles();
+        }
+
         public frmAltaModificacionUsuario(string username)
         {
             InitializeComponent();
@@ -49,6 +57,21 @@ namespace FrbaHotel.ABM_de_Usuario
                 usuario.tel = txtTelefono.Text;
                 usuario.direccion = txtDireccion.Text;
                 usuario.fechaNacimiento = dtpFechaNacimiento.Value;
+                usuario.Roles = new List<Rol>();
+
+                foreach (DataRowView rolSeleccionado in chkListRoles.CheckedItems)
+                {
+                    Rol rol = new Rol((int)rolSeleccionado["Id"]);
+                    usuario.Roles.Add(rol);
+                }
+
+                usuario.Hoteles = new List<Hotel>();
+                foreach (DataRowView hotelSeleccionado in chkListHoteles.CheckedItems)
+                {
+                    Hotel hotel = new Hotel((int)hotelSeleccionado["Id"]);
+                    usuario.Hoteles.Add(hotel);
+                }
+
                 usuario.alta();
             }
         }
@@ -64,6 +87,8 @@ namespace FrbaHotel.ABM_de_Usuario
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
-        }   
+        }
+
+
     }
 }

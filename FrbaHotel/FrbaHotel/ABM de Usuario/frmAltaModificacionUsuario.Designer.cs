@@ -50,6 +50,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtTipoDocumento = new System.Windows.Forms.TextBox();
             this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
+            this.chkListHoteles = new System.Windows.Forms.CheckedListBox();
+            this.chkListRoles = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
             // txtUsername
@@ -175,7 +177,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(109, 272);
+            this.btnGuardar.Location = new System.Drawing.Point(112, 427);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 16;
@@ -185,7 +187,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(258, 273);
+            this.btnCancelar.Location = new System.Drawing.Point(261, 428);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 17;
@@ -234,11 +236,29 @@
             this.dtpFechaNacimiento.Size = new System.Drawing.Size(99, 20);
             this.dtpFechaNacimiento.TabIndex = 22;
             // 
+            // chkListHoteles
+            // 
+            this.chkListHoteles.FormattingEnabled = true;
+            this.chkListHoteles.Location = new System.Drawing.Point(89, 276);
+            this.chkListHoteles.Name = "chkListHoteles";
+            this.chkListHoteles.Size = new System.Drawing.Size(120, 124);
+            this.chkListHoteles.TabIndex = 23;
+            // 
+            // chkListRoles
+            // 
+            this.chkListRoles.FormattingEnabled = true;
+            this.chkListRoles.Location = new System.Drawing.Point(261, 276);
+            this.chkListRoles.Name = "chkListRoles";
+            this.chkListRoles.Size = new System.Drawing.Size(120, 124);
+            this.chkListRoles.TabIndex = 24;
+            // 
             // frmAltaModificacionUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(448, 325);
+            this.ClientSize = new System.Drawing.Size(448, 474);
+            this.Controls.Add(this.chkListRoles);
+            this.Controls.Add(this.chkListHoteles);
             this.Controls.Add(this.dtpFechaNacimiento);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtTipoDocumento);
@@ -263,7 +283,6 @@
             this.Controls.Add(this.txtUsername);
             this.Name = "frmAltaModificacionUsuario";
             this.Text = "Alta/modificación usuario";
-            //this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -293,5 +312,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtTipoDocumento;
         private System.Windows.Forms.DateTimePicker dtpFechaNacimiento;
+        private System.Windows.Forms.CheckedListBox chkListHoteles;
+        private System.Windows.Forms.CheckedListBox chkListRoles;
     }
 }
