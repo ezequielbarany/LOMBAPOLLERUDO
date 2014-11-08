@@ -10,7 +10,7 @@ GO
 
 USE [GD2C2014]
 GO
-/****** Object:  StoredProcedure [dbo].[AltaModificacionRol]    Script Date: 11/02/2014 20:21:10 ******/
+/****** Object:  StoredProcedure [dbo].[AltaModificacionRol]    Script Date: 11/08/2014 15:36:08 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -20,7 +20,7 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-ALTER PROCEDURE [dbo].[AltaModificacionRol](
+CREATE PROCEDURE [dbo].[AltaModificacionRol](
 	-- Add the parameters for the stored procedure here
 	@idRol int =0,
 	@nombre nvarchar(255) =null,
@@ -38,16 +38,17 @@ BEGIN
     IF @idRol='0'
 		BEGIN
 			INSERT INTO Rol ([nombre],[estado]) VALUES (@nombre,@estado);
+			SET @IdentityOutput=(SELECT IDENT_CURRENT('Rol'));
 		END
     ELSE
 		BEGIN
-			--SET @IdentityOutput=@idRol;
+			SET @IdentityOutput=@idRol;
 			UPDATE Rol SET nombre=@nombre,estado=@estado WHERE idRol=@idRol;
 			-- Borro los roles por funcionalidad
 			DELETE FROM RolxFuncionalidad WHERE idRol=@idRol;
 		END
 	
 	-- Inserto los roles por funcionalidad
-	INSERT INTO RolxFuncionalidad (idRol,idFuncionalidad) (select 1,idFuncionalidad FROM @idFuncionalidadList where idFuncionalidad is not null)
-					
+	INSERT INTO RolxFuncionalidad (idRol,idFuncionalidad) (select @IdentityOutput,idFuncionalidad FROM @idFuncionalidadList where idFuncionalidad is not null)
+			
 END
