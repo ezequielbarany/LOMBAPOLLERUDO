@@ -21,6 +21,7 @@ namespace FrbaCore
 	using System.ComponentModel;
 	using System;
     using System.Data.SqlClient;
+    using System.Configuration;
 
     [global::System.Data.Linq.Mapping.DatabaseAttribute(Name = "FRBAHOTEL")]
 	public partial class FrbaDataContextDataContext : System.Data.Linq.DataContext
@@ -297,6 +298,25 @@ namespace FrbaCore
                 return this.GetTable<UsuarioxHotel>();
             }
         }
+
+        public void AltaModificacionRol(Rol rol,DataTable valoresFKFuncionalidad)
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["FRBAHOTEL_DATABASE"].ConnectionString);
+            SqlCommand cmd = new SqlCommand("dbo.AltaModificacionRol", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter dataTableRolXFuncionalidadParameter = new SqlParameter("@idFuncionalidadList", valoresFKFuncionalidad);
+            dataTableRolXFuncionalidadParameter.SqlDbType = SqlDbType.Structured;
+
+            cmd.Parameters.Add("@idRol", SqlDbType.Int).Value = rol.idRol;
+            cmd.Parameters.Add("@nombre", SqlDbType.NVarChar).Value = rol.nombre;
+            cmd.Parameters.Add("@estado", SqlDbType.Bit).Value = rol.estado;
+            cmd.Parameters.Add(dataTableRolXFuncionalidadParameter);
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            conn.Close();
+        }
+
 
     }
 

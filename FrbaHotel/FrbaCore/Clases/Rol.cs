@@ -64,21 +64,8 @@ namespace FrbaCore
                 dataTableFuncionalidades.Rows.Add(new object[] { funcionalidad.idFuncionalidad });
                 dataTableFuncionalidades.Rows.Add(row);
             }
-            
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["FRBAHOTEL_DATABASE"].ConnectionString);
-            SqlCommand cmd = new SqlCommand("dbo.AltaModificacionRol",conn);
-            cmd.CommandType = CommandType.StoredProcedure;
 
-            SqlParameter dataTableRolXFuncionalidadParameter = new SqlParameter("@idFuncionalidadList", dataTableFuncionalidades);
-            dataTableRolXFuncionalidadParameter.SqlDbType = SqlDbType.Structured;
-            
-            cmd.Parameters.Add("@idRol",SqlDbType.Int).Value=rol.idRol;
-            cmd.Parameters.Add("@nombre",SqlDbType.NVarChar).Value=rol.nombre;
-            cmd.Parameters.Add("@estado", SqlDbType.Bit).Value=rol.estado;
-            cmd.Parameters.Add(dataTableRolXFuncionalidadParameter);
-            conn.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
-
+            DataContextSingleton.Connection.AltaModificacionRol(rol, dataTableFuncionalidades);
             return true;
         }
         
