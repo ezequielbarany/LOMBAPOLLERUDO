@@ -239,9 +239,9 @@
             // chkListHoteles
             // 
             this.chkListHoteles.FormattingEnabled = true;
-            this.chkListHoteles.Location = new System.Drawing.Point(89, 276);
+            this.chkListHoteles.Location = new System.Drawing.Point(57, 276);
             this.chkListHoteles.Name = "chkListHoteles";
-            this.chkListHoteles.Size = new System.Drawing.Size(120, 124);
+            this.chkListHoteles.Size = new System.Drawing.Size(152, 124);
             this.chkListHoteles.TabIndex = 23;
             // 
             // chkListRoles
@@ -249,7 +249,7 @@
             this.chkListRoles.FormattingEnabled = true;
             this.chkListRoles.Location = new System.Drawing.Point(261, 276);
             this.chkListRoles.Name = "chkListRoles";
-            this.chkListRoles.Size = new System.Drawing.Size(120, 124);
+            this.chkListRoles.Size = new System.Drawing.Size(156, 124);
             this.chkListRoles.TabIndex = 24;
             // 
             // frmAltaModificacionUsuario

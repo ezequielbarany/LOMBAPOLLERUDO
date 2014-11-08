@@ -72,7 +72,7 @@ namespace FrbaHotel.ABM_de_Usuario
                     usuario.Hoteles.Add(hotel);
                 }
 
-                usuario.alta();
+                usuario.grabar(usuario);
             }
         }
 
