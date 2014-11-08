@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 
 namespace FrbaCore
 {
@@ -49,20 +50,38 @@ namespace FrbaCore
             }
         }
 
-        public void alta()
+        public void grabar(Usuario usuario)
         {
+            DataTable tablaRoles = new DataTable();
+            DataColumn idRoles = new DataColumn("idRoles", typeof(int));
+            tablaRoles.Columns.Add(idRoles);
+            tablaRoles.Clear();
 
-        }
+            foreach (var rol in usuario.Roles)
+            {
+                DataRow row = tablaRoles.NewRow();
+                tablaRoles.Rows.Add(new object[] { rol.idRol });
+                tablaRoles.Rows.Add(row);
+            }
+            
+            DataTable tablaHoteles = new DataTable();
+            DataColumn idHoteles = new DataColumn("idHoteles", typeof(int));
+            tablaHoteles.Columns.Add(idHoteles);
+            tablaHoteles.Clear();
 
-        public void modificacion(Usuario usuario)
-        {
+            foreach (var hotel in usuario.Hoteles)
+            {
+                DataRow row = tablaHoteles.NewRow();
+                tablaHoteles.Rows.Add(new object[] { hotel.idHotel });
+                tablaHoteles.Rows.Add(row);
+            }
 
+            DataContextSingleton.Connection.AltaModificacionUsuario(usuario, tablaRoles, tablaHoteles);
         }
 
         public void baja()
         {
 
         }
-
     }
 }

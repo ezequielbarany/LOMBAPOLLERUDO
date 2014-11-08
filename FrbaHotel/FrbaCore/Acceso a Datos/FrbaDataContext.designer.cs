@@ -316,7 +316,36 @@ namespace FrbaCore
             SqlDataReader reader = cmd.ExecuteReader();
             conn.Close();
         }
+		     public void AltaModificacionUsuario(Usuario usuario, DataTable valoresFKRol, DataTable valoresFKHotel)
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["FRBAHOTEL_DATABASE"].ConnectionString);
+            SqlCommand cmd = new SqlCommand("dbo.AltaModificacionUsuario", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
 
+            SqlParameter tablaRolXUsuarioParameter = new SqlParameter("@idRolList", valoresFKRol);
+            tablaRolXUsuarioParameter.SqlDbType = SqlDbType.Structured;
+
+            SqlParameter tablaHotelXUsuarioParameter = new SqlParameter("@idHotelList", valoresFKHotel);
+            tablaHotelXUsuarioParameter.SqlDbType = SqlDbType.Structured;
+
+            cmd.Parameters.Add("@username", SqlDbType.NVarChar).Value = usuario.username;
+            cmd.Parameters.Add("@password", SqlDbType.NVarChar).Value = usuario.password;
+            cmd.Parameters.Add("@nombre", SqlDbType.NVarChar).Value = usuario.nombre;
+            cmd.Parameters.Add("@apellido", SqlDbType.NVarChar).Value = usuario.apellido;
+            cmd.Parameters.Add("@tipoDocumento", SqlDbType.NVarChar).Value = usuario.tipoDocumento;
+            cmd.Parameters.Add("@documento", SqlDbType.NVarChar).Value = usuario.documento;
+            cmd.Parameters.Add("@mail", SqlDbType.NVarChar).Value = usuario.mail;
+            cmd.Parameters.Add("@tel", SqlDbType.NVarChar).Value = usuario.tel;
+            cmd.Parameters.Add("@direccion", SqlDbType.NVarChar).Value = usuario.direccion;
+            cmd.Parameters.Add("@fechaNacimiento", SqlDbType.DateTime).Value = usuario.fechaNacimiento;
+
+            cmd.Parameters.Add(tablaRolXUsuarioParameter);
+            cmd.Parameters.Add(tablaHotelXUsuarioParameter);
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            conn.Close();
+        // }
+        // }
 
     }
 
