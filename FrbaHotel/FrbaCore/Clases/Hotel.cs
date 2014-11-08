@@ -6,46 +6,69 @@ using System.Text;
 namespace FrbaCore
 {
     public partial class Hotel
-    {/*
-        public int idHotel { get; set; }
-        public string nombre { get; set; }
-        public string mail { get; set; }
-        public string telefono { get; set; }
-        public string direccion { get; set; }
-        public int cantidadEstrellas { get; set; }
-        public string ciudad { get; set; }
-        public string pais { get; set; }
-        public DateTime fechaCreacion { get; set; }*/
-        private List<HistorialHotel> lHistoriaHotel { get; set; }
-        private List<Regimen> lRegimen { get; set; }
-        private List<Habitacion> lHabitacion { get; set; }
+    {
+        //Add atributes
+        private List<HistorialHotel> historialHotel { get; set; }
+        private List<Regimen> regimens { get; set; }
+        private List<Habitacion> habitaciones { get; set; }
 
-        #region Constructores
+        //Constructors
         public Hotel()
         {
-
+            historialHotel = new List<HistorialHotel>();
+            regimens = new List<Regimen>();
+            habitaciones = new List<Habitacion>();
         }
 
         public Hotel(int idHotel)
         {
-            //SP=> Hotel_Datos(idHotel) -> retorna datos un hotel
-        }
-        #endregion
+            //Me traigo un hotel en particular
+            Hotel dataBaseHotel = DataContextSingleton.Connection.Hotel.Where(x => x.idHotel == idHotel).FirstOrDefault();
+            this.idHotel = dataBaseHotel.idHotel;
+            this.nombre = dataBaseHotel.nombre;
+            this.mail = dataBaseHotel.mail;
+            this.telefono = dataBaseHotel.telefono;
+            this.calle = dataBaseHotel.calle;
+            this.nroCalle = dataBaseHotel.nroCalle;
+            this.cantidadEstrellas = dataBaseHotel.cantidadEstrellas;
+            this.ciudad = dataBaseHotel.ciudad;
+            this.pais = dataBaseHotel.pais;
+            this.recargaEstrella = dataBaseHotel.recargaEstrella;
+            this.fechaCreacion = dataBaseHotel.fechaCreacion;
 
-        #region Métodos públicos
-        public void alta(Hotel hotel)
+            this.historialHotel = new List<HistorialHotel>();
+            this.regimens = new List<Regimen>();
+            this.habitaciones = new List<Habitacion>();
+
+            //Historial hotel
+            historialHotel = DataContextSingleton.Connection.HistorialHotel.Where(x => x.idHotel == this.idHotel).ToList();
+
+            //Regimens
+            List<RegimenxHotel> regimenPorHotel = new List<RegimenxHotel>();
+            regimenPorHotel = DataContextSingleton.Connection.RegimenxHotel.Where(x => x.idHotel == this.idHotel).ToList();
+            foreach (var regimen in regimenPorHotel)
+            {
+                Regimen auxRegimen= DataContextSingleton.Connection.Regimen.Where(x => x.codigo == regimen.codigoRegimen).FirstOrDefault();
+                this.regimens.Add(auxRegimen);
+            }
+
+            //Habitaciones
+            habitaciones = DataContextSingleton.Connection.Habitacion.Where(x => x.idHotel == this.idHotel).ToList();
+
+        }
+     
+        //Public methods
+        public List<Hotel> listarHoteles()
         {
-            //SP=> Hotel_UI(nombre, mail, telefono, direccion, cantidadEstrellas, ciudad, pais, fechaCreacion) -> no retorna
-            this.inicializarHotel();
+            return DataContextSingleton.Connection.Hotel.ToList();
         }
 
-        public void modificacion()
-        {
-            //SP=> Hotel_UI(todos los datos de un hotel) -> no retorna
-        }
+
+
 
         public void baja(DateTime fechaDesde, DateTime fechaHasta, string motivo)
         {
+            /*
             //SP=> Hotel_B(idHotel, fechaDesde, fechaHasta, motivo) -> no retorna
             var regHistorial = new HistorialHotel();
             regHistorial.idHotel = this._idHotel;
@@ -53,40 +76,10 @@ namespace FrbaCore
             regHistorial.fechaFin = fechaHasta;
             regHistorial.motivo = motivo;
             regHistorial.alta();
-            this.agregarRegistroAlHistorial(regHistorial);
+            this.agregarRegistroAlHistorial(regHistorial);*/
         }
 
-        public List<HistorialHotel> historialHotel()
-        {
-            return this.lHistoriaHotel;
-        }
-        #endregion
 
-        #region Métodos privados
-        private void inicializarHotel()
-        {
-            this.lHabitacion = new List<Habitacion>();
-            this.lHistoriaHotel = new List<HistorialHotel>();
-            this.lRegimen = new List<Regimen>();
-            this.crearHabitaciones();
-            this.crearRegimenes();
-        }
-
-        private void crearHabitaciones() 
-        {
-            
-        }
-
-        private void crearRegimenes()
-        {
-            
-        }
-
-        private void agregarRegistroAlHistorial(HistorialHotel regHistorial) 
-        {
-            this.lHistoriaHotel.Add(regHistorial);
-        }
-
-        #endregion
+      
     }
 }

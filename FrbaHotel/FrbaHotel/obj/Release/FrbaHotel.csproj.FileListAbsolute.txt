@@ -14,3 +14,4 @@ D:\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.ABM_de_Rol.AltaModif
 D:\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.ABM_de_Rol.Listado.resources
 D:\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.ABM_de_Usuario.frmABMUsuario.resources
 D:\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.ABM_de_Usuario.frmAltaModificacionUsuario.resources
+D:\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.ABM_de_Hotel.Listado.resources
