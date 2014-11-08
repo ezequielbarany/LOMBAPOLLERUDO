@@ -26,11 +26,16 @@ namespace FrbaHotel.ABM_de_Rol
             this.campo_habilitado.Checked = (bool)rolATocar.estado;
 
             //Lista de funcionalidades ya cargadas
+            listarTodasLasFuncionalideades();
+
             foreach (var funcionalidad in rolATocar.funcionalidades)
             {
-                this.lista_rolesDeRol.Items.Add(funcionalidad.descripcion);
+                if(this.listaRoles.Items.Contains(funcionalidad.descripcion)){
+                    int index=this.listaRoles.Items.IndexOf(funcionalidad.descripcion);
+                    this.listaRoles.SetItemCheckState(index, CheckState.Checked);
+                }
             }
-            listarTodasLasFuncionalideades();
+            
         }
 
         //Alta
@@ -47,9 +52,8 @@ namespace FrbaHotel.ABM_de_Rol
         {
             Funcionalidad auxFuncionalidad = new Funcionalidad();
             foreach(var funcionalidad in auxFuncionalidad.listarFuncionalidades()){
-                this.lista_rolesCargados.Items.Add(funcionalidad.descripcion);
+                this.listaRoles.Items.Add(funcionalidad.descripcion);
             }
-            
         }
             
         private void button_grabar_Click(object sender, EventArgs e)
@@ -59,30 +63,16 @@ namespace FrbaHotel.ABM_de_Rol
             rolATocar.estado = this.campo_habilitado.Checked;
             //Recupero las funcionalidades seleccionadas del rol
             rolATocar.funcionalidades = new List<Funcionalidad>();
-            for (int count = 0; count < this.lista_rolesDeRol.Items.Count; count++)
+
+            //for (int count = 0; count < this.listaRoles.Items.Count; count++)
+            foreach (var item in this.listaRoles.CheckedItems)
             {
-                Funcionalidad funcionalidadDataBase = new Funcionalidad(this.lista_rolesDeRol.Items[count].ToString());
+                Funcionalidad funcionalidadDataBase = new Funcionalidad(item.ToString());
                 rolATocar.funcionalidades.Add(funcionalidadDataBase);
             }
 
             rolATocar.grabarRol(rolATocar);
             this.Close();
         }
-
-        //Agrego la funcionalidad seleccionada al rol en la lista
-        private void button_agregarARol_Click(object sender, EventArgs e)
-        {
-            //Verifico que no este
-            if(!this.lista_rolesDeRol.Items.Contains(this.lista_rolesCargados.SelectedItem)){
-                this.lista_rolesDeRol.Items.Add(this.lista_rolesCargados.SelectedItem);
-            }
-        }
-
-        //Saco la funcionalidad seleccionada del rol en la lista
-        private void button_sacarDeRol_Click(object sender, EventArgs e)
-        {
-            this.lista_rolesDeRol.Items.Remove(this.lista_rolesDeRol.SelectedItem);
-        }
-
     }
 }

@@ -263,7 +263,7 @@
             this.Controls.Add(this.txtUsername);
             this.Name = "frmAltaModificacionUsuario";
             this.Text = "Alta/modificación usuario";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            //this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
