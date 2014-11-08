@@ -1,0 +1,3 @@
+Tabla reservaXconsumible cambió la estructura se agregó campo cantidadItems(tinyint)
+Tabla Clientes cambió la estructura se agregó campo tieneDuplicados(bit)
+Se creó Clientes_Error
