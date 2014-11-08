@@ -95,7 +95,7 @@ CREATE TABLE [dbo].[Factura](
 	[numeroFactura] [NUMERIC](18, 0) NOT NULL,
 	[fecha] [DATETIME] NULL,
 	[total] [NUMERIC](18, 2) NULL,
-	[codigoReserva] [NUMERIC](18, 0) NULL,
+	[codigoReserva] [NUMERIC](18, 0) NOT NULL,
 	[idMedioPago] [INT] NULL,
  CONSTRAINT [PK_Factura] PRIMARY KEY CLUSTERED 
 (
