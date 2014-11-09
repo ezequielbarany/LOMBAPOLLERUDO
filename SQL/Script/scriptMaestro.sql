@@ -871,6 +871,15 @@ FROM [GD2C2014].[gd_esquema].[Maestra] Mae
 				AND Mae.Hotel_Ciudad = hot.ciudad
 				AND Mae.Hotel_CantEstrella = hot.cantidadEstrellas
 ------------------------------------------------------------------------------------------------
+-- TABLA RESERVAxCLIENTE --
+------------------------------------------------------------------------------------------------
+INSERT INTO [dbo].[RESERVAxCLIENTE] 
+SELECT DISTINCT
+		[Reserva_Codigo]				AS codigoReserva
+		,[Cliente_Pasaporte_Nro]		AS numeroIdentificacion
+		,1								AS tipoIdentificacion
+FROM [GD2C2014].[gd_esquema].[Maestra]
+------------------------------------------------------------------------------------------------
 -- TABLA FACTURA --
 ------------------------------------------------------------------------------------------------
 INSERT INTO [dbo].[FACTURA] 
