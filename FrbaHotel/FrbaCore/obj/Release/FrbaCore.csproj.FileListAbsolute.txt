@@ -5,3 +5,6 @@ D:\LOMBAPOLLERUDO\FrbaHotel\FrbaCore\obj\Release\FrbaCore.dll
 D:\LOMBAPOLLERUDO\FrbaHotel\FrbaCore\obj\Release\FrbaCore.pdb
 C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaCore\obj\Release\ResolveAssemblyReference.cache
 C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaCore\obj\Release\FrbaCore.pdb
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaCore\bin\Release\FrbaCore.dll
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaCore\bin\Release\FrbaCore.pdb
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaCore\obj\Release\FrbaCore.dll

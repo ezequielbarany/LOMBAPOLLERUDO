@@ -25,3 +25,10 @@ C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.ABM_d
 C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.Form1.resources
 C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.Properties.Resources.resources
 C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.csproj.GenerateResource.Cache
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\bin\Release\FrbaHotel.exe.config
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\bin\Release\FrbaHotel.exe
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\bin\Release\FrbaHotel.pdb
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\bin\Release\FrbaCore.dll
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\bin\Release\FrbaCore.pdb
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.exe
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Release\FrbaHotel.pdb

@@ -75,35 +75,35 @@
             this.txtDireccion.Location = new System.Drawing.Point(98, 211);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(100, 20);
-            this.txtDireccion.TabIndex = 2;
+            this.txtDireccion.TabIndex = 8;
             // 
             // txtTelefono
             // 
             this.txtTelefono.Location = new System.Drawing.Point(317, 168);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(100, 20);
-            this.txtTelefono.TabIndex = 5;
+            this.txtTelefono.TabIndex = 7;
             // 
             // txtMail
             // 
             this.txtMail.Location = new System.Drawing.Point(98, 166);
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(100, 20);
-            this.txtMail.TabIndex = 4;
+            this.txtMail.TabIndex = 6;
             // 
             // txtNumeroDocumento
             // 
             this.txtNumeroDocumento.Location = new System.Drawing.Point(317, 120);
             this.txtNumeroDocumento.Name = "txtNumeroDocumento";
             this.txtNumeroDocumento.Size = new System.Drawing.Size(100, 20);
-            this.txtNumeroDocumento.TabIndex = 7;
+            this.txtNumeroDocumento.TabIndex = 5;
             // 
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(98, 75);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(100, 20);
-            this.txtNombre.TabIndex = 6;
+            this.txtNombre.TabIndex = 2;
             // 
             // labelNombre
             // 
@@ -202,7 +202,7 @@
             this.txtApellido.Location = new System.Drawing.Point(317, 77);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(100, 20);
-            this.txtApellido.TabIndex = 18;
+            this.txtApellido.TabIndex = 3;
             // 
             // label8
             // 
@@ -227,7 +227,7 @@
             this.txtTipoDocumento.Location = new System.Drawing.Point(98, 120);
             this.txtTipoDocumento.Name = "txtTipoDocumento";
             this.txtTipoDocumento.Size = new System.Drawing.Size(100, 20);
-            this.txtTipoDocumento.TabIndex = 20;
+            this.txtTipoDocumento.TabIndex = 4;
             // 
             // dtpFechaNacimiento
             // 
@@ -236,7 +236,7 @@
             this.dtpFechaNacimiento.Location = new System.Drawing.Point(318, 211);
             this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
             this.dtpFechaNacimiento.Size = new System.Drawing.Size(99, 20);
-            this.dtpFechaNacimiento.TabIndex = 22;
+            this.dtpFechaNacimiento.TabIndex = 9;
             // 
             // chkListHoteles
             // 

@@ -16,14 +16,7 @@ namespace FrbaHotel.ABM_de_Usuario
         public frmAltaModificacionUsuario()
         {
             InitializeComponent();
-        }
-
-        private void frmAltaModificacionUsuario_Load(object sender, EventArgs e)
-        {
-            Rol rol = new Rol();
-            ((ListBox)chkListRoles).ValueMember = "Id";
-            ((ListBox)chkListRoles).DisplayMember = "Descipcion";
-            ((ListBox)chkListRoles).DataSource = rol.listarRoles();
+            llenarListas();
         }
 
         public frmAltaModificacionUsuario(string username)
@@ -40,6 +33,45 @@ namespace FrbaHotel.ABM_de_Usuario
             txtTelefono.Text = usuario.tel;
             txtDireccion.Text = usuario.direccion;
             dtpFechaNacimiento.Value = (DateTime)usuario.fechaNacimiento;
+            llenarListas();
+
+            foreach (var rol in usuario.Roles)
+            {
+                if (this.chkListRoles.Items.Contains(rol))
+                {
+                    int index = this.chkListRoles.Items.IndexOf(rol);
+                    this.chkListRoles.SetItemCheckState(index, CheckState.Checked);
+                }
+            }
+
+            foreach (var hotel in usuario.Hoteles)
+            {
+                if (this.chkListHoteles.Items.Contains(hotel))
+                {
+                    int index = this.chkListHoteles.Items.IndexOf(hotel);
+                    this.chkListHoteles.SetItemCheckState(index, CheckState.Checked);
+                }
+            }
+        }
+
+        private void llenarListas()
+        {
+            Rol auxRol = new Rol();
+
+            foreach (var rol in auxRol.listarRoles())
+            {
+                this.chkListRoles.Items.Add(rol);
+            }
+            this.chkListRoles.DisplayMember = "nombre";
+
+            Hotel auxHotel = new Hotel();
+
+            foreach (Hotel hotel in auxHotel.listarHoteles())
+            {
+                this.chkListHoteles.Items.Add(hotel);
+            }
+            this.chkListHoteles.DisplayMember = "nombre";
+            
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -59,20 +91,19 @@ namespace FrbaHotel.ABM_de_Usuario
                 usuario.fechaNacimiento = dtpFechaNacimiento.Value;
                 usuario.Roles = new List<Rol>();
 
-                foreach (DataRowView rolSeleccionado in chkListRoles.CheckedItems)
+                foreach (Rol rolSeleccionado in chkListRoles.CheckedItems)
                 {
-                    Rol rol = new Rol((int)rolSeleccionado["Id"]);
-                    usuario.Roles.Add(rol);
+                    usuario.Roles.Add(rolSeleccionado);
                 }
 
                 usuario.Hoteles = new List<Hotel>();
-                foreach (DataRowView hotelSeleccionado in chkListHoteles.CheckedItems)
+                foreach (Hotel hotelSeleccionado in chkListHoteles.CheckedItems)
                 {
-                    Hotel hotel = new Hotel((int)hotelSeleccionado["Id"]);
-                    usuario.Hoteles.Add(hotel);
+                    usuario.Hoteles.Add(hotelSeleccionado);
                 }
 
                 usuario.grabar(usuario);
+                this.DialogResult = DialogResult.OK;
             }
         }
 
@@ -86,9 +117,7 @@ namespace FrbaHotel.ABM_de_Usuario
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult = DialogResult.Cancel;
         }
-
-
     }
 }

@@ -31,6 +31,9 @@ namespace FrbaCore
             this.tel = dataBaseUsuario.tel;
             this.direccion = dataBaseUsuario.direccion;
             this.fechaNacimiento = dataBaseUsuario.fechaNacimiento;
+            this.baja = dataBaseUsuario.baja;
+            this.Roles = new List<Rol>();
+            this.Hoteles = new List<Hotel>();
 
             //Llena los roles del usuario
             List<RolxUsuario> rolesPorUsuario = new List<RolxUsuario>();
@@ -50,10 +53,15 @@ namespace FrbaCore
             }
         }
 
+        public List<Usuario> listarUsuarios()
+        {
+            return DataContextSingleton.Connection.Usuario.ToList().Where(x=> x.baja == false).ToList();
+        }
+
         public void grabar(Usuario usuario)
         {
             DataTable tablaRoles = new DataTable();
-            DataColumn idRoles = new DataColumn("idRoles", typeof(int));
+            DataColumn idRoles = new DataColumn("idRol", typeof(int));
             tablaRoles.Columns.Add(idRoles);
             tablaRoles.Clear();
 
@@ -65,7 +73,7 @@ namespace FrbaCore
             }
             
             DataTable tablaHoteles = new DataTable();
-            DataColumn idHoteles = new DataColumn("idHoteles", typeof(int));
+            DataColumn idHoteles = new DataColumn("idHotel", typeof(int));
             tablaHoteles.Columns.Add(idHoteles);
             tablaHoteles.Clear();
 
@@ -79,7 +87,7 @@ namespace FrbaCore
             DataContextSingleton.Connection.AltaModificacionUsuario(usuario, tablaRoles, tablaHoteles);
         }
 
-        public void baja()
+        public void darBaja()
         {
 
         }

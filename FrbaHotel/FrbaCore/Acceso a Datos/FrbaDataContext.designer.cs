@@ -319,7 +319,7 @@ namespace FrbaCore
         public void AltaModificacionUsuario(Usuario usuario, DataTable valoresFKRol, DataTable valoresFKHotel)
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["FRBAHOTEL_DATABASE"].ConnectionString);
-            SqlCommand cmd = new SqlCommand("dbo.AltaModificacionUsuario", conn);
+            SqlCommand cmd = new SqlCommand("dbo.Usuario_UI", conn);
             cmd.CommandType = CommandType.StoredProcedure;
 
             SqlParameter tablaRolXUsuarioParameter = new SqlParameter("@idRolList", valoresFKRol);
@@ -345,7 +345,6 @@ namespace FrbaCore
             SqlDataReader reader = cmd.ExecuteReader();
             conn.Close();
         }
-
 
     }
 
@@ -3269,6 +3268,8 @@ namespace FrbaCore
 
         private System.Nullable<System.DateTime> _fechaNacimiento;
 
+        private System.Nullable<bool> _baja;
+
         #region Definiciones de métodos de extensibilidad
         partial void OnLoaded();
         partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -3295,6 +3296,9 @@ namespace FrbaCore
         partial void OndireccionChanged();
         partial void OnfechaNacimientoChanging(System.Nullable<System.DateTime> value);
         partial void OnfechaNacimientoChanged();
+        partial void OnbajaChanging(System.Nullable<bool> value);
+        partial void OnbajaChanged();
+
         #endregion
 
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_username", DbType = "NVarChar(50) NOT NULL", CanBeNull = false, IsPrimaryKey = true)]
@@ -3513,6 +3517,26 @@ namespace FrbaCore
                     this._fechaNacimiento = value;
                     this.SendPropertyChanged("fechaNacimiento");
                     this.OnfechaNacimientoChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_baja", DbType = "Bit")]
+        public System.Nullable<bool> baja
+        {
+            get
+            {
+                return this._baja;
+            }
+            set
+            {
+                if ((this._baja != value))
+                {
+                    this.OnbajaChanging(value);
+                    this.SendPropertyChanging();
+                    this._baja = value;
+                    this.SendPropertyChanged("baja");
+                    this.OnbajaChanged();
                 }
             }
         }

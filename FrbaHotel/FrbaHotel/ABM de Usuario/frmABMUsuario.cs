@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FrbaCore;
 
 namespace FrbaHotel.ABM_de_Usuario
 {
@@ -14,13 +15,16 @@ namespace FrbaHotel.ABM_de_Usuario
         public frmABMUsuario()
         {
             InitializeComponent();
+
+            this.refrescarGrilla();
         }
 
         private void btnAlta_Click(object sender, EventArgs e)
         {
-            frmAltaModificacionUsuario frmAltaMod = new frmAltaModificacionUsuario();
+            frmAltaModificacionUsuario frmAlta = new frmAltaModificacionUsuario();
 
-            frmAltaMod.ShowDialog();
+            frmAlta.ShowDialog();
+            this.refrescarGrilla();
         }
 
         private void btnBaja_Click(object sender, EventArgs e)
@@ -32,9 +36,22 @@ namespace FrbaHotel.ABM_de_Usuario
         {
             if (gridUsuarios.SelectedRows.Count == 1)
             {
-                int idSeleccionado = (int)gridUsuarios.SelectedCells[0].Value;
+                string usernameSeleccionado = gridUsuarios.SelectedCells[0].Value.ToString();
+                frmAltaModificacionUsuario frmMod = new frmAltaModificacionUsuario(usernameSeleccionado);
 
+                frmMod.ShowDialog();
+
+                if (frmMod.DialogResult == DialogResult.OK)
+                {
+                    this.refrescarGrilla();
+                }
             }
+        }
+
+        private void refrescarGrilla()
+        {
+            Usuario usuario = new Usuario();
+            this.gridUsuarios.DataSource = usuario.listarUsuarios();
         }
     }
 }
