@@ -439,6 +439,7 @@ CREATE TABLE [dbo].[Usuario](
 	[tel] [NVARCHAR](50) NULL,
 	[direccion] [NVARCHAR](50) NULL,
 	[fechaNacimiento] [DATETIME] NULL,
+	[baja] [Bit] NULL
  CONSTRAINT [PK_Usuario] PRIMARY KEY CLUSTERED 
 (
 	[username] ASC
