@@ -31,6 +31,8 @@
             this.ABM_Cliente = new System.Windows.Forms.Button();
             this.ABM_Roles = new System.Windows.Forms.Button();
             this.btnABMUsuario = new System.Windows.Forms.Button();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ABM_Cliente
@@ -63,11 +65,33 @@
             this.btnABMUsuario.UseVisualStyleBackColor = true;
             this.btnABMUsuario.Click += new System.EventHandler(this.btnABMUsuario_Click);
             // 
+            // btnLogin
+            // 
+            this.btnLogin.Location = new System.Drawing.Point(373, 12);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(82, 23);
+            this.btnLogin.TabIndex = 3;
+            this.btnLogin.Text = "LOGIN";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.Location = new System.Drawing.Point(482, 12);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(82, 23);
+            this.btnLogout.TabIndex = 4;
+            this.btnLogout.Text = "LOGOUT";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(576, 405);
+            this.Controls.Add(this.btnLogout);
+            this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.btnABMUsuario);
             this.Controls.Add(this.ABM_Roles);
             this.Controls.Add(this.ABM_Cliente);
@@ -82,6 +106,8 @@
         private System.Windows.Forms.Button ABM_Cliente;
         private System.Windows.Forms.Button ABM_Roles;
         private System.Windows.Forms.Button btnABMUsuario;
+        private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Button btnLogout;
     }
 }
 

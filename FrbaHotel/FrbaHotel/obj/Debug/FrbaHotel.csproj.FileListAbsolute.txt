@@ -31,3 +31,4 @@ C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_
 C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.Form1.resources
 C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.Properties.Resources.resources
 C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.csproj.GenerateResource.Cache
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.Login.Login.resources

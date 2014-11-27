@@ -57,6 +57,7 @@
     <Compile Include="Clases\Cliente.cs" />
     <Compile Include="Clases\Consumibles.cs" />
     <Compile Include="Clases\DataContextSingleton.cs" />
+    <Compile Include="Clases\Enumeraciones.cs" />
     <Compile Include="Clases\EstadoReserva.cs" />
     <Compile Include="Clases\EstadoReservaCanceladaCliente.cs" />
     <Compile Include="Clases\EstadoReservaCanceladaNoShow.cs" />

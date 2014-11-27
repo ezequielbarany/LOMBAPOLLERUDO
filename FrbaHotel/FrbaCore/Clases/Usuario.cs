@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 
+
 namespace FrbaCore
 {
     public partial class Usuario
@@ -90,6 +91,22 @@ namespace FrbaCore
         public void darBaja()
         {
 
+        }
+
+        public bool esGuest() 
+        {
+            foreach (Rol rol in this.Roles)
+            {
+                if (rol.idRol == (int)FrbaCore.Clases.Enumeraciones.enumTipoRol.guest)
+                    return true;
+            }
+
+            return false;
+        }
+
+        public bool TienePermiso()
+        {
+            return !this.esGuest();
         }
     }
 }
