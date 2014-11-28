@@ -10,9 +10,9 @@ using FrbaCore;
 
 namespace FrbaHotel
 {
-    public partial class Form1 : Form
+    public partial class frmPrincipal : Form
     {
-        public Form1()
+        public frmPrincipal()
         {
             InitializeComponent();
             DeshabilitarFuncionalidades();
@@ -42,6 +42,7 @@ namespace FrbaHotel
             login.ShowDialog();
             if (login.DialogResult == DialogResult.OK)
             {
+                DeshabilitarFuncionalidades();
                 HabilitarFuncionalidades(login.rolElegido);
             }
         }
@@ -57,6 +58,10 @@ namespace FrbaHotel
             {
                 btnABMUsuario.Enabled = true;
                 ABM_Roles.Enabled = true;
+                
+            }
+            else if (rolElegido.esRolRecepcionista(rolElegido))
+            {
                 ABM_Cliente.Enabled = true;
             }
         }

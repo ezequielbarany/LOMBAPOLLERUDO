@@ -73,5 +73,10 @@ namespace FrbaCore
         {
             return rol.idRol == (int)FrbaCore.Clases.Enumeraciones.enumTipoRol.administrador;
         }
+
+        public bool esRolRecepcionista(Rol rol)
+        {
+            return rol.idRol == (int)FrbaCore.Clases.Enumeraciones.enumTipoRol.recepcionista;
+        }
     }
 }

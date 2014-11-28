@@ -28,8 +28,8 @@ C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_
 C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Rol.Listado.resources
 C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Usuario.frmABMUsuario.resources
 C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Usuario.frmAltaModificacionUsuario.resources
-C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.Form1.resources
 C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.Properties.Resources.resources
 C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.csproj.GenerateResource.Cache
 C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.Login.Login.resources
 C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.Login.frmEleccionRol.resources
+C:\LOMBAPOLLERUDO\LOMBAPOLLERUDO\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.frmPrincipal.resources
