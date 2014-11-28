@@ -68,7 +68,10 @@ namespace FrbaCore
             DataContextSingleton.Connection.AltaModificacionRol(rol, dataTableFuncionalidades);
             return true;
         }
-        
 
+        public bool esRolAdministrador(Rol rol)
+        {
+            return rol.idRol == (int)FrbaCore.Clases.Enumeraciones.enumTipoRol.administrador;
+        }
     }
 }

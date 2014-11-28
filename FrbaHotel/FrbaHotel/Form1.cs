@@ -42,7 +42,7 @@ namespace FrbaHotel
             login.ShowDialog();
             if (login.DialogResult == DialogResult.OK)
             {
-                HabilitarFuncionalidades(login.user);
+                HabilitarFuncionalidades(login.rolElegido);
             }
         }
 
@@ -51,9 +51,9 @@ namespace FrbaHotel
             DeshabilitarFuncionalidades();
         }
 
-        private void HabilitarFuncionalidades(Usuario usuario)
+        private void HabilitarFuncionalidades(Rol rolElegido)
         {
-            if (usuario.TienePermiso())
+            if (rolElegido.esRolAdministrador(rolElegido))
             {
                 btnABMUsuario.Enabled = true;
                 ABM_Roles.Enabled = true;

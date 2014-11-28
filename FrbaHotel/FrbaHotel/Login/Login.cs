@@ -12,8 +12,9 @@ namespace FrbaHotel.Login
 {
     public partial class Login : Form
     {
-        public Usuario user { get; set; }
+        private Usuario user { get; set; }
         private int intentosFallidos { get; set; }
+        public Rol rolElegido { get; set; }
 
         public Login()
         {
@@ -24,9 +25,21 @@ namespace FrbaHotel.Login
         {
             if (verificarUsuario())
             {
-                //Si lo es, habilitar los controles que corresponden.
+                //Si tiene un solo rol, entra directamente con ese.
+                if (user.Roles.Count == 1)
+                {
+                    this.rolElegido = new Rol(user.Roles.First().idRol);
+                }
+                else
+                {
+                    frmEleccionRol frm = new frmEleccionRol(user);
+                    frm.ShowDialog();
+                    if (frm.DialogResult == DialogResult.OK)
+                        this.rolElegido = frm.rolElegido;
+                }
+
                 this.DialogResult = DialogResult.OK;
-            }           
+            }
         }
 
         private bool verificarUsuario()
@@ -41,12 +54,13 @@ namespace FrbaHotel.Login
             if (usuario.password == txtPassword.Text)
             {
                 this.user = usuario;
+                //Limpiar los intentos fallidos de la base
                 return true;
             }
             else
             {
                 this.intentosFallidos++;
-                //Falta actualizar los de la base
+                //Falta actualizar los intentos fallidos de la base
                 if (this.intentosFallidos >= 3)
                     usuario.darBaja();
             }
@@ -56,7 +70,7 @@ namespace FrbaHotel.Login
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }

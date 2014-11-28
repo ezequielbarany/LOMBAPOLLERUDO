@@ -93,20 +93,20 @@ namespace FrbaCore
 
         }
 
-        public bool esGuest() 
-        {
-            foreach (Rol rol in this.Roles)
-            {
-                if (rol.idRol == (int)FrbaCore.Clases.Enumeraciones.enumTipoRol.guest)
-                    return true;
-            }
+        //public bool esAdministrador() 
+        //{
+        //    foreach (Rol rol in this.Roles)
+        //    {
+        //        if (rol.idRol == (int)FrbaCore.Clases.Enumeraciones.enumTipoRol.administrador)
+        //            return true;
+        //    }
 
-            return false;
-        }
+        //    return false;
+        //}
 
-        public bool TienePermiso()
-        {
-            return !this.esGuest();
-        }
+        //public bool tienePermisoDeAdministrador(Rol rol)
+        //{
+        //    return rol.idRol == (int)FrbaCore.Clases.Enumeraciones.enumTipoRol.administrador;
+        //}
     }
 }
