@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,24 +19,43 @@ namespace FrbaHotel.ABM_de_Cliente
             //Lleno los campos de la grilla
             Cliente clienteAux = new Cliente();
 
-            List<Cliente> clientes = new List<Cliente>();
-            clientes=clienteAux.dameClientesSelect();
-            this.gridClientes.DataSource = clientes;
+            this.gridClientes.DataSource = clienteAux.listarClientes();
         }
 
+        //Buscar
         private void button_buscar_Click(object sender, EventArgs e)
         {
+            //Busco con filtros
             Cliente clienteAux = new Cliente();
-
-            List<Cliente> clientes = new List<Cliente>();
-            //clientes = clienteAux.buscarClientes("cliente 1", this.filtro_apellido.ToString(), null, null, null);
-            clientes = clienteAux.buscarClientes(this.filtro_nombre.Text,this.filtro_apellido.Text,this.filtro_tipoIdentificacion.Text,this.filtro_numeroIdentificacion.Text,this.filtro_email.Text);
-            this.gridClientes.DataSource = clientes;
+            //clientes = clienteAux.buscarClientes(this.filtro_nombre.Text,this.filtro_apellido.Text,this.filtro_tipoIdentificacion.Text,this.filtro_numeroIdentificacion.Text,this.filtro_email.Text);
+            this.gridClientes.DataSource = clienteAux.listarClientes(this.filtro_nombre.Text, this.filtro_apellido.Text, this.filtro_tipoIdentificacion.Text, this.filtro_numeroIdentificacion.Text, this.filtro_email.Text);
         }
 
-        
 
- 
+
+
+
+
+        /*
+        //Modificar
+        private void button_modificar_Click(object sender, EventArgs e)
+        {
+            //Obtengo id del rol seleccionado
+            DataGridViewRow row = this.gridRol.SelectedRows[0];
+
+            FrbaHotel.ABM_de_Rol.AltaModificacion form1 = new FrbaHotel.ABM_de_Rol.AltaModificacion(Int32.Parse(row.Cells["idRol"].Value.ToString()));
+            form1.Show();
+
+        }
+
+        //Alta
+        private void button_agregar_Click(object sender, EventArgs e)
+        {
+            FrbaHotel.ABM_de_Rol.AltaModificacion form1 = new FrbaHotel.ABM_de_Rol.AltaModificacion();
+            form1.Show();
+        }*/
+
+        
 
   
 
