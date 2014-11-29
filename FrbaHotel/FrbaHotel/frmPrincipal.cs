@@ -16,7 +16,7 @@ namespace FrbaHotel
         {
             InitializeComponent();
             DeshabilitarFuncionalidades();
-        }        
+        }
 
         private void ABM_Cliente_Click(object sender, EventArgs e)
         {
@@ -54,16 +54,10 @@ namespace FrbaHotel
 
         private void HabilitarFuncionalidades(Rol rolElegido)
         {
-            if (rolElegido.esRolAdministrador(rolElegido))
-            {
-                btnABMUsuario.Enabled = true;
-                ABM_Roles.Enabled = true;
-                
-            }
-            else if (rolElegido.esRolRecepcionista(rolElegido))
-            {
-                ABM_Cliente.Enabled = true;
-            }
+            btnABMUsuario.Enabled = rolElegido.tieneFuncionalidad("ABMUsuario");
+            ABM_Roles.Enabled = rolElegido.tieneFuncionalidad("ABMRol");
+            ABM_Cliente.Enabled = rolElegido.tieneFuncionalidad("ABMCliente");
+
         }
 
         private void DeshabilitarFuncionalidades()
@@ -71,6 +65,6 @@ namespace FrbaHotel
             btnABMUsuario.Enabled = false;
             ABM_Roles.Enabled = false;
             ABM_Cliente.Enabled = false;
-        }       
+        }
     }
 }

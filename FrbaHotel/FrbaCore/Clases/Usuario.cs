@@ -35,6 +35,7 @@ namespace FrbaCore
             this.baja = dataBaseUsuario.baja;
             this.Roles = new List<Rol>();
             this.Hoteles = new List<Hotel>();
+            this.intentosFallidos = dataBaseUsuario.intentosFallidos;
 
             //Llena los roles del usuario
             List<RolxUsuario> rolesPorUsuario = new List<RolxUsuario>();
@@ -90,23 +91,23 @@ namespace FrbaCore
 
         public void darBaja()
         {
-
+            Usuario user = DataContextSingleton.Connection.Usuario.Where(x => x.username == this.username).FirstOrDefault();
+            user.baja = true;
+            DataContextSingleton.Connection.SubmitChanges();
         }
 
-        //public bool esAdministrador() 
-        //{
-        //    foreach (Rol rol in this.Roles)
-        //    {
-        //        if (rol.idRol == (int)FrbaCore.Clases.Enumeraciones.enumTipoRol.administrador)
-        //            return true;
-        //    }
+        public void fallaLogin() 
+        {
+            Usuario dataBaseUsuario = DataContextSingleton.Connection.Usuario.Where(x => x.username == this.username).FirstOrDefault();
+            dataBaseUsuario.intentosFallidos++;
+            DataContextSingleton.Connection.SubmitChanges();
+        }
 
-        //    return false;
-        //}
-
-        //public bool tienePermisoDeAdministrador(Rol rol)
-        //{
-        //    return rol.idRol == (int)FrbaCore.Clases.Enumeraciones.enumTipoRol.administrador;
-        //}
+        public void reiniciarFallasLogin()
+        {
+            Usuario dataBaseUsuario = DataContextSingleton.Connection.Usuario.Where(x => x.username == this.username).FirstOrDefault();
+            dataBaseUsuario.intentosFallidos = 0;
+            DataContextSingleton.Connection.SubmitChanges();
+        }
     }
 }

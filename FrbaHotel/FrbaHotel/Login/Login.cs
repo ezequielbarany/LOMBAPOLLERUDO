@@ -13,7 +13,6 @@ namespace FrbaHotel.Login
     public partial class Login : Form
     {
         private Usuario user { get; set; }
-        private int intentosFallidos { get; set; }
         public Rol rolElegido { get; set; }
 
         public Login()
@@ -45,23 +44,21 @@ namespace FrbaHotel.Login
         private bool verificarUsuario()
         {
             Usuario usuario = new Usuario();
-            usuario = usuario.listarUsuarios().Where(x=> x.username == txtUsuario.Text).SingleOrDefault();
+            usuario = usuario.listarUsuarios().Where(x => x.username == txtUsuario.Text).FirstOrDefault();
             if (usuario == null)
                 return false;
 
             usuario = new Usuario(usuario.username);
-            this.intentosFallidos = Convert.ToInt32(usuario.intentosFallidos == null ? 0 : usuario.intentosFallidos);
             if (usuario.password == txtPassword.Text)
             {
                 this.user = usuario;
-                //Limpiar los intentos fallidos de la base
+                usuario.reiniciarFallasLogin();
                 return true;
             }
             else
             {
-                this.intentosFallidos++;
-                //Falta actualizar los intentos fallidos de la base
-                if (this.intentosFallidos >= 3)
+                usuario.fallaLogin();
+                if (usuario.intentosFallidos >= 3)
                     usuario.darBaja();
             }
 

@@ -29,7 +29,13 @@ namespace FrbaHotel.ABM_de_Usuario
 
         private void btnBaja_Click(object sender, EventArgs e)
         {
-
+            if (gridUsuarios.SelectedRows.Count == 1)
+            {
+                string usernameSeleccionado = gridUsuarios.SelectedCells[0].Value.ToString();
+                Usuario usuario = new Usuario(usernameSeleccionado);
+                usuario.darBaja();
+                this.refrescarGrilla();
+            }
         }
 
         private void gridUsuarios_Click(object sender, EventArgs e)

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using FrbaCore;
-
+using System.Security.Cryptography;
 
 namespace FrbaHotel.ABM_de_Usuario
 {
