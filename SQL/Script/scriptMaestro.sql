@@ -2,13 +2,109 @@
 GO
 SET NOCOUNT ON
 GO
+BEGIN TRANSACTION TOTAL
+GO
+BEGIN TRANSACTION
+GO
+	
+	/* Creacion de SCHEMA */
+CREATE SCHEMA LOMBAPOLLERUDO 
+GO 
+COMMIT TRANSACTION
+GO
 BEGIN TRANSACTION
 GO
 	
 	/* Creacion de TABLAS */
+
+----------------------------------------------------------------------------------------------------------------
+-- USUARIO --
+CREATE TABLE [LOMBAPOLLERUDO].[Usuario](
+	[username] [NVARCHAR](50) NOT NULL,
+	[password] [NVARCHAR](MAX) NULL,
+	[intentosFallidos] [INT] DEFAULT 0 NULL,
+	[documento] [NVARCHAR](50) NULL,
+	[tipoDocumento] [NVARCHAR](50) NULL,
+	[nombre] [NVARCHAR](50) NULL,
+	[apellido] [NVARCHAR](50) NULL,
+	[mail] [NVARCHAR](50) NULL,
+	[tel] [NVARCHAR](50) NULL,
+	[direccion] [NVARCHAR](50) NULL,
+	[fechaNacimiento] [DATETIME] NULL,
+	[baja] [Bit] DEFAULT 0 NULL
+ CONSTRAINT [PK_Usuario] PRIMARY KEY CLUSTERED 
+(
+	[username] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+----------------------------------------------------------------------------------------------------------------
+-- TIPODEHABITACION --
+CREATE TABLE [LOMBAPOLLERUDO].[TipoDeHabitacion](
+	[idTipoHabitacion] [NUMERIC](18, 0) NOT NULL,
+	[descripcion] [NVARCHAR](255) NULL,
+	[tipoPorcentual] [NUMERIC](18, 2) NULL,
+	[capacidad] [INT] NULL,
+ CONSTRAINT [PK_TipoDeHabitacion] PRIMARY KEY CLUSTERED 
+(
+	[idTipoHabitacion] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+----------------------------------------------------------------------------------------------------------------
+-- HOTEL --
+CREATE TABLE [LOMBAPOLLERUDO].[Hotel](
+	[idHotel] [INT] IDENTITY(1,1) NOT NULL,
+	[nombre] [NVARCHAR](255) NULL,
+	[mail] [NVARCHAR](255) NULL,
+	[telefono] [NVARCHAR](255) NULL,
+	[calle] [NVARCHAR](255) NULL,
+	[nroCalle] [NUMERIC](18, 0) NULL,
+	[cantidadEstrellas] [NUMERIC](18, 0) NULL,
+	[ciudad] [NVARCHAR](255) NULL,
+	[pais] [NVARCHAR](255) NULL,
+	[recargaEstrella] [NUMERIC](18, 0) NULL,
+	[fechaCreacion] [DATETIME] NULL,
+ CONSTRAINT [PK_Hotel] PRIMARY KEY CLUSTERED 
+(
+	[idHotel] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+----------------------------------------------------------------------------------------------------------------
+-- MEDIODEPAGO --
+CREATE TABLE [LOMBAPOLLERUDO].[MedioDePago](
+	[idMedioPago] [INT] IDENTITY(1,1) NOT NULL,
+	[descripcion] [NVARCHAR](255) NULL,
+	[numeroTarjeta] [NVARCHAR](255) NULL,
+ CONSTRAINT [PK_MedioDePago] PRIMARY KEY CLUSTERED 
+(
+	[idMedioPago] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+	
+----------------------------------------------------------------------------------------------------------------
+-- TIPOIDENTIFICACION --
+CREATE TABLE [LOMBAPOLLERUDO].[TipoIdentificacion](
+	[tipoIdentificacion] [INT] IDENTITY(1,1) NOT NULL,
+	[descripcionCorta] [NVARCHAR](5) NULL,
+	[descripcionLarga] [NVARCHAR](50) NULL,
+ CONSTRAINT [PK_TipoIdentificacion] PRIMARY KEY CLUSTERED 
+(
+	[tipoIdentificacion] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+	
 ----------------------------------------------------------------------------------------------------------------
 -- CLIENTE --
-CREATE TABLE [dbo].[Cliente](
+CREATE TABLE [LOMBAPOLLERUDO].[Cliente](
 	[numeroIdentificacion] [NUMERIC](18, 0) NOT NULL,
 	[tipoIdentificacion] [INT] NOT NULL,
 	[nombre] [NVARCHAR](255) NULL,
@@ -28,24 +124,24 @@ CREATE TABLE [dbo].[Cliente](
 (
 	[numeroIdentificacion] ASC,
 	[tipoIdentificacion] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY],
- CONSTRAINT [UQ__Cliente__mail] UNIQUE NONCLUSTERED 
-(
-	[mail] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+-- ,CONSTRAINT [UQ__Cliente__mail] UNIQUE NONCLUSTERED 
+--(
+--	[mail] ASC
+--)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/*
-ALTER TABLE [dbo].[Cliente]  WITH CHECK ADD  CONSTRAINT [FK_Cliente_TipoIdentificacion] FOREIGN KEY([tipoIdentificacion])
-REFERENCES [dbo].[TipoIdentificacion] ([tipoIdentificacion])
+
+ALTER TABLE [LOMBAPOLLERUDO].[Cliente]  WITH CHECK ADD  CONSTRAINT [FK_Cliente_TipoIdentificacion] FOREIGN KEY([tipoIdentificacion])
+REFERENCES [LOMBAPOLLERUDO].[TipoIdentificacion] ([tipoIdentificacion])
 GO
-ALTER TABLE [dbo].[Cliente] CHECK CONSTRAINT [FK_Cliente_TipoIdentificacion]
+ALTER TABLE [LOMBAPOLLERUDO].[Cliente] CHECK CONSTRAINT [FK_Cliente_TipoIdentificacion]
 GO
-*/
+
 
 ----------------------------------------------------------------------------------------------------------------
 -- CLIENTE_ERROR --
-CREATE TABLE [dbo].[Cliente_ERROR](
+CREATE TABLE [LOMBAPOLLERUDO].[Cliente_ERROR](
 	[numeroIdentificacion] [NUMERIC](18, 0) NOT NULL,
 	[tipoIdentificacion] [INT] NOT NULL,
 	[nombre] [NVARCHAR](255) NULL,
@@ -64,7 +160,7 @@ CREATE TABLE [dbo].[Cliente_ERROR](
 ----------------------------------------------------------------------------------------------------------------
 -- CONSUMIBLE --
 
-CREATE TABLE [dbo].[Consumible](
+CREATE TABLE [LOMBAPOLLERUDO].[Consumible](
 	[codigo] [NUMERIC](18, 0) NOT NULL,
 	[descripcion] [NVARCHAR](255) NOT NULL,
 	[precio] [NUMERIC](18, 2) NOT NULL,
@@ -75,11 +171,9 @@ CREATE TABLE [dbo].[Consumible](
 ) ON [PRIMARY]
 
 
-
-
 ----------------------------------------------------------------------------------------------------------------
 -- ESTADORESERVA --
-CREATE TABLE [dbo].[EstadoReserva](
+CREATE TABLE [LOMBAPOLLERUDO].[EstadoReserva](
 	[idEstado] [INT] IDENTITY(1,1) NOT NULL,
 	[descripcion] [NVARCHAR](255) NULL,
  CONSTRAINT [PK_EstadoReserva}] PRIMARY KEY CLUSTERED 
@@ -90,35 +184,8 @@ CREATE TABLE [dbo].[EstadoReserva](
 
 
 ----------------------------------------------------------------------------------------------------------------
--- FACTURA --
-CREATE TABLE [dbo].[Factura](
-	[numeroFactura] [NUMERIC](18, 0) NOT NULL,
-	[fecha] [DATETIME] NULL,
-	[total] [NUMERIC](18, 2) NULL,
-	[codigoReserva] [NUMERIC](18, 0) NOT NULL,
-	[idMedioPago] [INT] NULL,
- CONSTRAINT [PK_Factura] PRIMARY KEY CLUSTERED 
-(
-	[numeroFactura] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/*
-ALTER TABLE [dbo].[Factura]  WITH CHECK ADD  CONSTRAINT [FK_Factura_MedioDePago] FOREIGN KEY([idMedioPago])
-REFERENCES [dbo].[MedioDePago] ([idMedioPago])
-GO
-ALTER TABLE [dbo].[Factura] CHECK CONSTRAINT [FK_Factura_MedioDePago]
-GO
-ALTER TABLE [dbo].[Factura]  WITH CHECK ADD  CONSTRAINT [FK_Factura_Reserva] FOREIGN KEY([numeroFactura])
-REFERENCES [dbo].[Reserva] ([codigoReserva])
-GO
-ALTER TABLE [dbo].[Factura] CHECK CONSTRAINT [FK_Factura_Reserva]
-GO
-*/
-
-----------------------------------------------------------------------------------------------------------------
 -- FUNCIONALIDAD --
-CREATE TABLE [dbo].[Funcionalidad](
+CREATE TABLE [LOMBAPOLLERUDO].[Funcionalidad](
 	[idFuncionalidad] [INT] IDENTITY(1,1) NOT NULL,
 	[descripcion] [NVARCHAR](255) NULL,
  CONSTRAINT [PK_Funcionalidad] PRIMARY KEY CLUSTERED 
@@ -135,7 +202,7 @@ GO
 
 ----------------------------------------------------------------------------------------------------------------
 -- HABITACION --
-CREATE TABLE [dbo].[Habitacion](
+CREATE TABLE [LOMBAPOLLERUDO].[Habitacion](
 	[idHotel] [INT]  NOT NULL,
 	[numeroHabitacion] [NUMERIC](18, 0) NOT NULL,
 	[piso] [NUMERIC](18, 0) NULL,
@@ -152,22 +219,22 @@ CREATE TABLE [dbo].[Habitacion](
 ) ON [PRIMARY]
 
 GO
-/*
-ALTER TABLE [dbo].[Habitacion]  WITH CHECK ADD  CONSTRAINT [FK_Habitacion_Hotel] FOREIGN KEY([idHotel])
-REFERENCES [dbo].[Hotel] ([idHotel])
+
+ALTER TABLE [LOMBAPOLLERUDO].[Habitacion]  WITH CHECK ADD  CONSTRAINT [FK_Habitacion_Hotel] FOREIGN KEY([idHotel])
+REFERENCES [LOMBAPOLLERUDO].[Hotel] ([idHotel])
 GO
-ALTER TABLE [dbo].[Habitacion] CHECK CONSTRAINT [FK_Habitacion_Hotel]
+ALTER TABLE [LOMBAPOLLERUDO].[Habitacion] CHECK CONSTRAINT [FK_Habitacion_Hotel]
 GO
-ALTER TABLE [dbo].[Habitacion]  WITH CHECK ADD  CONSTRAINT [FK_Habitacion_TipoDeHabitacion] FOREIGN KEY([idTipoHabitacion])
-REFERENCES [dbo].[TipoDeHabitacion] ([idTipoHabitacion])
+ALTER TABLE [LOMBAPOLLERUDO].[Habitacion]  WITH CHECK ADD  CONSTRAINT [FK_Habitacion_TipoDeHabitacion] FOREIGN KEY([idTipoHabitacion])
+REFERENCES [LOMBAPOLLERUDO].[TipoDeHabitacion] ([idTipoHabitacion])
 GO
-ALTER TABLE [dbo].[Habitacion] CHECK CONSTRAINT [FK_Habitacion_TipoDeHabitacion]
+ALTER TABLE [LOMBAPOLLERUDO].[Habitacion] CHECK CONSTRAINT [FK_Habitacion_TipoDeHabitacion]
 GO
-*/
+
 
 ----------------------------------------------------------------------------------------------------------------
 -- HISTORIALHOTEL --
-CREATE TABLE [dbo].[HistorialHotel](
+CREATE TABLE [LOMBAPOLLERUDO].[HistorialHotel](
 	[idHotel] [INT]  NOT NULL,
 	[fechaInicio] [DATETIME] NOT NULL,
 	[fechaFin] [DATETIME] NOT NULL,
@@ -180,53 +247,18 @@ CREATE TABLE [dbo].[HistorialHotel](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/*
-ALTER TABLE [dbo].[HistorialHotel]  WITH CHECK ADD  CONSTRAINT [FK_HistorialHotel_Hotel] FOREIGN KEY([idHotel])
-REFERENCES [dbo].[Hotel] ([idHotel])
-GO
-ALTER TABLE [dbo].[HistorialHotel] CHECK CONSTRAINT [FK_HistorialHotel_Hotel]
-GO
-*/
 
-----------------------------------------------------------------------------------------------------------------
--- HOTEL --
-CREATE TABLE [dbo].[Hotel](
-	[idHotel] [INT] IDENTITY(1,1) NOT NULL,
-	[nombre] [NVARCHAR](255) NULL,
-	[mail] [NVARCHAR](255) NULL,
-	[telefono] [NVARCHAR](255) NULL,
-	[calle] [NVARCHAR](255) NULL,
-	[nroCalle] [NUMERIC](18, 0) NULL,
-	[cantidadEstrellas] [NUMERIC](18, 0) NULL,
-	[ciudad] [NVARCHAR](255) NULL,
-	[pais] [NVARCHAR](255) NULL,
-	[recargaEstrella] [NUMERIC](18, 0) NULL,
-	[fechaCreacion] [DATETIME] NULL,
- CONSTRAINT [PK_Hotel] PRIMARY KEY CLUSTERED 
-(
-	[idHotel] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
+ALTER TABLE [LOMBAPOLLERUDO].[HistorialHotel]  WITH CHECK ADD  CONSTRAINT [FK_HistorialHotel_Hotel] FOREIGN KEY([idHotel])
+REFERENCES [LOMBAPOLLERUDO].[Hotel] ([idHotel])
 GO
-
-----------------------------------------------------------------------------------------------------------------
--- MEDIODEPAGO --
-CREATE TABLE [dbo].[MedioDePago](
-	[idMedioPago] [INT] IDENTITY(1,1) NOT NULL,
-	[descripcion] [NVARCHAR](255) NULL,
-	[numeroTarjeta] [NVARCHAR](255) NULL,
- CONSTRAINT [PK_MedioDePago] PRIMARY KEY CLUSTERED 
-(
-	[idMedioPago] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
+ALTER TABLE [LOMBAPOLLERUDO].[HistorialHotel] CHECK CONSTRAINT [FK_HistorialHotel_Hotel]
 GO
 
 
 
 ----------------------------------------------------------------------------------------------------------------
 -- REGIMEN --
-CREATE TABLE [dbo].[Regimen](
+CREATE TABLE [LOMBAPOLLERUDO].[Regimen](
 	[codigo] [INT] IDENTITY(1,1) NOT NULL,
 	[descripcion] [NVARCHAR](255) NOT NULL,
 	[precio] [NUMERIC](18, 2) NOT NULL,
@@ -240,7 +272,7 @@ GO
 
 ----------------------------------------------------------------------------------------------------------------
 -- REGIMENXHOTEL --
-CREATE TABLE [dbo].[RegimenxHotel](
+CREATE TABLE [LOMBAPOLLERUDO].[RegimenxHotel](
 	[idHotel] [INT] NOT NULL,
 	[codigoRegimen] [INT] NOT NULL,
  CONSTRAINT [PK_RegimenxHotel] PRIMARY KEY CLUSTERED 
@@ -251,36 +283,36 @@ CREATE TABLE [dbo].[RegimenxHotel](
 ) ON [PRIMARY]
 
 GO
-/*
-ALTER TABLE [dbo].[RegimenxHotel]  WITH CHECK ADD  CONSTRAINT [FK_RegimenxHotel_Hotel] FOREIGN KEY([idHotel])
-REFERENCES [dbo].[Hotel] ([idHotel])
+
+ALTER TABLE [LOMBAPOLLERUDO].[RegimenxHotel]  WITH CHECK ADD  CONSTRAINT [FK_RegimenxHotel_Hotel] FOREIGN KEY([idHotel])
+REFERENCES [LOMBAPOLLERUDO].[Hotel] ([idHotel])
 GO
-ALTER TABLE [dbo].[RegimenxHotel] CHECK CONSTRAINT [FK_RegimenxHotel_Hotel]
+ALTER TABLE [LOMBAPOLLERUDO].[RegimenxHotel] CHECK CONSTRAINT [FK_RegimenxHotel_Hotel]
 GO
-ALTER TABLE [dbo].[RegimenxHotel]  WITH CHECK ADD  CONSTRAINT [FK_RegimenxHotel_Regimen] FOREIGN KEY([codigoRegimen])
-REFERENCES [dbo].[Regimen] ([codigo])
+ALTER TABLE [LOMBAPOLLERUDO].[RegimenxHotel]  WITH CHECK ADD  CONSTRAINT [FK_RegimenxHotel_Regimen] FOREIGN KEY([codigoRegimen])
+REFERENCES [LOMBAPOLLERUDO].[Regimen] ([codigo])
 GO
-ALTER TABLE [dbo].[RegimenxHotel] CHECK CONSTRAINT [FK_RegimenxHotel_Regimen]
+ALTER TABLE [LOMBAPOLLERUDO].[RegimenxHotel] CHECK CONSTRAINT [FK_RegimenxHotel_Regimen]
 GO
-*/
+
 
 
 ----------------------------------------------------------------------------------------------------------------
 -- RESERVA --
-CREATE TABLE [dbo].[Reserva](
+CREATE TABLE [LOMBAPOLLERUDO].[Reserva](
 	[codigoReserva] [NUMERIC](18, 0) NOT NULL,
 	[fechaDesde] [DATETIME] NULL,
 	[cantidadNoches] [NUMERIC](18, 0) NULL,
 	[fechaHasta] [DATETIME] NULL,
 	[fechaRealizacion] [DATETIME] NULL,
 	[idEstadoReserva] [INT] NULL,
-	[numeroIdentificacion] [NUMERIC](18, 0) NULL,
-	[tipoIdentificacion] [INT] NULL,
+	[numeroIdentificacion] [NUMERIC](18, 0) NOT NULL,
+	[tipoIdentificacion] [INT] NOT NULL,
 	[precioParcial] [NUMERIC](18, 2) NULL,
-	[fechaInicioEstadia] [DATETIME] NULL,
-	[fechaFinEstadia] [DATETIME] NULL,
-	[username] [NVARCHAR](50) NULL,
-	[codigoRegimen] [INT] NULL,
+--	[fechaInicioEstadia] [DATETIME] NULL,
+--	[fechaFinEstadia] [DATETIME] NULL,
+	[username] [NVARCHAR](50) NOT NULL,
+	[codigoRegimen] [INT] NOT NULL,
  CONSTRAINT [PK_Reserva] PRIMARY KEY CLUSTERED 
 (
 	[codigoReserva] ASC
@@ -288,41 +320,82 @@ CREATE TABLE [dbo].[Reserva](
 ) ON [PRIMARY]
 
 GO
+ALTER TABLE [LOMBAPOLLERUDO].[Reserva] WITH CHECK ADD  CONSTRAINT [FK_Reserva_Regimen] FOREIGN KEY([codigoRegimen])
+REFERENCES [LOMBAPOLLERUDO].[Regimen] ([codigo])
+GO
+ALTER TABLE [LOMBAPOLLERUDO].[Reserva] WITH CHECK ADD  CONSTRAINT [FK_Reserva_Usuarios] FOREIGN KEY([username])
+REFERENCES [LOMBAPOLLERUDO].[Usuario] ([username])
+GO
+ALTER TABLE [LOMBAPOLLERUDO].[Reserva] WITH CHECK ADD  CONSTRAINT [FK_Reserva_Cliente] FOREIGN KEY([numeroIdentificacion],[tipoIdentificacion])
+REFERENCES [LOMBAPOLLERUDO].[Cliente] ([numeroIdentificacion],[tipoIdentificacion])
+GO
+
+
 
 ----------------------------------------------------------------------------------------------------------------
--- RESERVAXCLIENTE --
-CREATE TABLE [dbo].[ReservaxCliente](
-	[codigoReserva] [NUMERIC](18, 0) NOT NULL,
+-- ESTADIA --
+CREATE TABLE [LOMBAPOLLERUDO].[Estadia](
+	[codigoEstadia] [NUMERIC](18, 0) NOT NULL,
+	[fechaInicioEstadia] [DATETIME] NOT NULL,
+	[cantNoches] [INT] null,
+	[fechaFinEstadia] [DATETIME] NULL,
+CONSTRAINT [PK_Estadia] PRIMARY KEY CLUSTERED 
+(
+	[codigoEstadia] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+ALTER TABLE [LOMBAPOLLERUDO].[Estadia]  WITH CHECK ADD  CONSTRAINT [FK_Estadia_Reserva] FOREIGN KEY([codigoEstadia])
+REFERENCES [LOMBAPOLLERUDO].[Reserva] ([codigoReserva])
+GO
+
+GO
+----------------------------------------------------------------------------------------------------------------
+-- CLIENTEXESTADIA --
+CREATE TABLE [LOMBAPOLLERUDO].[ClientexEstadia](
+	[codigoEstadia] [NUMERIC](18, 0) NOT NULL,
 	[numeroIdentificacionCliente] [NUMERIC](18, 0) NOT NULL,
 	[tipoIdentificacionCliente] [INT] NOT NULL,
- CONSTRAINT [PK_ReservaxCliente] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_ClientexEstadia] PRIMARY KEY CLUSTERED 
 (
-	[codigoReserva] ASC,
+	[codigoEstadia] ASC,
 	[numeroIdentificacionCliente] ASC,
 	[tipoIdentificacionCliente] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
 GO
+/*
+
+FK S								F A L T A N T E S
+
+*/
 
 ----------------------------------------------------------------------------------------------------------------
--- RESERVAXCONSUMIBLE --
-CREATE TABLE [dbo].[ReservaxConsumible](
-	[codigoReserva] [NUMERIC](18, 0) NOT NULL,
+-- CONSUMIBLEXESTADIA --
+CREATE TABLE [LOMBAPOLLERUDO].[ConsumiblexEstadia](
+	[codigoEstadia] [NUMERIC](18, 0) NOT NULL,
 	[codigoConsumible] [NUMERIC](18, 0) NOT NULL,
 	[cantidadItems] TINYINT NOT NULL
- CONSTRAINT [PK_ReservaxConsumible] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_ConsumiblexEstadia] PRIMARY KEY CLUSTERED 
 (
-	[codigoReserva] ASC,
+	[codigoEstadia] ASC,
 	[codigoConsumible] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
 GO
+ALTER TABLE [LOMBAPOLLERUDO].[ConsumiblexEstadia]  WITH CHECK ADD  CONSTRAINT [FK_ConsumiblexEstadia_Estadia] FOREIGN KEY([codigoEstadia])
+REFERENCES [LOMBAPOLLERUDO].[Estadia] ([codigoEstadia])
+GO
+ALTER TABLE [LOMBAPOLLERUDO].[ConsumiblexEstadia]  WITH CHECK ADD  CONSTRAINT [FK_ConsumiblexEstadia_Consumible] FOREIGN KEY([codigoConsumible])
+REFERENCES [LOMBAPOLLERUDO].[Consumible] ([codigo])
+GO
 
 ----------------------------------------------------------------------------------------------------------------
 -- RESERVAXHABITACION --
-CREATE TABLE [dbo].[ReservaxHabitacion](
+CREATE TABLE [LOMBAPOLLERUDO].[ReservaxHabitacion](
 	[codigoReserva] [NUMERIC](18, 0) NOT NULL,
 	[idHotel] [INT] NOT NULL,
 	[numeroHabitacion] [NUMERIC](18, 0) NOT NULL,
@@ -335,10 +408,18 @@ CREATE TABLE [dbo].[ReservaxHabitacion](
 ) ON [PRIMARY]
 
 GO
+ALTER TABLE [LOMBAPOLLERUDO].[ReservaxHabitacion]  WITH CHECK ADD  CONSTRAINT [FK_ReservaxHabitacion_Reserva] FOREIGN KEY([codigoReserva])
+REFERENCES [LOMBAPOLLERUDO].[Reserva] ([codigoReserva])
+GO
+ALTER TABLE [LOMBAPOLLERUDO].[ReservaxHabitacion]  WITH CHECK ADD  CONSTRAINT [FK_ReservaxHabitacion_Habitacion] FOREIGN KEY([idHotel],[numeroHabitacion])
+REFERENCES [LOMBAPOLLERUDO].[Habitacion] ([idHotel],[numeroHabitacion])
+GO
+
+
 
 ----------------------------------------------------------------------------------------------------------------
 -- ROL --
-CREATE TABLE [dbo].[Rol](
+CREATE TABLE [LOMBAPOLLERUDO].[Rol](
 	[idRol] [INT] IDENTITY(1,1) NOT NULL,
 	[nombre] [NVARCHAR](255) NULL,
 	[estado] [BIT] NULL,
@@ -352,7 +433,7 @@ GO
 
 ----------------------------------------------------------------------------------------------------------------
 -- ROLXFUNCIONALIDAD --
-CREATE TABLE [dbo].[RolxFuncionalidad](
+CREATE TABLE [LOMBAPOLLERUDO].[RolxFuncionalidad](
 	[idRol] [INT] NOT NULL,
 	[idFuncionalidad] [INT] NOT NULL,
  CONSTRAINT [PK_RolxFuncionalidad] PRIMARY KEY CLUSTERED 
@@ -363,26 +444,26 @@ CREATE TABLE [dbo].[RolxFuncionalidad](
 ) ON [PRIMARY]
 
 GO
-/*
-ALTER TABLE [dbo].[RolxFuncionalidad]  WITH CHECK ADD  CONSTRAINT [FK_RolxFuncionalidad_Funcionalidad] FOREIGN KEY([idFuncionalidad])
-REFERENCES [dbo].[Funcionalidad] ([idFuncionalidad])
+
+ALTER TABLE [LOMBAPOLLERUDO].[RolxFuncionalidad]  WITH CHECK ADD  CONSTRAINT [FK_RolxFuncionalidad_Funcionalidad] FOREIGN KEY([idFuncionalidad])
+REFERENCES [LOMBAPOLLERUDO].[Funcionalidad] ([idFuncionalidad])
 GO
 
-ALTER TABLE [dbo].[RolxFuncionalidad] CHECK CONSTRAINT [FK_RolxFuncionalidad_Funcionalidad]
+ALTER TABLE [LOMBAPOLLERUDO].[RolxFuncionalidad] CHECK CONSTRAINT [FK_RolxFuncionalidad_Funcionalidad]
 GO
 
-ALTER TABLE [dbo].[RolxFuncionalidad]  WITH CHECK ADD  CONSTRAINT [FK_RolxFuncionalidad_Rol] FOREIGN KEY([idRol])
-REFERENCES [dbo].[Rol] ([idRol])
+ALTER TABLE [LOMBAPOLLERUDO].[RolxFuncionalidad]  WITH CHECK ADD  CONSTRAINT [FK_RolxFuncionalidad_Rol] FOREIGN KEY([idRol])
+REFERENCES [LOMBAPOLLERUDO].[Rol] ([idRol])
 GO
 
-ALTER TABLE [dbo].[RolxFuncionalidad] CHECK CONSTRAINT [FK_RolxFuncionalidad_Rol]
+ALTER TABLE [LOMBAPOLLERUDO].[RolxFuncionalidad] CHECK CONSTRAINT [FK_RolxFuncionalidad_Rol]
 GO
-*/
+
 
 ----------------------------------------------------------------------------------------------------------------
 -- ROLXUSUARIO --
 
-CREATE TABLE [dbo].[RolxUsuario](
+CREATE TABLE [LOMBAPOLLERUDO].[RolxUsuario](
 	[idRol] [INT] NOT NULL,
 	[username] [NVARCHAR](50) NOT NULL,
  CONSTRAINT [PK_RolxUsuario] PRIMARY KEY CLUSTERED 
@@ -393,64 +474,18 @@ CREATE TABLE [dbo].[RolxUsuario](
 ) ON [PRIMARY]
 
 GO
-
-----------------------------------------------------------------------------------------------------------------
--- TIPODEHABITACION --
-CREATE TABLE [dbo].[TipoDeHabitacion](
-	[idTipoHabitacion] [NUMERIC](18, 0) NOT NULL,
-	[descripcion] [NVARCHAR](255) NULL,
-	[tipoPorcentual] [NUMERIC](18, 2) NULL,
-	[capacidad] [INT] NULL,
- CONSTRAINT [PK_TipoDeHabitacion] PRIMARY KEY CLUSTERED 
-(
-	[idTipoHabitacion] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-
+ALTER TABLE [LOMBAPOLLERUDO].[RolxUsuario]  WITH CHECK ADD  CONSTRAINT [FK_RolxUsuario_Rol] FOREIGN KEY([idRol])
+REFERENCES [LOMBAPOLLERUDO].[Rol] ([idRol])
+GO
+ALTER TABLE [LOMBAPOLLERUDO].[RolxUsuario]  WITH CHECK ADD  CONSTRAINT [FK_RolxUsuario_Usuario] FOREIGN KEY([username])
+REFERENCES [LOMBAPOLLERUDO].[Usuario] ([username])
 GO
 
-----------------------------------------------------------------------------------------------------------------
--- TIPOIDENTIFICACION --
-CREATE TABLE [dbo].[TipoIdentificacion](
-	[tipoIdentificacion] [INT] IDENTITY(1,1) NOT NULL,
-	[descripcionCorta] [NVARCHAR](5) NULL,
-	[descripcionLarga] [NVARCHAR](50) NULL,
- CONSTRAINT [PK_TipoIdentificacion] PRIMARY KEY CLUSTERED 
-(
-	[tipoIdentificacion] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-
-
-
-
-----------------------------------------------------------------------------------------------------------------
--- USUARIO --
-CREATE TABLE [dbo].[Usuario](
-	[username] [NVARCHAR](50) NOT NULL,
-	[password] [NVARCHAR](MAX) NULL,
-	[intentosFallidos] [INT] NULL,
-	[documento] [NVARCHAR](50) NULL,
-	[tipoDocumento] [NVARCHAR](50) NULL,
-	[nombre] [NVARCHAR](50) NULL,
-	[apellido] [NVARCHAR](50) NULL,
-	[mail] [NVARCHAR](50) NULL,
-	[tel] [NVARCHAR](50) NULL,
-	[direccion] [NVARCHAR](50) NULL,
-	[fechaNacimiento] [DATETIME] NULL,
-	[baja] [Bit] NULL
- CONSTRAINT [PK_Usuario] PRIMARY KEY CLUSTERED 
-(
-	[username] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
 
 
 ----------------------------------------------------------------------------------------------------------------
 -- USUARIOXHOTEL --
-CREATE TABLE [dbo].[UsuarioxHotel](
+CREATE TABLE [LOMBAPOLLERUDO].[UsuarioxHotel](
 	[username] [NVARCHAR](50) NOT NULL,
 	[idHotel] [INT] NOT NULL,
  CONSTRAINT [PK_UsuarioxHotel] PRIMARY KEY CLUSTERED 
@@ -461,8 +496,38 @@ CREATE TABLE [dbo].[UsuarioxHotel](
 ) ON [PRIMARY]
 
 GO
+ALTER TABLE [LOMBAPOLLERUDO].[UsuarioxHotel]  WITH CHECK ADD  CONSTRAINT [FK_UsuarioxHotel_Usuario] FOREIGN KEY([username])
+REFERENCES [LOMBAPOLLERUDO].[Usuario] ([username])
+GO
+ALTER TABLE [LOMBAPOLLERUDO].[UsuarioxHotel]  WITH CHECK ADD  CONSTRAINT [FK_UsuarioxHotel_Hotel] FOREIGN KEY([idHotel])
+REFERENCES [LOMBAPOLLERUDO].[Hotel] ([idHotel])
+GO
 
+----------------------------------------------------------------------------------------------------------------
+-- FACTURA --
+CREATE TABLE [LOMBAPOLLERUDO].[Factura](
+	[numeroFactura] [NUMERIC](18, 0) NOT NULL,
+	[fecha] [DATETIME] NULL,
+	[total] [NUMERIC](18, 2) NULL,
+	[codigoEstadia] [NUMERIC](18, 0) NOT NULL,
+	[idMedioPago] [INT] NULL,
+ CONSTRAINT [PK_Factura] PRIMARY KEY CLUSTERED 
+(
+	[numeroFactura] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
 
+ALTER TABLE [LOMBAPOLLERUDO].[Factura]  WITH CHECK ADD  CONSTRAINT [FK_Factura_MedioDePago] FOREIGN KEY([idMedioPago])
+REFERENCES [LOMBAPOLLERUDO].[MedioDePago] ([idMedioPago])
+GO
+ALTER TABLE [LOMBAPOLLERUDO].[Factura] CHECK CONSTRAINT [FK_Factura_MedioDePago]
+GO
+ALTER TABLE [LOMBAPOLLERUDO].[Factura]  WITH CHECK ADD  CONSTRAINT [FK_Factura_Estadia] FOREIGN KEY([codigoEstadia])
+REFERENCES [LOMBAPOLLERUDO].[Estadia] ([codigoEstadia])
+GO
+ALTER TABLE [LOMBAPOLLERUDO].[Factura] CHECK CONSTRAINT [FK_Factura_Estadia]
+GO
 
 
 COMMIT
@@ -474,7 +539,7 @@ GO
 -----------------------------------------------------------------------------------------------
 -- TABLA ROL --
 ------------------------------------------------------------------------------------------------
-INSERT INTO [dbo].[ROL]
+INSERT INTO [LOMBAPOLLERUDO].[ROL]
 SELECT 'Admin','1'
 UNION
 SELECT 'Conserje','1'
@@ -483,7 +548,7 @@ SELECT 'Empleado','1'
 ------------------------------------------------------------------------------------------------
 -- TABLA TIPODEHABITACION --
 ------------------------------------------------------------------------------------------------
-INSERT INTO [dbo].[TIPODEHABITACION]
+INSERT INTO [LOMBAPOLLERUDO].[TIPODEHABITACION]
 SELECT DISTINCT Habitacion_Tipo_Codigo AS idTipoHabitacion
 				,Habitacion_Tipo_Descripcion AS descricion
 				,Habitacion_Tipo_Porcentual AS tipoPorcentual
@@ -492,7 +557,7 @@ FROM [GD2C2014].[gd_esquema].[Maestra]
 ------------------------------------------------------------------------------------------------
 -- TABLA TIPOIDENTIFICACION --
 ------------------------------------------------------------------------------------------------
-INSERT INTO [dbo].[TipoIdentificacion]  
+INSERT INTO [LOMBAPOLLERUDO].[TipoIdentificacion]  
 SELECT 'PAS','Pasaporte'
 UNION
 SELECT 'DNI','Documento Nacional de Identidad'
@@ -500,26 +565,8 @@ SELECT 'DNI','Documento Nacional de Identidad'
 ------------------------------------------------------------------------------------------------
 -- TABLA CLIENTES --
 ------------------------------------------------------------------------------------------------
-INSERT INTO [dbo].[Cliente]
-SELECT numeroIdentificacion,
-		tipoIdentificacion,
-		nombre,
-		apellido,
-		fechaNacimiento,
-		mail,
-		direccion,
-		altura,
-		piso,
-		depto,
-		nacionalidad,
-		telefono,
-		localidad,
-		habilitado,
-		tieneDuplicados
-		FROM 
-		(
-SELECT	ROW_NUMBER()OVER(PARTITION BY mail ORDER BY fechaNacimiento ASC) AS 'nroFilaMail',
-		numeroIdentificacion,
+INSERT INTO [LOMBAPOLLERUDO].[Cliente]
+SELECT	numeroIdentificacion,
 		tipoIdentificacion,
 		nombre,
 		apellido,
@@ -539,7 +586,7 @@ FROM
 			OVER(PARTITION BY [Cliente_Pasaporte_Nro] ORDER BY [Cliente_Fecha_Nac] ASC) AS 'nroFilaDocu', 
 				[Cliente_Pasaporte_Nro] AS numeroIdentificacion,
 				[Cliente_Mail] AS mail,
-				(SELECT tipoIdentificacion FROM TipoIdentificacion WHERE UPPER(descripcionLarga) LIKE '%PASAPORTE%') AS tipoIdentificacion,
+				(SELECT tipoIdentificacion FROM [LOMBAPOLLERUDO].TipoIdentificacion WHERE UPPER(descripcionLarga) LIKE '%PASAPORTE%') AS tipoIdentificacion,
 				[Cliente_Nombre] AS nombre,
 				[Cliente_Apellido] AS apellido,
 				[Cliente_Fecha_Nac] AS fechaNacimiento,
@@ -555,12 +602,10 @@ FROM
 FROM [GD2C2014].[gd_esquema].[Maestra]				
 ) conNroFilaDocu
 WHERE nroFilaDocu = 1
-)conNroFIlaMail
-WHERE nroFilaMail = 1
 ----------------------------------------------------------------------
 --UPDATEO LOS QUE TIENEN DUPLICADOS (POR NRO PASAPORTE IDENTIFICACION)
 ----------------------------------------------------------------------
-UPDATE [dbo].[Cliente]
+UPDATE [LOMBAPOLLERUDO].[Cliente]
 SET tieneDuplicados = 1
 WHERE numeroIdentificacion IN 
 (SELECT DISTINCT numeroIdentificacion FROM (SELECT		ROW_NUMBER()
@@ -586,10 +631,10 @@ WHERE nroFilaDocu > 6)
 ----------------------------------------------------------------------
 -- CARGAMOS TABLA ERRORES por PASAPORTE duplicados
 ----------------------------------------------------------------------
-INSERT INTO [dbo].[Cliente_ERROR]
+INSERT INTO [LOMBAPOLLERUDO].[Cliente_ERROR]
 SELECT DISTINCT
 				[Cliente_Pasaporte_Nro] AS numeroIdentificacion,
-				(SELECT tipoIdentificacion FROM TipoIdentificacion WHERE UPPER(descripcionLarga) LIKE '%PASAPORTE%') AS tipoIdentificacion,
+				(SELECT tipoIdentificacion FROM [LOMBAPOLLERUDO].TipoIdentificacion WHERE UPPER(descripcionLarga) LIKE '%PASAPORTE%') AS tipoIdentificacion,
 				[Cliente_Nombre] AS nombre,
 				[Cliente_Apellido] AS apellido,
 				[Cliente_Fecha_Nac] AS fechaNacimiento,
@@ -629,47 +674,47 @@ WHERE nroFilaDocu > 6
 ----------------------------------------------------------------------
 -- CARGAMOS TABLA ERRORES por MAILS duplicados
 ----------------------------------------------------------------------
-SELECT DISTINCT mails.Cliente_Mail AS mail, a.Cliente_Pasaporte_Nro AS numeroIdentificacion
-INTO #TEMPORAL
-FROM [GD2C2014].gd_esquema.Maestra a
-JOIN (
-SELECT Cliente_Mail FROM [GD2C2014].gd_esquema.Maestra 
-GROUP BY Cliente_Mail 
-HAVING COUNT(DISTINCT Cliente_Pasaporte_Nro)>1) mails ON mails.Cliente_Mail = a.Cliente_Mail ORDER BY 1
+--SELECT DISTINCT mails.Cliente_Mail AS mail, a.Cliente_Pasaporte_Nro AS numeroIdentificacion
+--INTO #TEMPORAL
+--FROM [GD2C2014].gd_esquema.Maestra a
+--JOIN (
+--SELECT Cliente_Mail FROM [GD2C2014].gd_esquema.Maestra 
+--GROUP BY Cliente_Mail 
+--HAVING COUNT(DISTINCT Cliente_Pasaporte_Nro)>1) mails ON mails.Cliente_Mail = a.Cliente_Mail ORDER BY 1
 
 
-INSERT INTO [dbo].[Cliente_ERROR] 
-SELECT DISTINCT
-				[Cliente_Pasaporte_Nro] AS numeroIdentificacion,
-				(SELECT tipoIdentificacion FROM TipoIdentificacion WHERE UPPER(descripcionLarga) LIKE '%PASAPORTE%') AS tipoIdentificacion,
-				[Cliente_Nombre] AS nombre,
-				[Cliente_Apellido] AS apellido,
-				[Cliente_Fecha_Nac] AS fechaNacimiento,
-				[Cliente_Mail] AS mail,
-				[Cliente_Dom_Calle] AS direccion,
-				[Cliente_Nro_Calle] AS altura,
-				[Cliente_Piso] AS piso,
-				[Cliente_Depto] AS depto,
-				[Cliente_Nacionalidad] AS nacionalidad,
-				'' AS telefono,
-				'' AS localidad,
-				1 AS habilitado
-FROM [GD2C2014].gd_esquema.Maestra
-WHERE [Cliente_Pasaporte_Nro] IN (SELECT numeroIdentificacion FROM #TEMPORAL)
-AND [Cliente_Mail] IN (SELECT mail FROM #TEMPORAL)
+--INSERT INTO [LOMBAPOLLERUDO].[Cliente_ERROR] 
+--SELECT DISTINCT
+--				[Cliente_Pasaporte_Nro] AS numeroIdentificacion,
+--				(SELECT tipoIdentificacion FROM [LOMBAPOLLERUDO].TipoIdentificacion WHERE UPPER(descripcionLarga) LIKE '%PASAPORTE%') AS tipoIdentificacion,
+--				[Cliente_Nombre] AS nombre,
+--				[Cliente_Apellido] AS apellido,
+--				[Cliente_Fecha_Nac] AS fechaNacimiento,
+--				[Cliente_Mail] AS mail,
+--				[Cliente_Dom_Calle] AS direccion,
+--				[Cliente_Nro_Calle] AS altura,
+--				[Cliente_Piso] AS piso,
+--				[Cliente_Depto] AS depto,
+--				[Cliente_Nacionalidad] AS nacionalidad,
+--				'' AS telefono,
+--				'' AS localidad,
+--				1 AS habilitado
+--FROM [GD2C2014].gd_esquema.Maestra
+--WHERE [Cliente_Pasaporte_Nro] IN (SELECT numeroIdentificacion FROM #TEMPORAL)
+--AND [Cliente_Mail] IN (SELECT mail FROM #TEMPORAL)
 
-UPDATE [dbo].[Cliente]
-SET tieneDuplicados = 1
-WHERE numeroIdentificacion IN (SELECT numeroIdentificacion FROM #TEMPORAL)
-AND mail IN (SELECT mail FROM #TEMPORAL)
+--UPDATE [LOMBAPOLLERUDO].[Cliente]
+--SET tieneDuplicados = 1
+--WHERE numeroIdentificacion IN (SELECT numeroIdentificacion FROM #TEMPORAL)
+--AND mail IN (SELECT mail FROM #TEMPORAL)
 
 
-DROP TABLE #TEMPORAL
+--DROP TABLE #TEMPORAL
 
 ------------------------------------------------------------------------------------------------
 -- TABLA CONSUMIBLES --
 ------------------------------------------------------------------------------------------------
-INSERT INTO [dbo].[Consumible]
+INSERT INTO [LOMBAPOLLERUDO].[Consumible]
 SELECT DISTINCT [Consumible_Codigo],[Consumible_Descripcion],[Consumible_Precio] 
 FROM [GD2C2014].[gd_esquema].[Maestra]
 WHERE [Consumible_Codigo] IS NOT NULL
@@ -677,11 +722,11 @@ ORDER BY 1
 ------------------------------------------------------------------------------------------------
 -- TABLA ESTADORESERVA --
 ------------------------------------------------------------------------------------------------
-INSERT INTO [dbo].[EstadoReserva]
+INSERT INTO [LOMBAPOLLERUDO].[EstadoReserva]
 SELECT 'Reserva correcta'
-INSERT INTO [dbo].[EstadoReserva]
+INSERT INTO [LOMBAPOLLERUDO].[EstadoReserva]
 SELECT 'Reserva con Ingreso'
-INSERT INTO [dbo].[EstadoReserva]
+INSERT INTO [LOMBAPOLLERUDO].[EstadoReserva]
 SELECT 'Reserva modifica'
 UNION
 SELECT 'Reserva cancelada por recepcion'
@@ -693,7 +738,7 @@ SELECT 'Reserva cancelada por No-Show'
 ------------------------------------------------------------------------------------------------
 -- TABLA FUNCIONALIDAD --
 ------------------------------------------------------------------------------------------------
-INSERT INTO [dbo].[Funcionalidad]
+INSERT INTO [LOMBAPOLLERUDO].[Funcionalidad]
 SELECT 'ABM Cliente'
 UNION
 SELECT 'ABM Hotel'
@@ -702,7 +747,7 @@ SELECT 'Todo'
 ------------------------------------------------------------------------------------------------
 -- TABLA HOTEL --
 ------------------------------------------------------------------------------------------------
-INSERT INTO [dbo].[HOTEL]
+INSERT INTO [LOMBAPOLLERUDO].[HOTEL]
 SELECT DISTINCT 
 		NULL						nombre
 		,NULL						mail
@@ -718,20 +763,20 @@ FROM [GD2C2014].[gd_esquema].[Maestra]
 ------------------------------------------------------------------------------------------------
 -- TABLA MEDIODEPAGO --
 ------------------------------------------------------------------------------------------------
-INSERT INTO [dbo].[MEDIODEPAGO]
+INSERT INTO [LOMBAPOLLERUDO].[MEDIODEPAGO]
 SELECT 'NO DISPONIBLE','NO DISPONIBLE'
 ------------------------------------------------------------------------------------------------
 -- TABLA REGIMEN --
 ------------------------------------------------------------------------------------------------
-INSERT INTO [dbo].[REGIMEN]
+INSERT INTO [LOMBAPOLLERUDO].[REGIMEN]
 SELECT DISTINCT Regimen_Descripcion as descripcion,Regimen_Precio as precio ,1 as estado
 FROM [GD2C2014].[gd_esquema].[Maestra]
 ------------------------------------------------------------------------------------------------
 -- TABLA REGIMENxhotel --
 ------------------------------------------------------------------------------------------------
-INSERT INTO [dbo].[REGIMENXHOTEL]
+INSERT INTO [LOMBAPOLLERUDO].[REGIMENXHOTEL]
 SELECT H.idHotel as idHotel, R.codigo as codigoRegimen --rXh.Regimen_Descripcion,rXh.Regimen_Precio,
-  FROM dbo.Hotel H, dbo.Regimen R ,(SELECT DISTINCT [Hotel_Ciudad]
+  FROM [LOMBAPOLLERUDO].Hotel H, [LOMBAPOLLERUDO].Regimen R ,(SELECT DISTINCT [Hotel_Ciudad]
 											,[Hotel_Calle]
 											,[Hotel_Nro_Calle]
 											,[Hotel_CantEstrella]
@@ -750,41 +795,41 @@ WHERE	H.calle = rXh.Hotel_Calle
 ------------------------------------------------------------------------------------------------
 -- TABLA USUARIO --                                            HAY QUE HASHEAR LA PASSWORD
 ------------------------------------------------------------------------------------------------
-INSERT INTO [dbo].[USUARIO]  
-SELECT 'scriptMigracion','script',0,'99999999','DNI','SQL','SERVER','scriptloco@gmail.com','0800-SCRIPT','Av. SQL 123','1950-01-04 00:00:00.000'
+INSERT INTO [LOMBAPOLLERUDO].[USUARIO]  
+SELECT 'scriptMigracion','script',0,'99999999','DNI','SQL','SERVER','scriptloco@gmail.com','0800-SCRIPT','Av. SQL 123','1950-01-04 00:00:00.000',0
 UNION
-SELECT 'admin','adm123',0,'36200300','DNI','Roberto','Gomez','rob@gmail.com','4804-2020','Av. Rivadavia 3045','1980-11-02 00:00:00.000'
+SELECT 'admin','adm123',0,'36200300','DNI','Roberto','Gomez','rob@gmail.com','4804-2020','Av. Rivadavia 3045','1980-11-02 00:00:00.000',0
 UNION
-SELECT 'aperez','1234',0,'36999300','DNI','Adalberto','Perez','rob@gmail.com','4804-2020','Av. Directorio 3242','1991-12-12 00:00:00.000'
+SELECT 'aperez','1234',0,'36999300','DNI','Adalberto','Perez','rob@gmail.com','4804-2020','Av. Directorio 3242','1991-12-12 00:00:00.000',1
 
 
 ------------------------------------------------------------------------------------------------
 -- TABLA USUARIOXHOTEL --
 ------------------------------------------------------------------------------------------------
-INSERT INTO [dbo].[USUARIOXHOTEL]  
-SELECT DISTINCT 'admin', idHotel FROM Hotel
+INSERT INTO [LOMBAPOLLERUDO].[USUARIOXHOTEL]  
+SELECT DISTINCT 'admin', idHotel FROM [LOMBAPOLLERUDO].Hotel
 UNION 
 SELECT 'aperez',2
 ------------------------------------------------------------------------------------------------
 -- TABLA ROLxUSUARIO --
 ------------------------------------------------------------------------------------------------
-INSERT INTO [dbo].[ROLxUSUARIO]  
-SELECT DISTINCT idRol,'admin' FROM Rol
+INSERT INTO [LOMBAPOLLERUDO].[ROLxUSUARIO]  
+SELECT DISTINCT idRol,'admin' FROM [LOMBAPOLLERUDO].Rol
 UNION 
 SELECT 2,'aperez'
 ------------------------------------------------------------------------------------------------
 -- TABLA ROLxFUNCIONALIDAD --
 ------------------------------------------------------------------------------------------------
-INSERT INTO [dbo].[ROLxFuncionalidad]  
+INSERT INTO [LOMBAPOLLERUDO].[ROLxFuncionalidad]  
 SELECT 1,3
 UNION 
 SELECT 2,2
 UNION
-SELECT 2,1
+SELECT 2,1 
 ------------------------------------------------------------------------------------------------
 -- TABLA HABITACION --
 ------------------------------------------------------------------------------------------------
-INSERT INTO [dbo].[habitacion]  
+INSERT INTO [LOMBAPOLLERUDO].[habitacion]  
 SELECT	 H.idHotel AS idHotel
 		,habXhot.Habitacion_Numero AS numeroHabitacion
 		,habXhot.Habitacion_Piso AS piso
@@ -793,7 +838,7 @@ SELECT	 H.idHotel AS idHotel
 		,NULL AS descripcion
 		,NULL AS comodidades
 		,1 AS habilitada
-  FROM dbo.Hotel H ,(SELECT DISTINCT 
+  FROM [LOMBAPOLLERUDO].Hotel H ,(SELECT DISTINCT 
 			[Hotel_Ciudad],[Hotel_Calle],[Hotel_Nro_Calle],[Hotel_CantEstrella],[Hotel_Recarga_Estrella]
 			,[Habitacion_Numero],[Habitacion_Piso],[Habitacion_Frente]
 			,[Habitacion_Tipo_Codigo]
@@ -807,13 +852,13 @@ WHERE	H.calle = habXhot.Hotel_Calle
 ------------------------------------------------------------------------------------------------
 -- TABLA RESERVA --
 ------------------------------------------------------------------------------------------------
-INSERT INTO [dbo].[RESERVA] 
+INSERT INTO [LOMBAPOLLERUDO].[RESERVA] 
 SELECT	codigoReserva,fechaDesde,cantidadNoches,fechaHasta,fechaRealizacion
 		,(CASE
 			WHEN fechaInicioEstadia IS NULL  THEN 1
 			ELSE 2
 			END)																	AS idEstadoReserva
-		,numeroIdentificacion,tipoIdentificacion,precioParcial,fechaInicioEstadia,fechaFinEstadia,username,codigoRegimen
+		,numeroIdentificacion,tipoIdentificacion,precioParcial,username,codigoRegimen
 FROM
 (
 SELECT  *
@@ -842,17 +887,31 @@ SELECT DISTINCT
 		,1																			AS tipoIdentificacion
 		,CAST(0.00 AS NUMERIC(18,2))												AS precioParcial
         ,'scriptMigracion'															AS username
-		,(SELECT codigo FROM Regimen 
+		,(SELECT codigo FROM [LOMBAPOLLERUDO].Regimen 
 			WHERE descripcion=[Regimen_Descripcion] AND precio=[Regimen_Precio])	AS codigoRegimen
 FROM [GD2C2014].[gd_esquema].[Maestra]
 ) a
 ) b
 
+
 ------------------------------------------------------------------------------------------------
--- TABLA RESERVAxCONSUMIBLE --
+-- TABLA ESTADIA --
 ------------------------------------------------------------------------------------------------
-INSERT INTO [dbo].[RESERVAxCONSUMIBLE] 
-SELECT	Reserva_Codigo AS codigoReserva, 
+INSERT INTO [LOMBAPOLLERUDO].[ESTADIA] 
+SELECT DISTINCT [Reserva_Codigo] AS codigoEstadia
+      ,[Estadia_Fecha_Inicio] AS fechaInicioEstadia
+      ,[Estadia_Cant_Noches] as cantNoches
+      ,DATEADD(DAY,[Estadia_Cant_Noches],[Estadia_Fecha_Inicio]) as fechaFinEstadia
+  FROM [GD2C2014].[gd_esquema].[Maestra]
+  where Estadia_Fecha_Inicio is not null
+
+
+
+------------------------------------------------------------------------------------------------
+-- TABLA CONSUMIBLExESTADIA --
+------------------------------------------------------------------------------------------------
+INSERT INTO [LOMBAPOLLERUDO].[CONSUMIBLExESTADIA] 
+SELECT	Reserva_Codigo AS codigoEstadia, 
 		Consumible_Codigo AS codigoConsumible,
 		COUNT(*) AS cantidadItems
 FROM [GD2C2014].[gd_esquema].[Maestra]
@@ -861,20 +920,20 @@ GROUP BY Reserva_Codigo,Consumible_Codigo
 ------------------------------------------------------------------------------------------------
 -- TABLA RESERVAxHABITACION --
 ------------------------------------------------------------------------------------------------
-INSERT INTO [dbo].[RESERVAxHABITACION] 
+INSERT INTO [LOMBAPOLLERUDO].[RESERVAxHABITACION] 
 SELECT DISTINCT Mae.Reserva_Codigo AS codigoReserva,
 				hot.idHotel AS idHotel,
 				Mae.Habitacion_Numero AS numeroHabitacion
 FROM [GD2C2014].[gd_esquema].[Maestra] Mae
-	JOIN [dbo].[Hotel] hot ON 
+	JOIN [LOMBAPOLLERUDO].[Hotel] hot ON 
 				Mae.Hotel_Calle = hot.calle
 				AND Mae.Hotel_Nro_Calle = hot.nroCalle
 				AND Mae.Hotel_Ciudad = hot.ciudad
 				AND Mae.Hotel_CantEstrella = hot.cantidadEstrellas
 ------------------------------------------------------------------------------------------------
--- TABLA RESERVAxCLIENTE --
+-- TABLA CLIENTExESTADIA --
 ------------------------------------------------------------------------------------------------
-INSERT INTO [dbo].[RESERVAxCLIENTE] 
+INSERT INTO [LOMBAPOLLERUDO].[CLIENTExESTADIA] 
 SELECT DISTINCT
 		[Reserva_Codigo]				AS codigoReserva
 		,[Cliente_Pasaporte_Nro]		AS numeroIdentificacion
@@ -883,11 +942,12 @@ FROM [GD2C2014].[gd_esquema].[Maestra]
 ------------------------------------------------------------------------------------------------
 -- TABLA FACTURA --
 ------------------------------------------------------------------------------------------------
-INSERT INTO [dbo].[FACTURA] 
+INSERT INTO [LOMBAPOLLERUDO].[FACTURA] 
 SELECT DISTINCT Factura_Nro,Factura_Fecha,Factura_Total,Reserva_Codigo,mp.idMedioPago 
 FROM [GD2C2014].[gd_esquema].[Maestra]
-	JOIN [dbo].[MedioDePago] mp ON mp.descripcion LIKE '%no disponible%'
+	JOIN [LOMBAPOLLERUDO].[MedioDePago] mp ON mp.descripcion LIKE '%no disponible%'
 	WHERE Factura_Nro IS NOT NULL
 	
-	
 COMMIT
+
+COMMIT TRANSACTION TOTAL
