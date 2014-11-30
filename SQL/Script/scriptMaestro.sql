@@ -16,7 +16,6 @@ BEGIN TRANSACTION
 GO
 	
 	/* Creacion de TABLAS */
-
 ----------------------------------------------------------------------------------------------------------------
 -- USUARIO --
 CREATE TABLE [LOMBAPOLLERUDO].[Usuario](
@@ -68,6 +67,7 @@ CREATE TABLE [LOMBAPOLLERUDO].[Hotel](
 	[pais] [NVARCHAR](255) NULL,
 	[recargaEstrella] [NUMERIC](18, 0) NULL,
 	[fechaCreacion] [DATETIME] NULL,
+	[baja] BIT default 0 not null,
  CONSTRAINT [PK_Hotel] PRIMARY KEY CLUSTERED 
 (
 	[idHotel] ASC
@@ -759,6 +759,7 @@ SELECT DISTINCT
 		,NULL						pais
 		,[Hotel_Recarga_Estrella]	recargaEstrella
 		,GETDATE()					fechaCreacion
+		,0							baja
 FROM [GD2C2014].[gd_esquema].[Maestra]
 ------------------------------------------------------------------------------------------------
 -- TABLA MEDIODEPAGO --
